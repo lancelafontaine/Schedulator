@@ -6,7 +6,7 @@ Please visit the [Gitter public chat room](https://gitter.im/SOEN-341/soen-341-p
 
 ## Documentation
 
-[1. Getting Started](docs/getting-started/RREADME.md)
+[1. Getting Started](docs/getting-started/README.md)
 
 ## Team Members
 Lance Lafontaine - [lancelafontaine](https://github.com/lancelafontaine)

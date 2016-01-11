@@ -11,6 +11,6 @@ Please visit the [Gitter public chat room](https://gitter.im/SOEN-341/soen-341-p
 [1. Getting Started](docs/getting-started/README.md)
 
 ## Team Members
-Lance Lafontaine - [lancelafontaine](https://github.com/lancelafontaine)
-Jason Tsalikis
-Zhipeng Cai (Bruce) - [choitwao](https://github.com/choitwao)
+Lance Lafontaine - [lancelafontaine](https://github.com/lancelafontaine)<br />
+Jason Tsalikis <br />
+Zhipeng Cai (Bruce) - [choitwao](https://github.com/choitwao) <br />

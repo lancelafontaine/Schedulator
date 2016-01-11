@@ -13,3 +13,4 @@ Please visit the [Gitter public chat room](https://gitter.im/SOEN-341/soen-341-p
 ## Team Members
 Lance Lafontaine - [lancelafontaine](https://github.com/lancelafontaine)
 Jason Tsalikis
+Zhipeng Cai (Bruce) - [choitwao](https://github.com/choitwao)

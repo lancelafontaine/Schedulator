@@ -14,3 +14,6 @@ Please visit the [Gitter public chat room](https://gitter.im/SOEN-341/soen-341-p
 Lance Lafontaine - [lancelafontaine](https://github.com/lancelafontaine)<br />
 Jason Tsalikis <br />
 Zhipeng Cai (Bruce) - [choitwao](https://github.com/choitwao) <br />
+Benny Zhao - [softarebrah](https://github.com/softwarebrah) <br />
+Veken Baboyan - [veken1199](https://github.com/veken1199) <br />
+Armine Iradian - [Armine-i](https://github.com/Armine-i) <br />

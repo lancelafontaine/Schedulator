@@ -17,3 +17,4 @@ Zhipeng Cai (Bruce) - [choitwao](https://github.com/choitwao) <br />
 Benny Zhao - [softarebrah](https://github.com/softwarebrah) <br />
 Veken Baboyan - [veken1199](https://github.com/veken1199) <br />
 Armine Iradian - [Armine-i](https://github.com/Armine-i) <br />
+Nassim El Sayed - [NassimElSayed] (https://github.com/NassimElSayed) <br />

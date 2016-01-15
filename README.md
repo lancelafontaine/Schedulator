@@ -1,4 +1,4 @@
-# SOEN 341 Project
+﻿# SOEN 341 Project
 
 [![Join the chat at https://gitter.im/SOEN-341/soen-341-project](https://badges.gitter.im/SOEN-341/soen-341-project.svg)](https://gitter.im/SOEN-341/soen-341-project?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -18,3 +18,12 @@ Benny Zhao - [softarebrah](https://github.com/softwarebrah) <br />
 Veken Baboyan - [veken1199](https://github.com/veken1199) <br />
 Armine Iradian - [Armine-i](https://github.com/Armine-i) <br />
 Nassim El Sayed - [NassimElSayed] (https://github.com/NassimElSayed) <br />
+
+## Rules
+- Make an issue for everything <br/>
+- All issues need test cases <br/>
+- Issues = branches <br/>
+- No other types of branches<br/>
+- No commits to master or dev<br/>
+- Docs in markdown in repository <br/>
+- Assign yourselves tasks/issues <br/>

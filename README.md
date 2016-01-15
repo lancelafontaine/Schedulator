@@ -1,4 +1,4 @@
-# SOEN 341 Project
+﻿# SOEN 341 Project
 
 [![Join the chat at https://gitter.im/SOEN-341/soen-341-project](https://badges.gitter.im/SOEN-341/soen-341-project.svg)](https://gitter.im/SOEN-341/soen-341-project?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -12,7 +12,7 @@ Please visit the [Gitter public chat room](https://gitter.im/SOEN-341/soen-341-p
 
 ## Team Members
 Lance Lafontaine - [lancelafontaine](https://github.com/lancelafontaine)<br />
-Jason Tsalikis <br />
+Jason Tsalikis - [jason10129](https://github.com/jason10129)<br />
 Zhipeng Cai (Bruce) - [choitwao](https://github.com/choitwao) <br />
 Benny Zhao - [softarebrah](https://github.com/softwarebrah) <br />
 Veken Baboyan - [veken1199](https://github.com/veken1199) <br />

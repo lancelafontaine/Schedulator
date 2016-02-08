@@ -4,11 +4,37 @@
     <% include ../partials/head %>
   </head>
   <body ng-app>
+    <div class="page-wrap">
     <header>
       <% include ../partials/header %>
     </header>
-    <p>This is the landing page.</p>
-    <i class="fa fa-calendar-check-o"></i>
+    <div id="banner">
+      <div id="banner-center">
+        for all your concordia software engineering scheduling needs
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div id="description-box">
+            <p>SCHEDULATOR is an online application aimed at Concordia Software Engineering students that allows you to create a multi-year plan and schedule for your classes. Our complex algorithms are able to filter through courses that are available to you while taking account of your course preferences.</p>
+            <br/>
+            <p> Ready to give it a try?</p>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <a href="#" id="login-button" class="action-button animate green">LOG IN</a>
+          <a href="#" id="signup-button" class="action-button animate blue"> SIGN UP</a>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </div>
     <footer>
       <% include ../partials/footer %>
     </footer>

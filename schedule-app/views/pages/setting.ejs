@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <% include ../partials/head %>
+  </head>
+  <body ng-app>
+    <div class="page-wrap">
+    <header>
+      <% include ../partials/header %>
+    </header>
+    <div id="banner">
+      <div id="banner-center">
+        for all your concordia software engineering scheduling needs
+      </div>
+    </div>
+    <div class="container">
+      
+      <div class = "row" style = "paddind: 10px; margin: 10px; position: relative; border-style: ridge;">
+        <div class = "col-md-4">
+            <Label>Student Record</label><br/>
+            <select size = 10 style = "width: 350px;">
+             <option value = "COMP 232">COMP 232</option>
+             <option value = "COMP 248">COMP 248</option>
+             <option value = "COMP 249">COMP 249</option>
+             <option value = "COMP 228">COMP 228</option>
+             <option value = "SOEN 331">SOEN 331</option>
+             <option value = "COMP 352">COMP 352</option>
+             <option value = "COMP 346">COMP 346</option>
+             <option value = "COMP 348">COMP 348</option>
+             <option value = "COMP 391">COMP 391</option>
+             <option value = "ENGR 301">ENGR 301</option>
+            </select><br/>
+            <button type="submit" class="btn btn-default">Delete</button>
+        </div>
+        <div class = "col-md-4">
+            <Label>Add Course</label><br/>
+            <select size = 4 style = "width: 300px;">
+             <option value = "COMP">COMP</option>
+             <option value = "SOEN">SOEN</option>
+             <option value = "ENGR">ENGR</option>
+             <option value = "General">general</option>
+            </select><br/>
+            <select size = 5 style = "width: 300px;">
+             <option value = "">249</option>
+             <option value = "">248</option>
+             <option value = "">346</option>
+             <option value = "">348</option>
+            </select><br/>
+            <button type="submit" class="btn btn-default">Add</button>
+        </div>
+        <div class = "col-md-4">
+            <label>Calendar Attributes & Course Load</label>
+            <form id = "display-attribuets">
+            <label>
+          <input type="checkbox" value="option1" checked>
+            Show professor's name
+        </label>
+        <label>
+          <input type="checkbox" value="option2" checked>
+          Show classroom location
+        </label>
+        <label>
+          <input type="checkbox" value="option3" checked>
+          Show class full name
+        </label>
+        <label>
+          Limit course load by <input type="text" value="4" style="width: 25px;"> courses
+        </label>
+        <label>
+          Limit course load by <input type="text" value="12" style="width: 25px;"> credits
+        </label><br/>
+        <button type="submit" class="btn btn-default">Save</button>
+       </form>
+        </div>
+      
+      </div>
+             
+       <div class = "row" style = "paddind: 10px; margin: 10px; position: relative; border-style: ridge;">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="user-new-email">Update Email</label>
+                    <input type="email" class="form-control" id="Update Email" placeholder="enter new email">
+                </div>
+                <div class="form-group">
+                    <label for="user-new-password">Update Password</label>
+                    <input type="password" class="form-control" id="user-new-password" placeholder="enter new password">
+                </div>
+                <button type="submit" class="btn btn-default">Submit Changes</button>
+            </form>
+       </div>
+       
+    </div>
+  </div>
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+  </body>
+</html>

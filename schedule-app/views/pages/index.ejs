@@ -10,10 +10,11 @@
 <div id="imalogo">
 <!--not sure what logo-->
 
-<img src="images/logo_sl.gif" alt="logo_schedulator">
+<img src="images/logo2.gif" alt="logo_schedulator">
+
 </div>
 <div id="header1">
-<p> SCHEDULATOR </p>
+<p> BUTTERFLY </p>
 </div>
 <div id="header2">
 <p> SOFTWARE ENGINEERING STUDENTS SCHEDULER. MONTREAL, CA </p>
@@ -23,7 +24,7 @@
 
 <a href="#login-box"  class="login-window">LOGIN</a>
 <div id="login-box" class="login-popup">
-<!-- <a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>-->
+<a href="#" class="close"></a>
   <form method="post" class="signin" action="#">
         <fieldset class="textbox">
         <label class="username">
@@ -35,6 +36,7 @@
         <input id="password" name="password" value="" type="password" placeholder="Password">
         </label>
         <button class="submit button" onClick= "parent.location = 'homepage.html'" type="button">Sign in</button>
+        
 
         </fieldset>
   </form>
@@ -59,8 +61,8 @@ $('a.login-window').click(function() {
     var popMargLeft = ($(loginBox).width() + 24) / 2;
 
     $(loginBox).css({
-        'margin-top' : -popMargTop,
-        'margin-left' : -popMargLeft
+        //'margin-top' : ,
+        //'margin-left' : -popMargLeft
     });
 
     // Add the mask to body
@@ -71,6 +73,24 @@ $('a.login-window').click(function() {
 });
 
 // When clicking on the button close or the mask layer the popup closed
+
+// $('a.close, #mask').click(function (e) {
+//     if (!$(e.target).is("#login-box")) {
+//         if ($('#login-box').is(':visible')) {
+//             $('#login-box').hide();
+//         }
+//     }
+// });
+// $('a.close').click(function() {
+//    $("a.login-window").fadeOut(300);
+// });
+// $("a.login-window").on('blur',function(){
+//     $(this).fadeOut(300);
+// });
+$(document).click(function() {
+    $('#mask , .login-popup').fadeOut(300);
+    $('#mask').remove();
+});
 $('a.close, #mask').on('click', function() {
   $('#mask , .login-popup').fadeOut(300 , function() {
     $('#mask').remove();

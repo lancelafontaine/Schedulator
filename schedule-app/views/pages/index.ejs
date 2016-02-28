@@ -20,9 +20,9 @@
 <p> SOFTWARE ENGINEERING STUDENTS SCHEDULER. MONTREAL, CA </p>
 </div>
 <hr>
-<a href="#login-box"  class="login-window">LOGIN</a>
 
-</div>
+
+<a href="#login-box"  class="login-window">LOGIN</a>
 <div id="login-box" class="login-popup">
 <a href="#" class="close"></a>
   <form method="post" class="signin" action="#">
@@ -67,7 +67,7 @@ $('a.login-window').click(function() {
 
     // Add the mask to body
     $('body').append('<div id="mask"></div>');
-    $('#mask').fadeIn(300);
+    $('#mask').fadeIn(450);
 
     return false;
 });
@@ -88,7 +88,7 @@ $('a.login-window').click(function() {
 //     $(this).fadeOut(300);
 // });
 $(document).click(function() {
-    $('#mask , .login-popup').fadeOut(300);
+    $('#mask , .login-popup').fadeOut(450);
     $('#mask').remove();
 });
 $('a.close, #mask').on('click', function() {

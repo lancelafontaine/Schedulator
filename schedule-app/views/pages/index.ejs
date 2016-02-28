@@ -1,42 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% include ../partials/head %>
-  </head>
-  <body ng-app>
-    <div class="page-wrap">
-    <header>
-      <% include ../partials/header %>
-    </header>
-    <div id="banner">
-      <div id="banner-center">
-        for all your concordia software engineering scheduling needs
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-          <div id="description-box">
-            <p>SCHEDULATOR is an online application aimed at Concordia Software Engineering students that allows you to create a multi-year plan and schedule for your classes. Our complex algorithms are able to filter through courses that are available to you while taking account of your course preferences.</p>
-            <br/>
-            <p> Ready to give it a try?</p>
-          </div>
-        </div>
-        <div class="col-md-1"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <a href="#" id="login-button" class="action-button animate green">LOG IN</a>
-          <a href="#" id="signup-button" class="action-button animate blue"> SIGN UP</a>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-    </div>
-  </div>
-    <footer>
-      <% include ../partials/footer %>
-    </footer>
-  </body>
+<% include ../partials/head %></head>
+<head>
+<title> Practice </title>
+
+
+<body>
+<div id="container">
+<div id="imalogo">
+<!--not sure what logo-->
+
+<img src="logo_sl.gif" alt="logo_schedulator"> 
+</div>
+<div id="header1">
+<p> SCHEDULATOR </p>
+</div>
+<div id="header2">
+<p> SOFTWARE ENGINEERING STUDENTS SCHEDULER. MONTREAL, CA </p>
+</div>
+<hr>
+
+
+<a href="#login-box"  class="login-window">LOGIN</a>
+<div id="login-box" class="login-popup">
+<!-- <a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>-->
+  <form method="post" class="signin" action="#">
+        <fieldset class="textbox">
+        <label class="username">
+        <span>Username</span>
+        <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+        </label>
+        <label class="password">
+        <span>Password</span>
+        <input id="password" name="password" value="" type="password" placeholder="Password">
+        </label>
+        <button class="submit button" onClick= "parent.location = 'homepage.html'" type="button">Sign in</button>
+             
+        </fieldset>
+  </form>
+</div>
+
+
+<script>
+
+
+
+
+$(document).ready(function() {
+$('a.login-window').click(function() {
+    
+            //Getting the variable's value from a link 
+    var loginBox = $(this).attr('href');
+
+    //Fade in the Popup
+    $(loginBox).fadeIn(300);
+    
+    //Set the center alignment padding + border see css style
+    var popMargTop = ($(loginBox).height() + 24) / 2; 
+    var popMargLeft = ($(loginBox).width() + 24) / 2; 
+    
+    $(loginBox).css({ 
+        'margin-top' : -popMargTop,
+        'margin-left' : -popMargLeft
+    });
+    
+    // Add the mask to body
+    $('body').append('<div id="mask"></div>');
+    $('#mask').fadeIn(300);
+    
+    return false;
+});
+
+// When clicking on the button close or the mask layer the popup closed
+$('a.close, #mask').live('click', function() { 
+  $('#mask , .login-popup').fadeOut(300 , function() {
+    $('#mask').remove();  
+}); 
+return false;
+});
+});
+</script>
+</body>
 </html>

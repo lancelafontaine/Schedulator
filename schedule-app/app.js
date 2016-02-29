@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
+var passport = require('passport');
 var app = express();
 
 var routes = require('./routes/index');

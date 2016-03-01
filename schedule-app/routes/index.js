@@ -30,7 +30,16 @@ router.get('/signup', function(req, res, next){
 	res.render('signup.ejs', {});
 });
 
-//check if user is logged in
+//process signup form
+//app.post('/signup', passport work here);
+
+//logout handled by passport
+router.get('/logout', function(req, res){
+	req.logout();
+	res.redirect('/');
+});
+
+//route middleware to check if user is logged in
 function isLoggedIn(req, res, next){
 	
 	//if user is authenticated, continue

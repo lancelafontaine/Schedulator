@@ -3,7 +3,7 @@
 <% include ../partials/head %></head>
 <head>
 <title> Practice </title>
-
+</head>
 
 <body>
 <div id="container">
@@ -25,7 +25,7 @@
 <a href="#login-box"  class="login-window">LOGIN</a>
 <div id="login-box" class="login-popup">
 <a href="#" class="close"></a>
-  <form method="post" class="signin" action="#">
+  <form method="post" class="signin" action="/login">
         <fieldset class="textbox">
         <label class="username">
         <span>Username</span>
@@ -35,7 +35,7 @@
         <span>Password</span>
         <input id="password" name="password" value="" type="password" placeholder="Password">
         </label>
-        <button class="submit button" onClick= "parent.location = 'homepage.html'" type="button">Sign in</button>
+        <button class="submit button" type="submit">Sign in</button>
         
 
         </fieldset>

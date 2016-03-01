@@ -1,19 +1,23 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
-2 info using npm@3.3.12
-3 info using node@v5.5.0
-4 verbose stack Error: ENOENT: no such file or directory, open '/Users/Hyjaz/Desktop/soen-341-project/package.json'
-4 verbose stack     at Error (native)
-5 verbose cwd /Users/Hyjaz/Desktop/soen-341-project
-6 error Darwin 13.4.0
-7 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
-8 error node v5.5.0
-9 error npm  v3.3.12
-10 error path /Users/Hyjaz/Desktop/soen-341-project/package.json
-11 error code ENOENT
-12 error errno -2
-13 error syscall open
-14 error enoent ENOENT: no such file or directory, open '/Users/Hyjaz/Desktop/soen-341-project/package.json'
-14 error enoent This is most likely not a problem with npm itself
-14 error enoent and is related to npm not being able to find a file.
-15 verbose exit [ -2, true ]
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@2.14.12
+3 info using node@v4.3.1
+4 verbose readDependencies loading dependencies from C:\Users\Andrew\Documents\GitHub\soen-341-project\package.json
+5 error install Couldn't read dependencies
+6 verbose stack Error: ENOENT: no such file or directory, open 'C:\Users\Andrew\Documents\GitHub\soen-341-project\package.json'
+6 verbose stack     at Error (native)
+7 verbose cwd C:\Users\Andrew\Documents\GitHub\soen-341-project
+8 error Windows_NT 10.0.10586
+9 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+10 error node v4.3.1
+11 error npm  v2.14.12
+12 error path C:\Users\Andrew\Documents\GitHub\soen-341-project\package.json
+13 error code ENOPACKAGEJSON
+14 error errno -4058
+15 error syscall open
+16 error package.json ENOENT: no such file or directory, open 'C:\Users\Andrew\Documents\GitHub\soen-341-project\package.json'
+16 error package.json This is most likely not a problem with npm itself.
+16 error package.json npm can't find a package.json file in your current directory.
+17 verbose exit [ -4058, true ]

@@ -35,7 +35,7 @@
         <span>Password</span>
         <input id="password" name="password" value="" type="password" placeholder="Password">
         </label>
-        <button class="submit button" type="submit">Sign in</button>
+       <button class="submit button" onClick= "parent.location = 'homepage.html'" type="button">Sign in</button>
         
 
         </fieldset>
@@ -44,8 +44,6 @@
 
 
 <script>
-
-
 
 
 $(document).ready(function() {
@@ -88,8 +86,8 @@ $('a.login-window').click(function() {
 //     $(this).fadeOut(300);
 // });
 $(document).click(function() {
-  $('#mask , .login-popup').fadeOut(450);
-  $('#mask').remove();
+    $('#mask , .login-popup').fadeOut(450);
+    $('#mask').remove();
 });
 $('a.close, #mask').on('click', function() {
   $('#mask , .login-popup').fadeOut(300 , function() {

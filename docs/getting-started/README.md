@@ -6,7 +6,4 @@
 - Go to the project directory: `cd schedule-app`
 - Install all needed packages: `npm install`
 - Launch the server: `DEBUG=schedule-app:* npm start`
-- For windows
-  - Set environment variables:`set DEBUG=schedule-app:*` 
-  - Launch the server: `npm start`
 - Open the app in your browser at `localhost:3000`.

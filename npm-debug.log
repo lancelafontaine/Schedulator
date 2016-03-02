@@ -2,18 +2,19 @@
 1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
 2 info using npm@3.3.12
 3 info using node@v5.5.0
-4 verbose stack Error: ENOENT: no such file or directory, open '/Users/Hyjaz/Desktop/soen-341-project/package.json'
-4 verbose stack     at Error (native)
-5 verbose cwd /Users/Hyjaz/Desktop/soen-341-project
-6 error Darwin 13.4.0
-7 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
-8 error node v5.5.0
-9 error npm  v3.3.12
-10 error path /Users/Hyjaz/Desktop/soen-341-project/package.json
-11 error code ENOENT
-12 error errno -2
-13 error syscall open
-14 error enoent ENOENT: no such file or directory, open '/Users/Hyjaz/Desktop/soen-341-project/package.json'
-14 error enoent This is most likely not a problem with npm itself
-14 error enoent and is related to npm not being able to find a file.
-15 verbose exit [ -2, true ]
+4 verbose config Skipping project config: /Users/Hyjaz/.npmrc. (matches userconfig)
+5 verbose stack Error: ENOENT: no such file or directory, open '/Users/Hyjaz/package.json'
+5 verbose stack     at Error (native)
+6 verbose cwd /Users/Hyjaz/Desktop/soen-341-project
+7 error Darwin 15.3.0
+8 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+9 error node v5.5.0
+10 error npm  v3.3.12
+11 error path /Users/Hyjaz/package.json
+12 error code ENOENT
+13 error errno -2
+14 error syscall open
+15 error enoent ENOENT: no such file or directory, open '/Users/Hyjaz/package.json'
+15 error enoent This is most likely not a problem with npm itself
+15 error enoent and is related to npm not being able to find a file.
+16 verbose exit [ -2, true ]

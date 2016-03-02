@@ -19,11 +19,19 @@ router.get('/setting', function(req, res, next) {
 /* GET account page. (after login) 
  * Protected section, must be logged in to access
  */
+/*
 router.get('/account', isLoggedIn, function(req, res, next){
 	res.render('account', {
 		user : req.user // get user out of session and pass to template
 	});
 });
+*/
+
+/* TEST PAGE (edited by Bruce)*/
+router.get('/account', function(req, res, next) {
+  res.render('account', {});
+});
+
 
 /* GET signup page. */
 router.get('/signup', function(req, res, next){

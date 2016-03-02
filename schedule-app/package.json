@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "bcrypt-nodejs": "latest",
-    "browser-sync": "2.11.1",
     "debug": "^2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
@@ -15,6 +14,7 @@
     "less-middleware": "1.0.x",
     "passport": "^0.3.2",
     "passport-local": "~1.0.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "browser-sync": "2.11.1"
   }
 }

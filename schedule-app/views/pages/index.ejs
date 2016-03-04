@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<% include ../partials/head %></head>
+<% include ../partials/head %>
 <head>
 <title> Practice </title>
 </head>
 
 <body>
-<div id="container">
+<div id="container1">
 <div id="imalogo">
 <!--not sure what logo-->
 
@@ -20,8 +20,90 @@
 <p> SOFTWARE ENGINEERING STUDENTS SCHEDULER. MONTREAL, CA </p>
 </div>
 <hr>
+</div>
 
 
+<div class="container">
+    <a id="modal_trigger" href="#modal" class="btn" style = "
+    
+    margin-left: 47%;
+    width: 100px;
+     margin-top: -2%;
+"
+>Login</a>
+
+    <div id="modal" class="popupContainer" style="display:none;">
+        <header class="popupHeader">
+            <span class="header_title">Login</span>
+            
+        </header>
+        
+        <section class="popupBody">
+            <!-- Social Login -->
+            
+
+            <!-- Username & Password Login form -->
+            <div class="user_login">
+                <form>
+                    <label>Username</label>
+                    <input type="text" />
+                    <br />
+
+                    <label>Password</label>
+                    <input type="password" />
+                    <br />
+
+                    
+
+                    <div class="action_btns">
+                        
+                        <div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
+                    </div>
+                </form>
+
+                
+            <!-- <a href="#" class="forgot_password">Forgot password? -->
+            </div>
+
+            
+            
+        </section>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+
+    $(function(){
+        // Calling Login Form
+        $("#login_form").click(function(){
+            $(".social_login").hide();
+            $(".user_login").show();
+            return false;
+        });
+
+        // Calling Register Form
+        $("#register_form").click(function(){
+            $(".social_login").hide();
+            $(".user_register").show();
+            $(".header_title").text('Register');
+            return false;
+        });
+
+        // Going back to Social Forms
+        $(".back_btn").click(function(){
+            $(".user_login").hide();
+            $(".user_register").hide();
+            $(".social_login").show();
+            $(".header_title").text('Login');
+            return false;
+        });
+
+    })
+</script>
+
+<!--
 <a href="#login-box"  class="login-window">LOGIN</a>
 <div id="login-box" class="login-popup">
 <a href="#" class="close"></a>
@@ -35,17 +117,15 @@
         <span>Password</span>
         <input id="password" name="password" value="" type="password" placeholder="Password">
         </label>
-        <button class="submit button" type="submit">Sign in</button>
+       <button class="submit button" onClick= "parent.location = 'homepage.html'" type="button">Sign in</button>
         
 
         </fieldset>
   </form>
 </div>
-
+</div>
 
 <script>
-
-
 
 
 $(document).ready(function() {
@@ -88,8 +168,8 @@ $('a.login-window').click(function() {
 //     $(this).fadeOut(300);
 // });
 $(document).click(function() {
-  $('#mask , .login-popup').fadeOut(450);
-  $('#mask').remove();
+    $('#mask , .login-popup').fadeOut(450);
+    $('#mask').remove();
 });
 $('a.close, #mask').on('click', function() {
   $('#mask , .login-popup').fadeOut(300 , function() {
@@ -99,5 +179,6 @@ return false;
 });
 });
 </script>
+-->
 </body>
 </html>

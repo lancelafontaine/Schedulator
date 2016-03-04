@@ -3,8 +3,10 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var passport = require('passport');
 var app = express();
+var mysql = require('mysql');
 
 var routes = require('./routes/index');
+var sqlutil = require('./db_utilities/db_utilities');
 app.use('/', routes);
 
 // view engine setup
@@ -51,5 +53,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
+sqlutil.authenticate('2222222', 'iloveben10');
+sqlutil.getCourse('ENGR213');
 
 module.exports = app;

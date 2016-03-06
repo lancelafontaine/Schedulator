@@ -1,0 +1,132 @@
+@sidebar-primary-color:#263238;
+@sidebar-secondary-color: #37474F;
+@sidebar-divider-color: #546B79;
+@sidebar-link-color: #A2B3B7;
+
+#setting-header {
+  position: relative;
+  background-image:url("../images/landpic6.jpg");
+  background-position: bottom;
+  background-repeat:no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 60px;
+  font-size: 28px;
+  color: white;
+}
+
+#sidebar-collapse-div {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 60px;
+  border-right: 1px solid white;
+  z-index: 100;
+}
+
+#sidebar-collapse {
+  position: absolute;
+  top: 17px;
+  left: 20px;
+}
+
+.sidebar-collapse-bigger {
+  font-size: 35px !important;
+  top: 13px !important;
+}
+
+#header-text {
+  position: absolute;
+  top: 10px;
+  left: 95px;
+}
+
+#sidebar {
+  width: 300px;
+  color: white;
+  overflow-y: auto;
+  background: @sidebar-primary-color;
+}
+
+#sidebar-userinfo {
+  background-color: @sidebar-secondary-color;
+  width: inherit;
+  height: 100px;
+}
+
+#sidebar-bfly-logo {
+  position: relative;
+  top: 5px;
+  margin-top: 8px;
+  margin-left: 8px;
+  width: 75px;
+  height: 75px;
+}
+
+#sidebar-username {
+  position: relative;
+  display: inline;
+  bottom: 82px;
+  padding-left: 80px;
+  width: 100%;
+  height: inherit;
+  display: table;
+}
+
+#sidebar-username div {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding-right: 20px;
+  font-size: 22px;
+}
+
+#sidebar-links {
+  position: relative;
+  list-style-type: none;
+  list-style-position:inside;
+  margin:0 1px 0 0;
+  padding: 0;
+  font-size: 15px;
+  width: inherit;
+}
+
+#sidebar-links li {
+  padding: 20px 0;
+  border-top:1px solid @sidebar-secondary-color;
+}
+
+#sidebar-links li i {
+  padding-left: 10px;
+}
+
+.sidebar-separator span {
+  color: @sidebar-divider-color;
+  padding-left: 5px;
+}
+
+.sidebar-link a{
+  color: @sidebar-link-color;
+}
+.sidebar-link:hover {
+  background-color: @sidebar-secondary-color;
+}
+.sidebar-link a:hover, .sidebar-link a:focus {
+  color: @sidebar-link-color;
+  text-decoration: none;
+}
+
+#sidebar-links i {
+  padding-right: 15px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+#settings-content-wrapper {
+  position: absolute;
+  top: 60px;
+  left: 300px;
+}

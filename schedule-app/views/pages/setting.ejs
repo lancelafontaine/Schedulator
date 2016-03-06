@@ -1,114 +1,80 @@
 <!DOCTYPE html>
 
 <html>
-<% include ../partials/head2 %>
+<% include ../partials/head %>
 
-
-
-<body class="animated-content">
-<!--*********************************************************
-*************************************************************
-*********************PART A: Nevigation Bar******************
-*************************************************************
-*************************************************************
-**********************************************************-->	
-<header id="topnav" class="navbar navbar-bluegray navbar-fixed-top">
-	<!-- logo:top left -->
-	<div class="logo-area">
-		<span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg">
-			<a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
-				<span class="icon-bg">
-					<i class="ti ti-shift-left"></i>
-				</span>
-			</a>
-		</span>
-		<p style = "font-size: 28px; color: white; position: relative; margin: 6px;">BUTTERFLY</p>
-	</div>
-	<!-- End of logo -->
-	<!-- Schedule Preference --> 
-	<ul class="nav navbar-nav toolbar pull-right">
-		<li class="dropdown toolbar-icon-bg">
-			<a href="#" class="dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="ti ti-user"></i></span></i></a>
-			<ul class="dropdown-menu userinfo arrow">
-				<li><a href="#/"><i class="ti ti-user"></i><span>Profile</span></a></li>
-				<li><a href="#/"><i class="ti ti-settings"></i><span>Preference</span></a></li>
-				<li class="divider"></li>
-				<li><a href="#/"><i class="ti ti-shift-right"></i><span>Sign Out</span></a></li>
-			</ul>
-		</li>
-	</ul>
-	<!-- End of Preference -->
-</header>
-<!-- End of Nevigation Bar -->
-<!--*********************************************************
-*************************************************************
-*********************PART B: DASH BOARD**********************
-*************************************************************
-*************************************************************
-**********************************************************-->
-<div id="wrapper">
-    <div id="layout-static">
-    	<!--*********************************************************
-		*********************PART B1: SIDE BAR***********************
-		**********************************************************-->
-        <div class="static-sidebar-wrapper sidebar-bluegray">
-            <div class="static-sidebar">
-                <div class="sidebar">
-					<div class="widget">
-        				<div class="widget-body">
-            				<div class="userinfo">
-                                <div class="avatar">
-                                    <img style = "margin-bottom: 10px;" src="../images/logo2.gif" class="img-responsive img-circle"> 
-                                </div>
-                				<div class="info">
-                    				<span class="username">Username</span>
-                				</div>
-            				</div>
-        				</div>
-    				</div>
-					<div class="widget stay-on-collapse" id="widget-sidebar">
-    					<nav class="widget-body">
-							<ul class="acc-menu">
-								<li class="nav-separator"><span>DASHBOARD</span></li>
-								<li><a href="index.html"><i class="ti ti-calendar"></i><span>SCHEDULE</span></a></li>
-								<li><a href="angular/app/"><i class="ti ti-layout"></i><span>SEQUENCE</span></a></li>
-								<li class="nav-separator"><span>MODIFICATION</span></li>
-								<li><a href="index.html"><i class="ti ti-receipt"></i><span>STUDENT RECORD</span></a></li>
-								<li><a href="angular/app/"><i class="ti ti-heart"></i><span>PREFERENCE</span></a></li>
-								<li class="nav-separator"><span>SETTING</span></li>
-								<li><a href="index.html"><i class="ti ti-comments-smiley"></i><span>PROFILE</span></a></li>
-								<li><a href="angular/app/"><i class="ti ti-angle-double-down"></i><span>LOG OUT</span></a></li>
-							</ul>
-						</nav>
-  					</div>
-				</div>
-            </div>
+  <body class="animated-content">
+    <header id="setting-header">
+      <div id="header-content">
+        <div id="sidebar-collapse-div"></div>
+        <i id="sidebar-collapse" class="fa fa-angle-double-left"></i>
+        <span id="header-text">BUTTERFLY</span>
+      </div>
+    </header>
+    <div id="settings-wrapper">
+      <div id="sidebar">
+        <div id="sidebar-userinfo">
+          <img id="sidebar-bfly-logo" src="../images/logo2.gif">
+          <div id="sidebar-username">
+            <div>Username</div>
+          </div>
         </div>
-        <!-- End of Side Bar -->
-        <!--*********************************************************
-		*********************PART B2: CONTENTS***********************
-		**********************************************************-->
-        <div class="static-content-wrapper">
-            <div class="static-content">
-                <div class="page-content">
-                    <div class="page-heading">
-                        <h1>Schedule</h1>
-                    </div>
-                	<div class="container-fluid">
-                		<div class="row">
-						</div>
-						<div class="row">
-						</div>
-					</div> <!-- .container-fluid -->
-                </div> <!-- #page-content -->
+        <ul id="sidebar-links">
+          <li class="sidebar-separator">
+            <span>DASHBOARD</span>
+          </li>
+          <li class="sidebar-link" onclick="showContainer('schedule')"><a href="#">
+            <i class="fa fa-calendar-o"></i>
+            <span>SCHEDULE</span>
+          </a></li>
+          <li class="sidebar-link" onclick="showContainer('sequence')"><a href="#">
+            <i class="fa fa-tasks"></i>
+            <span>SEQUENCE</span>
+          </a></li>
+          <li class="sidebar-separator">
+            <span>MODIFICATION</span>
+          </li>
+          <li class="sidebar-link" onclick="showContainer('student-record')"><a href="#">
+            <i class="fa fa-graduation-cap"></i>
+            <span>STUDENT RECORD</span>
+          </a></li>
+          <li class="sidebar-link" onclick="showContainer('preferences')"><a href="#">
+            <i class="fa fa-gears"></i>
+            <span>PREFERENCES</span>
+          </a></li>
+          <li class="sidebar-separator">
+            <span>SETTINGS</span>
+          </li>
+          <li class="sidebar-link" onclick="showContainer('profile')"><a href="#">
+            <i class="fa fa-user"></i>
+            <span>PROFILE</span>
+          </a></li>
+          <li class="sidebar-link"><a href="#">
+            <i class="fa fa-sign-out"></i>
+            <span>LOG OUT</span>
+          </a></li>
+        </ul>
+      </div>
+      <div id="settings-content-wrapper">
+            <div id="schedule-container" class="container">
+              <h1>Schedule</h1>
             </div>
-            <% include ../partials/footer2 %>
-        </div>
-        <!-- End of Contents -->
+            <div id="sequence-container" class="container">
+              <h1>Sequence</h1>
+            </div>
+            <div id="student-record-container" class="container">
+              <h1>Student Record</h1>
+            </div>
+            <div id="preferences-container" class="container">
+              <h1>Preferences</h1>
+            </div>
+            <div id="profile-container" class="container">
+              <h1>Profile</h1>
+            </div>
+        <% include ../partials/footer %>
+      </div>
     </div>
-</div>
-<!-- End of Dash Board -->
-</body>
-<!-- End of Body -->
+  <script type="text/javascript" src="../javascripts/settings.js"></script>
+  </body>
 
 </html>

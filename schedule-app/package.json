@@ -6,13 +6,16 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcrypt-nodejs": "latest",
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
     "debug": "^2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
+    "express-session": "^1.13.0",
     "less-middleware": "1.0.x",
-    "serve-favicon": "~2.3.0",
     "passport": "~0.3.2",
     "passport-local": "~1.0.0",
-	"bcrypt-nodejs": "latest"
+    "serve-favicon": "~2.3.0"
   }
 }

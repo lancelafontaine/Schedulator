@@ -11,7 +11,7 @@ var user = {
   }
 }
 
-var private = {
+var private_thing = {
   property: "wazzap"
 }
 
@@ -19,7 +19,7 @@ var private = {
 // module.exports = user
 
 //////////////////////////////////////////
-// In a few
+// In a different file
 // var user = require('user')
 
 console.log('Original user id: ' + user.userId); // hi

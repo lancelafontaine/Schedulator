@@ -1,8 +1,10 @@
 var user = {
+  // properties
   userId: "hi",
   password: "hello",
   type: "",
 
+  // methods
   login: function () {
     //
   },

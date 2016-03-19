@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>something</title>
+   </head>
+   <body><% if ( !user) {%>
+      <a href="/register">Register<a>
+      <% include ./login %>
+   <% } if(user) {%>
+      <% include ./setting %>
+         <% } %>
+   </body>
+</html>
+

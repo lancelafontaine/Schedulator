@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 // passport config
-var Login_info = require('./models/account');
+var Login_info = require('./models/login');
 passport.use(new LocalStrategy(Login_info.authenticate()));
 passport.serializeUser(Login_info.serializeUser());
 passport.deserializeUser(Login_info.deserializeUser());

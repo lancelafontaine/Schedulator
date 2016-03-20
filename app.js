@@ -39,13 +39,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 // passport config
-var Account = require('./models/account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+var Login_info = require('./models/account');
+passport.use(new LocalStrategy(Login_info.authenticate()));
+passport.serializeUser(Login_info.serializeUser());
+passport.deserializeUser(Login_info.deserializeUser());
 
 // mongoose
-mongoose.connect('mongodb://localhost/passport_local_mongoose_express4');
+mongoose.connect('mongodb://localhost/Schedulator');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

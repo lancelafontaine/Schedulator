@@ -36,7 +36,7 @@ $('.sidebar-link').hover(function () {
   $(this).find('.fa').css('font-size', '20px');
   $(this).find('span').css('font-size', '15px');});
 
-// Computing heights
+// Computing heights and widths of page
 var computePageHeight = function () {
   var windowHeight = $(window).height();
   var headerHeight = $('#setting-header').height();
@@ -60,3 +60,25 @@ var showContainer = function (string) {
   $('.container').css('display', 'none');
   $(containerId).css('display', 'block');
 }
+
+//schedule logic
+var app = angular.module('setting', []);
+app.controller('schedule', function($scope) {
+    $scope.fakeEvent = {
+      "course_name":"COMP 232",
+      "type":"Tut",
+      "sections":"DDDA",
+      "days":"--W----",
+      "start":"20:30",
+      "end":"22:10",
+      "room":"H 431",
+      "semester":"fall"
+    };
+
+});
+
+
+//sequence logic
+
+
+

@@ -1,0 +1,116 @@
+<!-- Heading -->
+<div>
+	<h1 class = "prefTitle">PREFERENCE SETTINGS</h1>
+	<p class = "prefSub">The system will generate the best fit schedule for you</p>
+</div>
+<!-- This div is for selection tabs -->
+	<div class = "row column-div">
+		<!-- div 1: pref days -->
+		<div class = "col-md-3">
+			<table class = "table-hover table-formal">
+				<tr>
+					<th class = "prefHead">
+						<i class="fa fa-sun-o"></i>
+						DAYS
+					</th>
+				</tr>
+				<tr>
+					<td class = "prefContent">MONDAY</td>
+				</tr>
+				<tr>
+					<td class = "prefContent">TUESDAY</td>
+				</tr>
+				<tr>
+					<td class = "prefContent">WEDNESDAY</td>
+				</tr>
+				<tr>
+					<td class = "prefContent">THURSDAY</td>
+				</tr>
+				<tr>
+					<td class = "prefContent" style = "border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;">FRIDAY</td>
+				</tr>
+			</table>
+		</div>
+		<!-- div 2: pref time frame -->
+		<div class = "col-md-3">
+			<table class = "table-hover table-formal">
+				<tr>
+					<th class = "prefHead">
+						<i class="fa fa-clock-o"></i>
+						 TIME
+					</th>
+				</tr>
+				<tr>
+					<td class = "prefContent">MORNING</td>
+				</tr>
+				<tr>
+					<td class = "prefContent">AFTERNOON</td>
+				</tr>
+				<tr>
+					<td class = "prefContent" style = "border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;">NIGHT</td>
+				</tr>
+			</table>
+		</div>
+		<!-- div 3: pref location -->
+		<div class = "col-md-3">
+			<table class = "table-hover table-formal">
+				<tr>
+					<th class = "prefHead">
+						<i class="fa fa-building-o"></i>
+						LOCATION
+					</th>
+				</tr>
+				<tr>
+					<td class = "prefContent">SWG</td>
+				</tr>
+				<tr>
+					<td class = "prefContent">Loyola</td>
+				</tr>
+				<tr>
+					<td class = "prefContent" style = "border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;">ONLINE</td>
+				</tr>
+			</table>
+		</div>
+		<!-- div 4: pref course load -->
+		<div class = "col-md-3">
+			<table class = "table-hover table-formal">
+				<tr>
+					<th class = "prefHead">
+						<i class="fa fa-sort-numeric-asc"></i>
+						LOADS
+					</th>
+				</tr>
+				<tr>
+					<td class = "prefContent">3 COURSES</td>
+				</tr>
+				<tr>
+					<td class = "prefContent">4 COURSES</td>
+				</tr>
+				<tr>
+					<td class = "prefContent">5 COURSES</td>
+				</tr>
+				<tr>
+					<td class = "prefContent" style = "border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;">6 COURSES</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+<!-- This div is for buttons -->
+<div>
+	<button>Submit Changes</button>
+</div>
+
+<script>
+//
+$('td').click(function(){
+	if ($(this).hasClass('stayclicked')){
+		$(this).removeClass('stayclicked');
+		$(this).addClass('prefContent');
+	}
+	else{
+		$(this).removeClass('prefContent');
+		$(this).addClass('stayclicked');
+	}
+})
+</script>

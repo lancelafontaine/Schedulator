@@ -1,0 +1,45 @@
+.stayclicked {
+	background-color: rgba(230,126,34,1);
+	color: white;
+}
+
+.prefTitle{
+	text-align: left;
+	font-size: 50px;
+	color: grey;
+	font-weight: bolder;
+}
+
+.prefSub{
+	text-align: left;
+	color: grey;
+	font-weight: bold;
+}
+
+.prefHead{
+	height: 20%;
+	font-size: 30pt;
+	text-align: center;
+	background-color: rgba(230,126,34,0.7);
+	border-top-left-radius: 50px;
+	border-top-right-radius: 50px;
+}
+
+.prefContent{
+	background-color: rgba(176,168,162,0.2);
+	border-collapse: separate;
+}
+
+.column-div{
+	width: 100%;
+	margin-top: 100px;
+}
+
+.table-formal{
+	width: 80%;
+	height: 500px;
+	font-size: 20pt;
+	text-align: center;
+	margin: auto;
+	color: black;
+}

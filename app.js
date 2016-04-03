@@ -9,9 +9,11 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
+var ObjectId = require('mongodb').ObjectID;
 
 var app = express();
 

@@ -1,7 +1,10 @@
 var express = require('express');
 var passport = require('passport');
 var Login_info = require('../models/login');
+var course = require('../models/sequence');
 var router = express.Router();
+
+
 
 
 router.get('/', function (req, res) {
@@ -33,9 +36,21 @@ router.post('/register', function(req, res, next) {
 });
 
 
+
+router.get('/sequence',function(req, res){
+
+    course.find({}, function(err, docs){
+        res.render('sequence',{data: docs});
+
+    });
+    
+    
+});
 router.get('/login', function(req, res) {
     res.render('login', { user : req.user, message : req.flash('error')});
+
 });
+
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), function(req, res, next) {
     req.session.save(function (err) {

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<% include ./head %>
+<html>
+<body onload="showContainer('profile')">
+  
+ 
+    <header id="setting-header">
+      <div id="header-content">
+        <div id="sidebar-collapse-div"></div>
+        <i id="sidebar-collapse" class="fa fa-angle-double-left"></i>
+        <span id="header-text">BUTTERFLY - ADMIN</span>
+      </div>
+    </header>
+    <div id="settings-wrapper">
+      <div id="sidebar">
+        <div id="sidebar-userinfo">
+          <img id="sidebar-bfly-logo" src="../images/logo2.gif">
+          <div id="sidebar-username">
+            <div>
+              Hello, <%=  user.username %>
+            </div>
+          </div>
+        </div>
+        <ul id="sidebar-links">
+		<!--
+          <li class="sidebar-separator">
+            <span>DASHBOARD</span>
+          </li>
+          <li class="sidebar-link" onclick="showContainer('schedule')"><a href="#">
+            <i class="fa fa-calendar-o"></i>
+            <span>SCHEDULE</span>
+          </a></li>
+          <li class="sidebar-link" onclick="showContainer('sequence')"><a href="#">
+            <i class="fa fa-tasks"></i>
+            <span>SEQUENCE</span>
+          </a></li>
+		-->
+          <li class="sidebar-separator">
+            <span>MODIFICATION</span>
+          </li>
+          <li class="sidebar-link" onclick="showContainer('add-course')"><a href="#">
+            <i class="fa fa-gears"></i>
+            <span>ADD COURSE</span>
+          </a></li>
+          <li class="sidebar-link" onclick="showContainer('remove-course')"><a href="#">
+            <i class="fa fa-gears"></i>
+            <span>REMOVE COURSE</span>
+          </a></li>
+          <li class="sidebar-separator">
+            <span>SETTINGS</span>
+          </li>
+          <li class="sidebar-link" onclick="showContainer('profile')"><a href="#">
+            <i class="fa fa-user"></i>
+            <span>PROFILE</span>
+          </a></li>
+          <li class="sidebar-link"><a href="#">
+            <i class="fa fa-sign-out"></i>
+            <a href="/logout">LOG OUT</a>
+          </a></li>
+        </ul>
+      </div>
+      <div id="settings-content-wrapper">
+            <div id="profile-container" class="container">
+              <h1>Profile</h1>
+            </div>
+            <div id="add-course-container" class="container">
+              <h1>Add Course</h1>
+			  <form role = "form" method="post" action="/admin" >
+				Course name: <input type="text" name="course_name"  id="course_name"/><br>
+				Type: <input type="text" name="course_type" id="course_type"/><br>
+				Section: <input type="text" name="course_section" id="course_section"/><br>
+				Days: 	<select name="course_days">
+							<option value="M------">M------</option>
+							<option value="-T-----">-T-----</option>
+							<option value="--W----">--W----</option>
+							<option value="---J---">---J---</option>
+							<option value="----F--">----F--</option>
+							<option value="M-W----">M-W----</option>
+							<option value="-T-J---">-T-J---</option>
+							<option value="--W-F--">--W-F--</option>
+						</select><br>
+				Start time: <input type="text" name="course_start_time" id="course_start_time"/><br>
+				End time: <input type="text" name="course_end_time" id="course_end_time"/><br>
+				Room: <input type="text" name="course_room" id="course_room"/><br>
+				Semester: <input type="text" name="course_semester" id="course_semester"/><br>
+				<input type="submit" value="Add"/>
+			</form>
+			</div>
+            <div id="remove-course-container" class="container">
+              <h1>Remove Course</h1>
+            </div>
+			<!--
+            <div id="preferences-container" class="container">
+              <h1>Preferences</h1>
+            </div>
+            <div id="profile-container" class="container">
+              <h1>Profile</h1>
+            </div>
+			-->
+   
+      </div>
+    </div>
+  <script type="text/javascript" src="../javascripts/settings.js"></script>
+
+  </body>
+
+</html>

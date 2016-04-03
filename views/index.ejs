@@ -2,14 +2,16 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <title>something</title>
+      <title>Front page</title>
    </head>
    <body><% if ( !user) {%>
       <a href="/register">Register<a>
       <% include ./login %>
-   <% } if(user) {%>
+   <% } if(user && user.username!="admin") {%>
       <% include ./setting %>
-         <% } %>
+   <% } else if(user && user.username=="admin") {%>
+	  <% include ./admin %>
+   <% } %>
    </body>
 </html>
 

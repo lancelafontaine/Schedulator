@@ -62,23 +62,87 @@ var showContainer = function (string) {
 }
 
 //schedule logic
-var app = angular.module('setting', []);
-app.controller('schedule', function($scope) {
-    $scope.fakeEvent = {
-      "course_name":"COMP 232",
-      "type":"Tut",
-      "sections":"DDDA",
-      "days":"--W----",
-      "start":"20:30",
-      "end":"22:10",
-      "room":"H 431",
-      "semester":"fall"
-    };
+var fallBoxes = [{
+  "course_name": "COMP 232",
+  "type":"Tut",
+  "sections":"DDDA",
+  "days":"--W----",
+  "start":"20:30",
+  "end":"22:10",
+  "room":"H 431",
+  "semester":"fall"
+}];
 
-});
+var reduceCalendarSize = function (courseArray) {
+  var lowestTime = 2500;
+  var highestTime = 0;
 
+  courseArray.map(function(i){
+    if (parseInt(i.viewStart) < lowestTime) {
+      lowestTime = i.viewStart;
+    }
+    if (parseInt(i.viewEnd) > highestTime) {
+      highestTime = i.viewEnd;
+    }
 
-//sequence logic
+    $('#calendar-container table')
 
+  });
+
+};
+
+var parseDays = function (course) {
+  var rawDayArray = course.days.split('');
+  var stringDayArray = [];
+  for(var i = 0; i < rawDayArray.length; i++) {
+    if (rawDayArray[i] !== '-') {
+      if (i === 0) stringDayArray.push('Mo');
+      if (i === 1) stringDayArray.push('Tu');
+      if (i === 2) stringDayArray.push('We');
+      if (i === 3) stringDayArray.push('Th');
+      if (i === 4) stringDayArray.push('Fr');
+    }
+  }
+  return stringDayArray;
+};
+
+var addViewTimes = function (course) {
+  var startArr = course.start.split(':').map(function(i){return parseInt(i);});
+  var endArr = course.end.split(':').map(function(i){return parseInt(i);});
+  var startOffset = roundTime(startArr[1]);
+  var endOffset = roundTime(endArr[1]);
+  course.viewStart = [startArr[0] + startOffset[0], startOffset[1]].join('');;
+  course.viewEnd = [endArr[0] + endOffset[0], endOffset[1]].join('');
+  return course;
+}
+
+var roundTime = function (minInt) {
+  // First elem represents additional hour, second elem represents actual minute
+  if (minInt >= 45+8) return [1, 00];
+  if (minInt >= 45) return [0, 45];
+  if (minInt >= 30+8) return [0, 45];
+  if (minInt >= 30) return [0, 30];
+  if (minInt >= 15+8) return [0,30];
+  if (minInt >= 15) return [0, 15];
+  if (minInt >= 0+8) return [0,15];
+  if (minInt >= 0) return [0,00];
+}
+
+var renderSchedule = function (courseArray) {
+  var newCourseArray = [];
+  // Add view times
+  for(var i = 0; i < courseArray.length; i++) {
+    newCourseArray = addViewTimes(courseArray[i]);
+  }
+  console.log(newCourseArray);
+  reduceCalendarSize(newCourseArray);
+  for(var i = 0; i < newCourseArray.length; i++) {
+    var arrayOfDays = parseDays(newcourse);
+    var ids = arrayOfDays.map(function(j){return courseArray[i].viewStart + j})
+    console.log('#' + ids);
+
+  }
+};
+renderSchedule(fallBoxes);
 
 

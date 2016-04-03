@@ -17,7 +17,7 @@
           <img id="sidebar-bfly-logo" src="../images/logo2.gif">
           <div id="sidebar-username">
             <div>
-              Hello, <%=  user.username %>
+              Hello, <%= name.first_name %> <%= name.last_name %> (<%= user.username %>) 
             </div>
           </div>
         </div>
@@ -66,6 +66,31 @@
             </div>
             <div id="student-record-container" class="container">
               <h1>Student Record</h1>
+
+         
+      //STUDENT RECORD FETCHED HERE
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="sr-only">Add Course</label>
+          <input class="form-control" id="courseID" placeholder="Course ID">
+        </div>
+        <button type="submit" class="btn btn-default" onsubmit="">Add</button>
+      </form>
+
+      </br> <!-- Formatting -->
+      <table class='table table-bordered'>
+         <tr>
+            <th>Course ID</th><th>Course Name</th><th>Credits Received</th>
+         </tr>
+
+         <% for (var i = 0; i < jason.length; i++) { %>
+          <tr>
+            <td><%= jason[i].course_id %></td>
+            <td><%= jason[i].course_name %></td>
+            <td><%= jason[i].credits %></td>
+          </tr>    
+         <% } %>
+      </table>             
             </div>
             <div id="preferences-container" class="container">
               <h1>Preferences</h1>

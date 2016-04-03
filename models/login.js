@@ -8,6 +8,7 @@ var login_info = new Schema({
     username: String,
     password: String
 });
+
 //this is where the the username and password gets hashed
 login_info.plugin(passportLocalMongoose);
 //login_infos is the collections name

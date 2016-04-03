@@ -71,7 +71,11 @@ var fallBoxes = [{
   "end":"22:10",
   "room":"H 431",
   "semester":"fall"
-}];
+},
+{"course_name":"COMP 248",	"type":"Lec",	"sections":"EE",	"days":"----F--",	"start":"17:45",	"end":"20:15",	"room":"H 553",		"semester":"fall"},
+{"course_name":"COMP 248",	"type":"Lab",	"sections":"EK-X",	"days":"----F--",	"start":"20:30",	"end":"21:30",	"room":"H831 *",	"semester":"fall"}
+
+];
 
 var reduceCalendarSize = function (courseArray) {
   // Default is higher/lower that highest/lowest-possible course times
@@ -173,4 +177,4 @@ var renderSchedule = function (courseArray) {
 };
 renderSchedule(fallBoxes);
 
-
+// profile logic

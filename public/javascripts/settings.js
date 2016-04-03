@@ -52,12 +52,12 @@ computePageHeight()
 computeContentWidth()
 
 // showing containers by clicking on link
-$('.container').css('display', 'none');
+$('.containerq').css('display', 'none');
 $('#schedule-container').css('display', 'block');
 
 var showContainer = function (string) {
   var containerId = '#' + string + '-container';
-  $('.container').css('display', 'none');
+  $('.containerq').css('display', 'none');
   $(containerId).css('display', 'block');
 }
 
@@ -72,7 +72,7 @@ var showContainer = function (string) {
             return false;
         });
 
-    
+
 
     })
     jQuery(function ($) {
@@ -140,5 +140,3 @@ var showContainer = function (string) {
         }
     })
 });(jQuery);
-
-  

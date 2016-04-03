@@ -4,25 +4,25 @@
 }
 
 .prefTitle{
-	text-align: left;
+	text-align: center;
 	font-size: 50px;
 	color: grey;
 	font-weight: bolder;
 }
 
 .prefSub{
-	text-align: left;
+	text-align: center;
 	color: grey;
 	font-weight: bold;
 }
 
 .prefHead{
 	height: 20%;
-	font-size: 30pt;
+	font-size: 20pt;
 	text-align: center;
 	background-color: rgba(230,126,34,0.7);
-	border-top-left-radius: 50px;
-	border-top-right-radius: 50px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
 }
 
 .prefContent{
@@ -32,14 +32,41 @@
 
 .column-div{
 	width: 100%;
-	margin-top: 100px;
+	margin-top: 40px;
 }
 
 .table-formal{
 	width: 80%;
 	height: 500px;
-	font-size: 20pt;
+	font-size: 15pt;
 	text-align: center;
 	margin: auto;
 	color: black;
+}
+
+.refSubmit {
+	background: #0091f2;
+  background-image: -webkit-linear-gradient(top, #0091f2, #96c5e0);
+  background-image: -moz-linear-gradient(top, #0091f2, #96c5e0);
+  background-image: -ms-linear-gradient(top, #0091f2, #96c5e0);
+  background-image: -o-linear-gradient(top, #0091f2, #96c5e0);
+  background-image: linear-gradient(to bottom, #0091f2, #96c5e0);
+  -webkit-border-radius: 13;
+  -moz-border-radius: 13;
+  border-radius: 13px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 25px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.refSubmit:hover {
+	background: #ffaa00;
+  background-image: -webkit-linear-gradient(top, #ffaa00, #d93434);
+  background-image: -moz-linear-gradient(top, #ffaa00, #d93434);
+  background-image: -ms-linear-gradient(top, #ffaa00, #d93434);
+  background-image: -o-linear-gradient(top, #ffaa00, #d93434);
+  background-image: linear-gradient(to bottom, #ffaa00, #d93434);
+  text-decoration: none;
 }

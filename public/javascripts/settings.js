@@ -58,6 +58,7 @@ $('#schedule-container').css('display', 'block');
 var showContainer = function (string) {
   var containerId = '#' + string + '-container';
   $('.containerq').css('display', 'none');
+  $(containerId).fadeIn(1000);
   $(containerId).css('display', 'block');
 }
 

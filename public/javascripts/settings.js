@@ -1,3 +1,7 @@
+//Preload the page
+$(window).load(function(){
+    $('#page-loader').fadeOut(1400);
+})  
 // Sidebar collapse/open
 $('#sidebar-collapse-div').click(function () {
   if ($('#sidebar-collapse').attr('class').search('right') === -1) {
@@ -52,12 +56,13 @@ computePageHeight()
 computeContentWidth()
 
 // showing containers by clicking on link
-$('.container').css('display', 'none');
+$('.containerq').css('display', 'none');
 $('#schedule-container').css('display', 'block');
 
 var showContainer = function (string) {
   var containerId = '#' + string + '-container';
-  $('.container').css('display', 'none');
+  $('.containerq').css('display', 'none');
+  $(containerId).fadeIn(500);
   $(containerId).css('display', 'block');
 }
 
@@ -72,7 +77,7 @@ var showContainer = function (string) {
             return false;
         });
 
-    
+
 
     })
     jQuery(function ($) {
@@ -140,5 +145,3 @@ var showContainer = function (string) {
         }
     })
 });(jQuery);
-
-  

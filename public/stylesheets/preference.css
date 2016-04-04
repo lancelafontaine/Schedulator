@@ -1,13 +1,13 @@
 .stayclicked {
-	background-color: rgba(230,126,34,1);
+	background-color: steelblue;
 	color: white;
-    border: 1px solid rgba(230,126,34,1);
+    border: 1px solid steelblue;
 }
 
 .prefTitle{
 	text-align: center;
 	font-size: 50px;
-	color: grey;
+	color: indianred;
 	font-weight: bolder;
 }
 
@@ -21,7 +21,9 @@
 	width: 40%;
 	font-size: 20pt;
 	text-align: center;
-	background-color: rgba(230,126,34,0.7);
+    font-weight: 100;
+	background-color: rgba(38,50,56,0.9);
+    color: white;
 }
 
 .prefContent{
@@ -58,13 +60,34 @@
     border-radius: 4px;
     font-family: Arial;
     color: #ffffff;
-    font-size: 20px;
-    background: #9ed1f0;
+    font-size: 24px;
+    background: cadetblue;
     padding: 7px 40px 8px 40px;
     text-decoration: none;
 }
 
 .refSubmit:hover {
-	background: #bcc8d1;
+	background: brown;
     text-decoration: none;
+}
+
+#page-loader{
+    position: fixed;
+    top:0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    z-index: 99999;
+}
+
+#page-loader .page-loader-gif{
+    display: block;
+    width:64px;
+    height:64px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin:-32px 0 0 -32px;
+    background: url('../images/preloader.gif') no-repeat;  
 }

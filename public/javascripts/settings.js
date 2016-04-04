@@ -1,3 +1,7 @@
+//Preload the page
+$(window).load(function(){
+    $('#page-loader').fadeOut(1400);
+})  
 // Sidebar collapse/open
 $('#sidebar-collapse-div').click(function () {
   if ($('#sidebar-collapse').attr('class').search('right') === -1) {
@@ -58,7 +62,7 @@ $('#schedule-container').css('display', 'block');
 var showContainer = function (string) {
   var containerId = '#' + string + '-container';
   $('.containerq').css('display', 'none');
-  $(containerId).fadeIn(1000);
+  $(containerId).fadeIn(500);
   $(containerId).css('display', 'block');
 }
 

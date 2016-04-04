@@ -1,6 +1,7 @@
 .stayclicked {
 	background-color: rgba(230,126,34,1);
 	color: white;
+    border: 1px solid rgba(230,126,34,1);
 }
 
 .prefTitle{
@@ -17,27 +18,34 @@
 }
 
 .prefHead{
-	height: 20%;
+	width: 40%;
 	font-size: 20pt;
 	text-align: center;
 	background-color: rgba(230,126,34,0.7);
-	border-top-left-radius: 30px;
-	border-top-right-radius: 30px;
 }
 
 .prefContent{
 	background-color: rgba(176,168,162,0.2);
 	border-collapse: separate;
+    border: 1px solid rgba(176,168,162,0.2);
+    margin: auto;
 }
 
 .column-div{
+    margin: auto;
 	width: 100%;
 	margin-top: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: -10px;
+    padding-right: 0px;
+    border: 1px solid black;
 }
 
 .table-formal{
+    min-width: 60px;
 	width: 80%;
-	height: 500px;
+	height: 50px;
 	font-size: 15pt;
 	text-align: center;
 	margin: auto;
@@ -45,28 +53,23 @@
 }
 
 .refSubmit {
-	background: #0091f2;
-  background-image: -webkit-linear-gradient(top, #0091f2, #96c5e0);
-  background-image: -moz-linear-gradient(top, #0091f2, #96c5e0);
-  background-image: -ms-linear-gradient(top, #0091f2, #96c5e0);
-  background-image: -o-linear-gradient(top, #0091f2, #96c5e0);
-  background-image: linear-gradient(to bottom, #0091f2, #96c5e0);
-  -webkit-border-radius: 13;
-  -moz-border-radius: 13;
-  border-radius: 13px;
-  font-family: Courier New;
-  color: #ffffff;
-  font-size: 25px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
+	-webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 4px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: #bcc8d1;
+    padding: 7px 40px 8px 40px;
+    text-decoration: none;
 }
 
 .refSubmit:hover {
-	background: #ffaa00;
-  background-image: -webkit-linear-gradient(top, #ffaa00, #d93434);
-  background-image: -moz-linear-gradient(top, #ffaa00, #d93434);
-  background-image: -ms-linear-gradient(top, #ffaa00, #d93434);
-  background-image: -o-linear-gradient(top, #ffaa00, #d93434);
-  background-image: linear-gradient(to bottom, #ffaa00, #d93434);
-  text-decoration: none;
+	background: #9ed1f0;
+    text-decoration: none;
+}
+
+.lowerMsg {
+    text-align: center;
+    text-transform: lowercase;
 }

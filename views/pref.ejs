@@ -12,7 +12,7 @@
 			<table id = "showTerm" class = "table-hover table-formal">
 				<tr>
 					<th class = "prefHead">
-						<i class="fa fa-sort-numeric-asc"></i>
+						<i class="fa fa-book"></i>
 						SEMESTER
 					</th>
                     <td id = "term1" class = "prefContent" style = "width: 20%;">SUMMER</td>
@@ -86,9 +86,8 @@
 </div>
 <!-- Show return message -->
 <div id="feedbackWindow">
-    <p class = "centeredText">You have successfully changed the preference! Your sequence and scheduler has been changed.</p>
+    <p class = "centeredText"></p>
     <br/>
-    <p class = "lowerMsg">Refresh to see the difference</P>
 </div>
 
 <script>
@@ -202,15 +201,17 @@ $('td').click(function(){
 $("#subRef").click(function(){
     var JSON_obj = {};
     //set semester
+    var term = "";
     $('#showTerm td').each(function(){
         if($(this).hasClass('stayclicked')){
-            JSON_obj.semester = $(this).text();
+            term = $(this).text();
         }
     })
     //set course load
+    var cl = "";
     $('#courseLoad td').each(function(){
         if($(this).hasClass('stayclicked')){
-            JSON_obj.courseLoad = $(this).text().substring(0,1); //get number only
+            cl = $(this).text().substring(0,1); //get number only
         }
     })
     //set days
@@ -234,7 +235,16 @@ $("#subRef").click(function(){
             location += ($(this).text() + " ");
         }
     });
+    //check if semester is not seleted
+    if (term == ""){
+        $('#feedbackWindow p').text("Please select a semester");
+        $('#feedbackWindow').show(200);
+        exit();
+    }
+        
     //JSON final set
+    JSON_obj.semester = term;
+    JSON_obj.courseLoad = cl;
     JSON_obj.monday = (days.match(/MONDAY/) ? true : false);
     JSON_obj.tuesday = (days.match(/TUESDAY/) ? true : false);
     JSON_obj.wednesday = (days.match(/WEDNESDAY/) ? true : false);
@@ -265,7 +275,11 @@ $("#subRef").click(function(){
      do something to submit the JSON file
      **/
      //Show message
+     $('#subRef').hide();
+     $('#feedbackWindow').addClass('centeredText');
+     $('#feedbackWindow').text("You have successfully changed the preference! Refreshing in 5 seconds.");
      $('#feedbackWindow').show(1000, "swing");
+     setInterval('window.location.reload()', 5000);
      
     
 });

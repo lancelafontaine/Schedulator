@@ -277,10 +277,10 @@ $("#subRef").click(function(){
      do something to submit the JSON file
      **/
      //Show message
-     $('#subRef').hide();
+     $('#subRef').fadeOut(500);
      $('#feedbackWindow').addClass('centeredText');
      $('#feedbackWindow').text("You have successfully changed the preference! Refreshing in 5 seconds.");
-     $('#feedbackWindow').show(1000, "swing");
+     $('#feedbackWindow').show(1500, "swing");
      setInterval('window.location.reload()', 5000);
      
     

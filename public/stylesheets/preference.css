@@ -59,12 +59,12 @@
     font-family: Arial;
     color: #ffffff;
     font-size: 20px;
-    background: #bcc8d1;
+    background: #9ed1f0;
     padding: 7px 40px 8px 40px;
     text-decoration: none;
 }
 
 .refSubmit:hover {
-	background: #9ed1f0;
+	background: #bcc8d1;
     text-decoration: none;
 }

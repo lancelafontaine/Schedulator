@@ -1,4 +1,4 @@
-//var user = require('user');
+/*//var user = require('user');
 //var section = require('section');
 var course = Object.create(user);
 course = {
@@ -34,3 +34,4 @@ course = {
 }
 
 module.exports = course;
+*/

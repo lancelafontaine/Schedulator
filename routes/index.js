@@ -1,11 +1,27 @@
 var express = require('express');
 var passport = require('passport');
 var Login_info = require('../models/login');
+var student_record = require('../models/student_record');
+var courses_completed = require('../models/courses_completed');
+var course = require('../models/course');
 var router = express.Router();
 
 
+
+
+
 router.get('/', function (req, res) {
-    res.render('index', { user : req.user });
+        //find record of the student
+        student_record.findOne({ id : req.session.passport.user}).exec(function (err, student){   
+            //find courses completed        
+            courses_completed.find({ student_id : req.session.passport.user}).exec(function (err, user){
+                res.render('index', {user : req.user, name: student, jason: user});
+            })
+
+           //res.render('index', {user : req.user, name: student});
+    })
+
+    //res.render('index', { user : req.user });
 });
 
 router.get('/register', function(req, res) {
@@ -53,6 +69,12 @@ router.get('/logout', function(req, res, next) {
             return next(err);
         }
         res.redirect('/');
+    });
+});
+
+router.get('/student_record', function(req, res) {
+    student_records.find({}, function (err, docs) {
+        res.json(docs);
     });
 });
 

@@ -14,8 +14,8 @@ router.get('/', function (req, res) {
         //find record of the student
         student_record.findOne({ id : req.session.passport.user}).exec(function (err, student){   
             //find courses completed        
-            courses_completed.find({ student_id : req.session.passport.user}).exec(function (err, user){
-                res.render('index', {user : req.user, name: student, jason: user});
+            courses_completed.find({ student_id : req.session.passport.user }).exec(function (err, user){
+                res.render('index', { user : req.user, name: student });
             })
 
            //res.render('index', {user : req.user, name: student});

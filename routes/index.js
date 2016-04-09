@@ -12,7 +12,7 @@ router.get('/', function (req, res) {
         student_record.findOne({ id : req.session.passport.user}).exec(function (err, student){   
             //find courses completed        
             courses_completed.find({ student_id : req.session.passport.user }).exec(function (err, user){
-                res.render('index', { user : req.user, name: student });
+                res.render('index', { user : req.user, name: student, student_info: user });
             })
 
            //res.render('index', {user : req.user, name: student});

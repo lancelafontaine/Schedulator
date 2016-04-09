@@ -1262,11 +1262,15 @@
                             <th>Credits Received</th>
                         </tr>
 
-
+                        <% for (var i = 0; i < student_info.length; i++) { %> 
                         <tr>
-
+                            <td> <%= student_info[i].course_id %> </td>
+                            <td> <%= student_info[i].course_name %> </td>
+                            <td> <%= student_info[i].credits %> </td>
                         </tr>
+                        <% } %>
 
+                        
                     </table>
                 </div>
                 <div id="preferences-container" class="containerq">

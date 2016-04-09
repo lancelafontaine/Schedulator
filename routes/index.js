@@ -7,9 +7,6 @@ var course = require('../models/course');
 var router = express.Router();
 
 
-
-
-
 router.get('/', function (req, res) {
         //find record of the student
         student_record.findOne({ id : req.session.passport.user}).exec(function (err, student){   
@@ -24,13 +21,26 @@ router.get('/', function (req, res) {
     //res.render('index', { user : req.user });
 });
 
-router.get('/courses/:courseid',function (req,res){
+router.get('/courses/fall/:courseid',function (req,res){
 
     var courseID = req.params.courseid;
     var fragment1 = courseID.substring(0,4).toUpperCase();
     var fragment2 = courseID.substring(4,7);
     var newString = fragment1 + " " + fragment2;
-    course.find({course_name : newString}, function (err, courses){
+    course.find({course_name : newString, semester: "fall"}, function (err, courses){
+
+        res.json(courses);
+
+    });
+});
+
+router.get('/courses/winter/:courseid',function (req,res){
+
+    var courseID = req.params.courseid;
+    var fragment1 = courseID.substring(0,4).toUpperCase();
+    var fragment2 = courseID.substring(4,7);
+    var newString = fragment1 + " " + fragment2;
+    course.find({course_name : newString, semester: "winter"}, function (err, courses){
 
         res.json(courses);
 

@@ -24,6 +24,15 @@ router.get('/', function (req, res) {
     //res.render('index', { user : req.user });
 });
 
+router.get('/courses',function (req,res){
+
+    course.find({course_name : "COMP 248"}, function (err, courses){
+
+        res.render('courses', {course: courses});
+
+    });
+});
+
 router.get('/register', function(req, res) {
     res.render('register', { });
 });

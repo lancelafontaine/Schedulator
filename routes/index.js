@@ -24,11 +24,15 @@ router.get('/', function (req, res) {
     //res.render('index', { user : req.user });
 });
 
-router.get('/courses',function (req,res){
+router.get('/courses/:courseid',function (req,res){
 
-    course.find({course_name : "COMP 248"}, function (err, courses){
+    var courseID = req.params.courseid;
+    var fragment1 = courseID.substring(0,4).toUpperCase();
+    var fragment2 = courseID.substring(4,7);
+    var newString = fragment1 + " " + fragment2;
+    course.find({course_name : newString}, function (err, courses){
 
-        res.render('courses', {course: courses});
+        res.json(courses);
 
     });
 });

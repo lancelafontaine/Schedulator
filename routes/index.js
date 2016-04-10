@@ -4,10 +4,8 @@ var Login_info = require('../models/login');
 var student_record = require('../models/student_record');
 var courses_completed = require('../models/courses_completed');
 var course = require('../models/course');
+var courseprereq = require('../models/courseprereq')
 var router = express.Router();
-
-
-
 
 
 router.get('/', function (req, res) {
@@ -30,6 +28,77 @@ router.get('/', function (req, res) {
     })
 
     //res.render('index', { user : req.user });
+});
+
+router.get('/courses',function (req,res){
+
+    course.find({ }, function (err, courses){
+
+        res.json(courses);
+
+    });
+});
+
+router.get('/courses/:courseid',function (req,res){
+
+    var courseID = req.params.courseid;
+    var fragment1 = courseID.substring(0,4).toUpperCase();
+    var fragment2 = courseID.substring(4,7);
+    var newString = fragment1 + " " + fragment2;
+    course.find({course_name : newString}, function (err, courses){
+
+        res.json(courses);
+
+    });
+});
+
+router.get('/courses/fall/:courseid',function (req,res){
+
+    var courseID = req.params.courseid;
+    var fragment1 = courseID.substring(0,4).toUpperCase();
+    var fragment2 = courseID.substring(4,7);
+    var newString = fragment1 + " " + fragment2;
+    course.find({course_name : newString, semester: "fall"}, function (err, courses){
+
+        res.json(courses);
+
+    });
+});
+
+router.get('/courses/winter/:courseid',function (req,res){
+
+    var courseID = req.params.courseid;
+    var fragment1 = courseID.substring(0,4).toUpperCase();
+    var fragment2 = courseID.substring(4,7);
+    var newString = fragment1 + " " + fragment2;
+    course.find({course_name : newString, semester: "winter"}, function (err, courses){
+
+        res.json(courses);
+
+    });
+});
+
+router.get('/courses_completed/:studentid',function (req,res){
+
+    courses_completed.find({ student_id: req.params.studentid }, function (err, courses){
+
+        res.json(courses);
+
+    });
+});
+
+router.post('/courses_completed',function (req, res) {
+        var course = new courses_completed();
+        course.course_id = req.body.course_id;
+        course.student_id = req.body.student_id;
+        course.course_name = req.body.course_name;
+        course.credits = req.body.credits;
+
+        course.save(function(err) {
+            if(err)
+                res.send(err);
+            res.json({message: 'course completed added for the student'});
+        });
 });
 
 router.get('/register', function(req, res) {

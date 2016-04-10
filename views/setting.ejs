@@ -77,18 +77,6 @@
                     <div id="schedule-container" class="container">
                         <h1>Schedule</h1>
                         <div class="row">
-                            <div class="col-md-12" id="semester-selector-div">
-                                <div id="semester-selector" class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-primary active">
-                                        <input type="radio" name="options" id="option1" autocomplete="off" checked>Fall
-                                    </label>
-                                    <label class="btn btn-primary">
-                                        <input type="radio" name="options" id="option2" autocomplete="off">Winter
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div id="course-info-box" class="col-md-6">
                                 <div id="course-info-list"></div>
                                 <input id="add-course-input" type="text" class="form-control" placeholder="Search for a Course">
@@ -607,8 +595,10 @@
                     </div>
                 </div>
                 <div id="sequence-container" class="containerq">
-                    <h1>Sequence</h1>
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <h1 style="margin-left: 5%;margin-bottom: 2.5%;">Sequence</h1>
+                    <% include ./courseprereq %>
+                </div>
+               <!--     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
@@ -1239,7 +1229,7 @@
                     </div>
 
 
-                </div>
+                </div> -->
                 <div id="student-record-container" class="containerq">
                     <h1>Student Record</h1>
 
@@ -1262,11 +1252,15 @@
                             <th>Credits Received</th>
                         </tr>
 
-
+                        <% for (var i = 0; i < student_info.length; i++) { %> 
                         <tr>
-
+                            <td> <%= student_info[i].course_id %> </td>
+                            <td> <%= student_info[i].course_name %> </td>
+                            <td> <%= student_info[i].credits %> </td>
                         </tr>
+                        <% } %>
 
+                        
                     </table>
                 </div>
                 <div id="preferences-container" class="containerq">
@@ -1296,7 +1290,7 @@
                             <label for="usr">Student ID:</label>
                             <div class="input-group">
                                 <span class="input-group-btn">
-                              <button class="btn btn-default" type="button" style="margin-top:7px;">OK!</button>
+                              <button class="btn btn-default" type="button">OK!</button>
                           </span>
                                 <input type="text" class="form-control">
                             </div>

@@ -1,8 +1,3 @@
-@sidebar-primary-color:#263238;
-@sidebar-secondary-color: #37474F;
-@sidebar-divider-color: #546B79;
-@sidebar-link-color: #A2B3B7;
-
 #landing-wrapper{
 overflow-y:hidden;
 overflow-x:hidden;
@@ -59,11 +54,11 @@ background-size:cover;height:100%
   width: 300px;
   color: white;
   overflow-y: auto;
-  background: @sidebar-primary-color;
+  background: #263238;
 }
 
 #sidebar-userinfo {
-  background-color: @sidebar-secondary-color;
+  background-color: #37474F;
   width: inherit;
   height: 100px;
 }
@@ -107,7 +102,7 @@ background-size:cover;height:100%
 
 #sidebar-links li {
   padding: 20px 0;
-  border-top:1px solid @sidebar-secondary-color;
+  border-top:1px solid #37474F;
 }
 
 #sidebar-links li i {
@@ -115,18 +110,18 @@ background-size:cover;height:100%
 }
 
 .sidebar-separator span {
-  color: @sidebar-divider-color;
+  color: #546B79;
   padding-left: 5px;
 }
 
 .sidebar-link a{
-  color: @sidebar-link-color;
+  color: #A2B3B7;
 }
 .sidebar-link:hover {
-  background-color: @sidebar-secondary-color;
+  background-color: #37474F;
 }
 .sidebar-link a:hover, .sidebar-link a:focus {
-  color: @sidebar-link-color;
+  color: #A2B3B7;
   text-decoration: none;
 }
 
@@ -140,6 +135,12 @@ background-size:cover;height:100%
   position: absolute;
   top: 60px;
   left: 300px;
+  overflow-y: auto;
+  min-height: 700px;
+}
+
+#schedule-container table{
+  background-color: white;
 }
 
 td {
@@ -229,6 +230,7 @@ td {
   padding: 2px;
   margin:2px;
   border-radius: 10px;
+  background-color: white;
 }
 
 .course-remove {

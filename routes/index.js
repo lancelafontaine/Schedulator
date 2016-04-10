@@ -21,6 +21,19 @@ router.get('/', function (req, res) {
     //res.render('index', { user : req.user });
 });
 
+router.get('/courses',function (req,res){
+
+    var courseID = req.params.courseid;
+    var fragment1 = courseID.substring(0,4).toUpperCase();
+    var fragment2 = courseID.substring(4,7);
+    var newString = fragment1 + " " + fragment2;
+    course.find({course_name : newString}, function (err, courses){
+
+        res.json(courses);
+
+    });
+});
+
 router.get('/courses/fall/:courseid',function (req,res){
 
     var courseID = req.params.courseid;

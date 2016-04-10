@@ -4,6 +4,7 @@ var Login_info = require('../models/login');
 var student_record = require('../models/student_record');
 var courses_completed = require('../models/courses_completed');
 var course = require('../models/course');
+var courseprereq = require('../models/courseprereq')
 var router = express.Router();
 
 
@@ -12,7 +13,15 @@ router.get('/', function (req, res) {
         student_record.findOne({ id : req.session.passport.user}).exec(function (err, student){   
             //find courses completed        
             courses_completed.find({ student_id : req.session.passport.user }).exec(function (err, user){
-                res.render('index', { user : req.user, name: student, student_info: user });
+                
+                courseprereq.find({}).exec(function (err, coursep) {
+                     res.render('index', { user : req.user, name: student, student_info: user, courseprereq_info:coursep });
+
+                 });
+
+                
+
+
             })
 
            //res.render('index', {user : req.user, name: student});

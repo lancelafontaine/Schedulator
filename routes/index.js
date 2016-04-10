@@ -22,7 +22,7 @@ router.get('/', function (req, res) {
                       });
                   })
               } else {
-                courseprereq.find({}).exec(function(err, coursep) {
+                courseprereq.find({}).sort({order: 1}).exec(function(err, coursep) {
                     res.render('index', {
                         user: req.user,
                         name: student,

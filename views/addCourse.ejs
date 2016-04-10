@@ -1,0 +1,42 @@
+  <h1>Add Course</h1><br>
+			  <form role = "form" method="post" action="/addCourse" >
+			  <table style="width:50%">
+			  <tr>
+				<td>Course name:</td><td><input type="text" name="course_name"  id="course_name"/></td>
+			</tr>
+			<tr>
+				<td>Type:</td> <td><input type="text" name="course_type" id="course_type"/></td>
+			</tr>
+			<tr>
+				<td>Section:</td> <td><input type="text" name="course_section" id="course_section"/></td>
+			</tr>
+			<tr>
+				<td>Days:</td> <td><select name="course_days">
+							<option value="M------">M------</option>
+							<option value="-T-----">-T-----</option>
+							<option value="--W----">--W----</option>
+							<option value="---J---">---J---</option>
+							<option value="----F--">----F--</option>
+							<option value="M-W----">M-W----</option>
+							<option value="-T-J---">-T-J---</option>
+							<option value="--W-F--">--W-F--</option>
+						</select></td>
+			</tr>
+			<tr>
+				<td>Start time:</td> <td><input type="text" name="course_start_time" id="course_start_time"/></td>
+			</tr>
+			<tr>
+				<td>End time:</td> <td><input type="text" name="course_end_time" id="course_end_time"/></td>
+			</tr>
+			<tr>
+				<td>Room:</td> <td><input type="text" name="course_room" id="course_room"/></td>
+			</tr>
+			<tr>
+				<td>Semester:</td> <td><input type="text" name="course_semester" id="course_semester"/></td>
+			</tr>
+			<tr>
+				<td></td><td><input type="submit" value="Add Course"/></td>
+			</tr>
+			</table>
+			</form>
+			</div>

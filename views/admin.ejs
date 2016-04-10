@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<% include ./head %>
+<html>
+<body onload="showContainer('profile')">
+  
+    <header id="setting-header">
+      <div id="header-content">
+        <div id="sidebar-collapse-div"></div>
+        <i id="sidebar-collapse" class="fa fa-angle-double-left"></i>
+        <span id="header-text">BUTTERFLY - ADMIN</span>
+      </div>
+    </header>
+    <div id="settings-wrapper">
+      <div id="sidebar">
+        <div id="sidebar-userinfo">
+          <img id="sidebar-bfly-logo" src="../images/logo2.gif">
+          <div id="sidebar-username">
+            <div>
+              Hello, <%=  user.username %>
+            </div>
+          </div>
+        </div>
+        <ul id="sidebar-links">
+		<!--
+          <li class="sidebar-separator">
+            <span>DASHBOARD</span>
+          </li>
+          <li class="sidebar-link" onclick="showContainer('schedule')"><a href="#">
+            <i class="fa fa-calendar-o"></i>
+            <span>SCHEDULE</span>
+          </a></li>
+          <li class="sidebar-link" onclick="showContainer('sequence')"><a href="#">
+            <i class="fa fa-tasks"></i>
+            <span>SEQUENCE</span>
+          </a></li>
+		-->
+          <li class="sidebar-separator">
+            <span>MODIFICATION</span>
+          </li>
+
+          <li class="sidebar-link" onclick="showContainer('add-course')"><a href="#">
+            <i class="fa fa-gears"></i>
+            <span>ADD COURSE</span>
+          </a></li>
+
+          <li class="sidebar-link" onclick="showContainer('remove-course')"><a href="#">
+            <i class="fa fa-gears"></i>
+            <span>REMOVE COURSE</span>
+          </a></li>
+
+          <li class="sidebar-separator">
+            <span>SETTINGS</span>
+          </li>
+          <li class="sidebar-link" onclick="showContainer('profile')"><a href="#">
+            <i class="fa fa-user"></i>
+            <span>PROFILE</span>
+          </a></li>
+          <li class="sidebar-link"><a href="#">
+            <i class="fa fa-sign-out"></i>
+            <a href="/logout">LOG OUT</a>
+          </a></li>
+        </ul>
+      </div>
+
+      <div id="settings-content-wrapper">
+
+            <div id="profile-container" class="containerq">
+              <h1>Administrator Profile</h1>
+            </div>
+
+            <div id="add-course-container" class="containerq">
+            <% include ./addCourse %>
+            </div>
+
+            <div id="remove-course-container" class="containerq" style="position:absolute; top: 100px; left: 400px;">
+   			<% include ./removeCourse %>
+      		</div>
+
+    </div>
+  <script type="text/javascript" src="../javascripts/settings.js"></script>
+
+  </body>
+
+</html>

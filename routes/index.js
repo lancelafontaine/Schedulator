@@ -13,15 +13,15 @@ router.get('/', function (req, res) {
         student_record.findOne({ id : req.session.passport.user}).exec(function (err, student){   
             //find courses completed        
             courses_completed.find({ student_id : req.session.passport.user }).exec(function (err, user){
-                
-                courseprereq.find({}).exec(function (err, coursep) {
-                     res.render('index', { user : req.user, name: student, student_info: user, courseprereq_info:coursep });
+            //Check if user is an admin
+                if(req.session.passport.user == "admin")
+                    course.find({}).exec(function (err, courses){
+                    res.render('admin', {user: req.user, course: courses});
+                })
+            //Else
+                else
 
-                 });
-
-                
-
-
+                res.render('index', { user : req.user, name: student });
             })
 
            //res.render('index', {user : req.user, name: student});
@@ -152,6 +152,39 @@ router.get('/logout', function(req, res, next) {
 router.get('/student_record', function(req, res) {
     student_records.find({}, function (err, docs) {
         res.json(docs);
+    });
+});
+
+
+router.post('/addCourse', function(req, res) {
+    var newCourse = new course({
+   course_name: req.body.course_name,
+   type: req.body.course_name,
+   Tut:req.body.course_type,
+   days: req.body.course_days,
+   start: req.body.course_start_time,
+   end: req.body.course_end_time,
+   room: req.body.course_room,
+   semester:req.body.course_semester
+});
+    newCourse.save(function (err, course) {
+        if (err) {
+        return err;
+  }
+  else {
+    console.log("Post saved, added :" + course.course_name);
+  }
+    });
+    res.redirect('/');
+});
+
+
+ router.get('/courses',function (req,res){
+
+    course.find({course_name : "COMP 248"}, function (err, courses){
+
+        res.render('courses', {course: courses});
+
     });
 });
 

@@ -1,0 +1,42 @@
+  <h1>Remove Course</h1> <br/>
+			  <table border=1>
+
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Section</th>
+					<th>Days</th>
+					<th>Start time</th>
+					<th>End time</th>
+					<th>Room</th>
+					<th>Semester</th>
+					<th>Remove</th>
+				</tr>
+				
+			<% for (var i = 0; i < course.length; i++) { %>
+         <tr>
+          <form role="form" method="post" action="/removeCourse">
+            <td><%= course[i].course_name %></td>
+            <td><%= course[i].type %></td>
+            <td><%= course[i].Tut %></td>
+            <td><%= course[i].days %></td>
+            <td><%= course[i].start %></td>
+            <td><%= course[i].end %></td>
+            <td><%= course[i].room %></td>
+            <td><%= course[i].semester %></td>
+            <td><button type="submit" id="remove" onclick="DeleteRowFunction(this);"> Remove Course </button> </td>
+           <form>
+          </tr>    
+ 			<% } %>
+			</table>
+            </div>
+
+            <script>
+
+    		function DeleteRowFunction(o) {
+    		 var p=o.parentNode.parentNode;
+        	 p.parentNode.removeChild(p);
+   			 }
+
+
+   			</script>

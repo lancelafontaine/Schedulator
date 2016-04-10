@@ -1264,7 +1264,99 @@
                     </table>
                 </div>
                 <div id="preferences-container" class="containerq">
-                    <% include ./pref %>
+                    
+<!-- Heading -->
+<div class = "row">
+	<h1 class = "col-md-12 prefTitle">PREFERENCE SETTINGS</h1>
+</div>
+<div class = "row">
+<p class = "prefSub col-md-12">The system will generate the best fit schedule for you</p>
+</div>
+<!-- This div is for selection tabs -->
+	<div class = "row column-div">
+        <!-- div 0: show term -->
+		<div class = "row">
+			<table id = "showTerm" class = "table-hover table-formal">
+				<tr>
+					<th class = "prefHead">
+						<i class="fa fa-book"></i>
+						SEMESTER
+					</th>
+                    <td id = "term1" class = "prefContent" style = "width: 20%;">SUMMER</td>
+                    <td id = "term2" class = "prefContent" style = "width: 20%;">FALL</td>
+                    <td id = "term3" class = "prefContent" style = "width: 20%;">WINTER</td>
+				</tr>
+			</table>
+		</div>
+        <!-- div 1: pref course load -->
+		<div class = "row">
+			<table id = "courseLoad" class = "table-hover table-formal">
+				<tr>
+					<th class = "prefHead">
+						<i class="fa fa-sort-numeric-asc"></i>
+						LOADS
+					</th>
+                    <td id = "load1" class = "prefContent" style = "width: 15%;">3 COURSES</td>
+                    <td id = "load2" class = "prefContent" style = "width: 15%;">4 COURSES</td>
+                    <td id = "load3" class = "prefContent" style = "width: 15%;">5 COURSES</td>
+                    <td id = "load4" class = "prefContent" style = "width: 15%;">6 COURSES</td>
+				</tr>
+			</table>
+		</div>
+		<!-- div 2: pref days -->
+		<div class = "row">
+			<table id = "prefDays" class = "table-hover table-formal">
+				<tr>
+					<th class = "prefHead">
+						<i class="fa fa-sun-o"></i>
+						DAYS
+					</th>
+                    <td class = "prefContent" style = "width: 12%;">MONDAY</td>
+                    <td class = "prefContent" style = "width: 12%;">TUESDAY</td>
+                    <td class = "prefContent" style = "width: 12%;">WEDNESDAY</td>
+                    <td class = "prefContent" style = "width: 12%;">THURSDAY</td>
+                    <td class = "prefContent" style = "width: 12%;">FRIDAY</td>
+			</table>
+		</div>
+		<!-- div 3: pref time frame -->
+		<div class = "row">
+			<table id = "prefTime" class = "table-hover table-formal">
+				<tr>
+					<th class = "prefHead">
+						<i class="fa fa-clock-o"></i>
+						 TIME
+					</th>
+                    <td class = "prefContent" style = "width: 20%;">MORNING</td>
+                    <td class = "prefContent" style = "width: 20%;">AFTERNOON</td>
+                    <td class = "prefContent" style = "width: 20%;">NIGHT</td>
+				</tr>
+			</table>
+		</div>
+		<!-- div 4: pref location -->
+		<div class = "row">
+			<table id = "prefLocation" class = "table-hover table-formal">
+				<tr>
+					<th class = "prefHead">
+						<i class="fa fa-building-o"></i>
+						LOCATION
+					</th>
+                    <td class = "prefContent" style = "width: 20%;">SWG</td>
+                    <td class = "prefContent" style = "width: 20%;">LOYOLA</td>
+                    <td class = "prefContent" style = "width: 20%;">ONLINE</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+<!-- This div is for buttons -->
+<div class = "row centeredText">
+	<button id = "subRef" class = "refSubmit">Submit Changes</button>
+</div>
+<!-- Show return message -->
+<div id="feedbackWindow">
+    <p class = "centeredText"></p>
+    <br/>
+</div>
+
                 </div>
                 <div id="profile-container" class="containerq">
                     <div id="profile-header">Your Student Profile</div>

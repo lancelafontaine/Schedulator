@@ -47,6 +47,16 @@ router.get('/courses/winter/:courseid',function (req,res){
     });
 });
 
+router.get('/courses_completed/:studentid',function (req,res){
+
+    courses_completed.find({ student_id: req.params.studentid }, function (err, courses){
+
+        res.json(courses);
+
+    });
+});
+
+
 router.get('/register', function(req, res) {
     res.render('register', { });
 });

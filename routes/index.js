@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
     //res.render('index', { user : req.user });
 });
 
-router.get('/courses',function (req,res){
+router.get('/courses/:courseid',function (req,res){
 
     var courseID = req.params.courseid;
     var fragment1 = courseID.substring(0,4).toUpperCase();

@@ -202,14 +202,6 @@ td {
   font-size: 35px;
 }
 
-#semester-selector-div {
-  margin-left: 29%;
-}
-
-#semester-selector {
-  margin-bottom: 15px;
-}
-
 #course-info-box {
   width: 350px;
   border: 2px solid #37474F;
@@ -239,4 +231,36 @@ td {
 
 #add-course-input {
   margin: 3px 0;
+}
+#student-record-available-course-list, #student-record-taken-course-list {
+  width: 350px;
+  border: 2px solid #37474F;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  list-style: none;
+  max-height: 700px;
+  overflow-y: auto;
+  margin-left: 100px;
+}
+
+#student-record-available-course-list {
+  float: left;
+}
+
+.student-record-course {
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 2px;
+  margin:2px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+#student-record-input-div {
+  width: 70%;
+}
+
+#student-record-taken-course-list {
+  margin-left: 500px;
 }

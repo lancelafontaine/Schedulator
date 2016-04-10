@@ -357,3 +357,43 @@ var renderSchedule = function(courseArray) {
     }
 };
 renderSchedule(fallBoxes);
+
+// STUDENT RECORD LOGIC:
+
+var takenCourses = {};
+
+$.ajax({
+  url: 'courses/',
+  success: function (data) {
+
+    //populate the available courses
+    var courseSet = {};
+    data.map(function(i){
+      courseSet[i.course_name] = i.course_description;
+    });
+    for (key in courseSet) {
+      $('#student-record-available-course-list').append('<li id="student-record-'+key+'" class="student-record-course"><a class="student-record-available-course">'+key+'</a></li>');
+    }
+
+    // automatic filter through courses as typing
+    $("#student-record-input").on("keyup", function() {
+        var searchTerm = $(this).val();
+        var rows = $("#student-record-available-course-list").children("li");
+        if (searchTerm.length > 0) {
+            rows.stop().hide();
+            $("#student-record-available-course-list").find("li:contains('" + searchTerm + "')").stop().show();
+        } else {
+            rows.stop().show();
+        }
+    });
+
+    // selected a course to add to student record
+    $('.student-record-available-course').click(function() {
+      //find all prereqs with Bruce's function
+      // remove them from available courses
+      //add them to takencourses object! // takenCourses[$(this).text()] = true;
+      // have some way to draw the taken courses object onto the DOM       $('#student-record-taken-courses').html()
+      // SEND TAKEN COURSE TO backend+db via api!!!!!
+    });
+  }
+});

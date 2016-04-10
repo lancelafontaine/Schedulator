@@ -357,3 +357,181 @@ var renderSchedule = function(courseArray) {
     }
 };
 renderSchedule(fallBoxes);
+
+/*
+js for preference page
+*/
+//hide the message block
+$('#feedbackWindow').hide();
+//Change color and add css class when clicked
+$('td').click(function(){
+    //summer only
+    if($(this).attr('id')=='term1'){
+        if($('#term2').hasClass('stayclicked')){
+            $('#term2').removeClass('stayclicked');
+            $('#term2').addClass('prefContent');
+        }
+        if($('#term3').hasClass('stayclicked')){
+            $('#term3').removeClass('stayclicked');
+            $('#term3').addClass('prefContent');
+        }
+    }
+    //fall only
+    if($(this).attr('id')=='term2'){
+        if($('#term1').hasClass('stayclicked')){
+            $('#term1').removeClass('stayclicked');
+            $('#term1').addClass('prefContent');
+        }
+        if($('#term3').hasClass('stayclicked')){
+            $('#term3').removeClass('stayclicked');
+            $('#term3').addClass('prefContent');
+        }
+    }
+    //winter only
+    if($(this).attr('id')=='term3'){
+        if($('#term2').hasClass('stayclicked')){
+            $('#term2').removeClass('stayclicked');
+            $('#term2').addClass('prefContent');
+        }
+        if($('#term1').hasClass('stayclicked')){
+            $('#term1').removeClass('stayclicked');
+            $('#term1').addClass('prefContent');
+        }
+    }
+    //3 courses only
+    if($(this).attr('id')=='load1'){
+        if($('#load2').hasClass('stayclicked')){
+            $('#load2').removeClass('stayclicked');
+            $('#load2').addClass('prefContent');
+        }
+        if($('#load3').hasClass('stayclicked')){
+            $('#load3').removeClass('stayclicked');
+            $('#load3').addClass('prefContent');
+        }
+        if($('#load4').hasClass('stayclicked')){
+            $('#load4').removeClass('stayclicked');
+            $('#load4').addClass('prefContent');
+        }
+    }
+    //4 courses only
+    if($(this).attr('id')=='load2'){
+        if($('#load1').hasClass('stayclicked')){
+            $('#load1').removeClass('stayclicked');
+            $('#load1').addClass('prefContent');
+        }
+        if($('#load3').hasClass('stayclicked')){
+            $('#load3').removeClass('stayclicked');
+            $('#load3').addClass('prefContent');
+        }
+        if($('#load4').hasClass('stayclicked')){
+            $('#load4').removeClass('stayclicked');
+            $('#load4').addClass('prefContent');
+        }
+    }
+    //5 courses only
+    if($(this).attr('id')=='load3'){
+        if($('#load2').hasClass('stayclicked')){
+            $('#load2').removeClass('stayclicked');
+            $('#load2').addClass('prefContent');
+        }
+        if($('#load1').hasClass('stayclicked')){
+            $('#load1').removeClass('stayclicked');
+            $('#load1').addClass('prefContent');
+        }
+        if($('#load4').hasClass('stayclicked')){
+            $('#load4').removeClass('stayclicked');
+            $('#load4').addClass('prefContent');
+        }
+    }
+    //6 courses only
+    if($(this).attr('id')=='load4'){
+        if($('#load2').hasClass('stayclicked')){
+            $('#load2').removeClass('stayclicked');
+            $('#load2').addClass('prefContent');
+        }
+        if($('#load3').hasClass('stayclicked')){
+            $('#load3').removeClass('stayclicked');
+            $('#load3').addClass('prefContent');
+        }
+        if($('#load1').hasClass('stayclicked')){
+            $('#load1').removeClass('stayclicked');
+            $('#load1').addClass('prefContent');
+        }
+    }
+    //now good to go 
+    if ($(this).hasClass('prefContent')){
+		$(this).removeClass('prefContent');
+		$(this).addClass('stayclicked');
+	}
+	else{
+		$(this).removeClass('stayclicked');
+		$(this).addClass('prefContent');
+	}
+});
+//Submit JSON object
+$("#subRef").click(function(){
+    var JSON_obj = {};
+    //set semester
+    var term = "";
+    $('#showTerm td').each(function(){
+        if($(this).hasClass('stayclicked')){
+            term = $(this).text();
+        }
+    })
+    //set course load
+    var cl = "";
+    $('#courseLoad td').each(function(){
+        if($(this).hasClass('stayclicked')){
+            cl = $(this).text().substring(0,1); //get number only
+        }
+    })
+    //set days
+    var days = "";
+    $('#prefDays td').each(function(){
+        if($(this).hasClass('stayclicked')){
+            days += ($(this).text() + " "); 
+        }
+    });
+    //set time
+    var time = "";
+    $('#prefTime td').each(function(){
+        if($(this).hasClass('stayclicked')){
+            time += ($(this).text() + " ");
+        }
+    });
+    //set location
+    var location = "";
+    $('#prefLocation td').each(function(){
+        if($(this).hasClass('stayclicked')){
+            location += ($(this).text() + " ");
+        }
+    });
+    //check if semester is not seleted
+    if (term == ""){
+        $('#feedbackWindow p').text("Please select a semester");
+        $('#feedbackWindow').show(200);
+        exit();
+    }        
+    //JSON final set
+    JSON_obj.semester = term;
+    JSON_obj.courseLoad = cl;
+    JSON_obj.monday = (days.match(/MONDAY/) ? true : false);
+    JSON_obj.tuesday = (days.match(/TUESDAY/) ? true : false);
+    JSON_obj.wednesday = (days.match(/WEDNESDAY/) ? true : false);
+    JSON_obj.thursday = (days.match(/THURSDAY/) ? true : false);
+    JSON_obj.friday = (days.match(/FRIDAY/) ? true : false);
+    JSON_obj.morning = (time.match(/MORNING/) ? true : false);
+    JSON_obj.afternoon = (time.match(/AFTERNOON/) ? true : false);
+    JSON_obj.night = (time.match(/NIGHT/) ? true : false);
+    JSON_obj.swg = (location.match(/SWG/) ? true : false);
+    JSON_obj.loyola = (location.match(/LOYOLA/) ? true : false);
+    JSON_obj.online = (location.match(/ONLINE/) ? true : false);
+    pref = JSON_obj;
+    //Show message
+    $('#subRef').fadeOut(500);
+    $('#feedbackWindow').addClass('centeredText');
+    $('#feedbackWindow').text("You have successfully changed the preference! Refreshing in 5 seconds.");
+    $('#feedbackWindow').show(1500, "swing");
+    srValidation();
+    setInterval('window.location.reload()', 5000); 
+});

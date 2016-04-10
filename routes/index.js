@@ -13,20 +13,27 @@ router.get('/', function (req, res) {
         student_record.findOne({ id : req.session.passport.user}).exec(function (err, student){   
             //find courses completed        
             courses_completed.find({ student_id : req.session.passport.user }).exec(function (err, user){
-            //Check if user is an admin
-                if(req.session.passport.user == "admin")
-                    course.find({}).exec(function (err, courses){
-                    res.render('admin', {user: req.user, course: courses});
-                })
-            //Else
-                else
-
-                res.render('index', { user : req.user, name: student });
-            })
-
+              //Check if user is an admin
+              if (req.session.passport.user == "admin") {
+                  course.find({}).exec(function(err, courses) {
+                      res.render('admin', {
+                          user: req.user,
+                          course: courses
+                      });
+                  })
+              } else {
+                courseprereq.find({}).exec(function(err, coursep) {
+                    res.render('index', {
+                        user: req.user,
+                        name: student,
+                        student_info: user,
+                        courseprereq_info: coursep
+                    });
+                });
+              }
+            });
            //res.render('index', {user : req.user, name: student});
     })
-
     //res.render('index', { user : req.user });
 });
 

@@ -56,6 +56,19 @@ router.get('/courses_completed/:studentid',function (req,res){
     });
 });
 
+router.post('/courses_completed',function (req, res) {
+        var course = new courses_completed();
+        course.course_id = req.body.course_id;
+        course.student_id = req.body.student_id;
+        course.course_name = req.body.course_name;
+        course.credits = req.body.credits;
+
+        course.save(function(err) {
+            if(err)
+                res.send(err);
+            res.json({message: 'course completed added for the student'});
+        });
+});
 
 router.get('/register', function(req, res) {
     res.render('register', { });

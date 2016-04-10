@@ -5,6 +5,7 @@ var student_record = require('../models/student_record');
 var courses_completed = require('../models/courses_completed');
 var course = require('../models/course');
 var courseprereq = require('../models/courseprereq')
+var prereq = require('../models/prerequisite');
 var router = express.Router();
 
 
@@ -32,9 +33,7 @@ router.get('/', function (req, res) {
                 });
               }
             });
-           //res.render('index', {user : req.user, name: student});
     })
-    //res.render('index', { user : req.user });
 });
 
 router.get('/courses',function (req,res){
@@ -107,6 +106,18 @@ router.post('/courses_completed',function (req, res) {
             res.json({message: 'course completed added for the student'});
         });
 });
+
+router.get('/prereq', function (req, res){
+    prereq.find({}).exec(function (err, prereqs){
+         res.json(prereqs);
+     });
+ });
+
+router.get('/sequence', function (req, res) {
+    courseprereq.find({}).exec(function (err, coursep) {
+      res.json(coursep); 
+    })
+})
 
 router.get('/register', function(req, res) {
     res.render('register', { });

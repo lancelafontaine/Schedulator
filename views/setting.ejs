@@ -1234,7 +1234,7 @@
                     <h1>Student Record</h1>
 
 
-                    <form class="form-inline">
+                    <!-- <form class="form-inline">
                         <div class="form-group">
                             <label class="sr-only">Add Course</label>
                             <input class="form-control" id="courseID" placeholder="Course ID">
@@ -1243,9 +1243,9 @@
                         <button type="submit" class="btn btn-default" onsubmit="">Remove</button>
                     </form>
 
-                    </br>
+                    </br> -->
                     <!-- Formatting -->
-                    <table class='table table-bordered'>
+                    <!-- <table class='table table-bordered'>
                         <tr>
                             <th>Course ID</th>
                             <th>Course Name</th>
@@ -1259,9 +1259,20 @@
                             <td> <%= student_info[i].credits %> </td>
                         </tr>
                         <% } %>
+                    </table> -->
+                    
+                    <div id="student-record-input-div" class="input-group">
+                      Type in the box to filter through available courses. Click on the course to add it to your Student Record.
+                    <input id="student-record-input" class="form-control" type="text" placeholder="Enter a Course ID"/>
+                    </div>
+                    <ul id="student-record-available-course-list">
+                      <span>AVAILABLE COURSES</span>
+                    </ul>
+                    <ul id="student-record-taken-course-list">
+                      <span>COMPLETED COURSES</span>
+                      <div id="student-record-taken-courses"></div>
+                    </ul>
 
-                        
-                    </table>
                 </div>
                 <div id="preferences-container" class="containerq">
                     <% include ./pref %>

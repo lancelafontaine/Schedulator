@@ -357,3 +357,271 @@ var renderSchedule = function(courseArray) {
     }
 };
 renderSchedule(fallBoxes);
+
+// STUDENT RECORD LOGIC:
+
+var takenCourses = {};
+
+$.ajax({
+  url: 'courses/',
+  success: function (data) {
+
+    //populate the available courses
+    var courseSet = {};
+    data.map(function(i){
+      courseSet[i.course_name] = i.course_description;
+    });
+    for (key in courseSet) {
+      $('#student-record-available-course-list').append('<li id="student-record-'+key+'" class="student-record-course"><a class="student-record-available-course">'+key+'</a></li>');
+    }
+
+    // automatic filter through courses as typing
+    $("#student-record-input").on("keyup", function() {
+        var searchTerm = $(this).val();
+        var rows = $("#student-record-available-course-list").children("li");
+        if (searchTerm.length > 0) {
+            rows.stop().hide();
+            $("#student-record-available-course-list").find("li:contains('" + searchTerm + "')").stop().show();
+        } else {
+            rows.stop().show();
+        }
+    });
+
+    // selected a course to add to student record
+    $('.student-record-available-course').click(function() {
+      //find all prereqs with Bruce's function
+      // remove them from available courses
+      //add them to takencourses object! // takenCourses[$(this).text()] = true;
+      // have some way to draw the taken courses object onto the DOM       $('#student-record-taken-courses').html()
+      // SEND TAKEN COURSE TO backend+db via api!!!!!
+    });
+  }
+});
+
+
+
+
+// //The function to fetch JSON from db
+// function getJSON(yourUrl){
+//     var Httpreq = new XMLHttpRequest(); // a new request
+//     Httpreq.open("GET",yourUrl,false);
+//     Httpreq.send(null);
+//     return Httpreq.responseText;
+// }
+// /*************************************************************************************************************
+// **************************************************Variables***************************************************
+// *************************************************************************************************************/
+// var finalSchedule = []; //should store the final schedule
+// var pref = {};          //should store the preference
+// var prereq_info = JSON.parse(getJSON("http://localhost:3000/prereq")); //get the course list with prereq
+// var schedule_info = JSON.parse(getJSON("http://localhost:3000/courses")); //get the course list with detail info
+// var finalSequence = JSON.parse(getJSON("http://localhost:3000/sequence")); //get the sequence with boolean "taken"
+// var studentRecord = JSON.parse(getJSON("http://localhost:3000/courses_completed/1111")); //get the student record 
+// 
+// /*************************************************************************************************************
+// ****************************************************Methods***************************************************
+// *************************************************************************************************************/
+// //Main algorithm to 
+// //1) get the student record from database, modify it by adding the missing prereqs, and then save back to database 
+// //2) change the boolean "taken" based on the student record
+// //3) generate the schedule based on all information
+// function main(){
+//   for (var i = 0; i < studentRecord.length; i++){
+//     findPreAdd(studentRecord[i].course_name);                   // 1) modify student record
+//   }
+//   //do something here to save the new student record            // 1) save to database
+//   modifySequence();                                             // 2) change the sequence's booleans
+//   generateSchedule();                                           // 3) generate the schedule
+// }
+// 
+// //1) find the missing prereqs and add them to student record
+// function findPreAdd(course){
+//   for (var i = 0; i < prereq_info.length; i++){
+//     if (prereq_info[i].course_name == course){
+//       if (prereq_info[i].prequisites){
+//         var preArray = prereq_info[i].prequisites.split(', ');
+//         for (var j = 0; j < preArray.length; j++){
+//           findPreAdd(preArray[j]);
+//           if (checkRep(preArray[j])==false){
+//             studentRecord.push(preArray[j]);
+//           }
+//         }
+//       }
+//       else{
+//         if (checkRep(course)==false){
+//           studentRecord.push(course);
+//         }
+//       }
+//     }
+//   }
+// }
+// 
+// // 1-a) Check if there is any replication
+// function checkRep(course){
+//   var rep = false;
+//   for (var i = 0; i < studentRecord.length; i++){
+//     if (studentRecord[i] == course){
+//       rep = true;
+//       break;
+//     }
+//   }
+//   return rep;
+// }
+// 
+// // 2) Change the boolean of the sequence based on the new student record
+// function modifySequence(){
+//   for (var i = 0; i < studentRecord.length; i++){
+//     for (var j = 0; j < finalSequence.length; j++){
+//       if (studentRecord[i] == finalSequence[j].course_name){
+//         finalSequence[j].taken = true;
+//       }
+//     }
+//   }
+// }
+// 
+// 
+// // 3) Generate the schedule
+// function generateSchedule(){
+//   // 3-1) Generate an array of valid courses for this semester
+//   var available = [];
+//   for (var i = 0; i < finalSequence.length; i++){
+//     if (finalSequence[i].taken == false){ 
+//       var check = courseValidation(finalSequence[i].course_name); //check if 1) prereqs are meet 2) offer in this semester
+//       if (check == true){
+//         var sectionSets = generateSectionSets(finalSequence[i].course_name);
+//         available.push(sectionSets);
+//       }
+//     }
+//   }
+//   // 3-2) UNFINISHED: generate the schedule based on the valid course list
+//   // This requires timeValidation();
+//   finalSchedule = available;
+// }
+// 
+// // 3-1-a) Check prereqs and semester availability
+// function courseValidation(course){
+//   var valid = true;
+//   if (prerequisitesValidation(course)==false){
+//     valid = false;
+//   }
+//   if (semesterValidation(course)==false){
+//     valid = false;
+//   }
+//   return valid;
+// }
+// 
+// // 3-1-b) check prereqs
+// function semesterValidation(course){
+//   //var web = "http://localhost:3000/courses/" + course; //make this generic after
+//   var semVal = false;
+//   var sem = pref.semester;
+//   var array = schedule_info;
+//   for (var i = 0; i < array.length; i++){
+//     if (array[i].course_name == course && array[i].semester == sem){
+//       semVal = true;
+//       break;
+//     }
+//   }
+//   return semVal;
+// }
+// 
+// // 3-1-c) check semester
+// function prerequisitesValidation(course){
+//   var preVal = false;
+//   var arr = [];
+//   //get prerequisites of the course (maximum one level down)
+//   for (var i = 0; i < prereq_info; i++){
+//     if (prereq_info[i].course_name == course){
+//       if (prereq_info[i].prequisites){
+//         arr = prereq_info[i].prequisites.split(', ');
+//       }
+//     }
+//   }
+//   //check prereq based on student record
+//   if (arr.length!=0){
+//     for (var j = 0; j < arr.length; j++){
+//       for (var k = 0; k < studentRecord.length; k++){
+//         if (arr[j]==studentRecord[k]){
+//           preVal = true;
+//           break;
+//         }
+//       }
+//     }
+//   }
+//   else{
+//   	preVal = true;
+//   }
+//   return preVal;
+// }
+// 
+// // 3-1-d) Generate an array of valid courses
+// // This array is generated AFTER semester/prereqs validation
+// // Hirachy: 
+// // powerSet = [sectionSet1, sectionSet2, sectionSet3 ...]
+// // sectionSet = {"lecture":section1, "tutorial":section2, "lab":section3}
+// // section = {"location":"..", "course_name": "..." ....}
+// function generateSectionSets(course){
+//   var lecture = [];
+//   var tutorial = [];
+//   var lab = [];
+//   var array = schedule_info;
+//   for (var i = 0; i < array.length; i++){
+//     if (array[i].course_name == course && array[i].type == "Lec"){
+//       lecture.push(array[i]);
+//     }
+//     if (array[i].course_name == course && array[i].type == "Tut"){
+//       tutorial.push(array[i]);
+//     }
+//     if (array[i].course_name == course && array[i].type == "Lab"){
+//       lab.push(array[i])
+//     }
+//   }
+//   var powerSet = [];
+//   for (var l = 0; l < lecture.length; l++){
+//     var sectionSet = {};
+//     sectionSet.lecture = lecture[l];
+//     sectionSet.tutorial = "";
+//     sectionSet.lab = "";
+//     if (tutorial.length!=0){
+//       for (var m = 0; m < tutorial.length; m++){
+//         sectionSet.tutorial = tutorial[m];
+//           if (lab.length!=0){
+//             for (var n = 0; n < lab.length; n++){
+//               sectionSet.lab = lab[n];
+//               powerSet.push(sectionSet);
+//           }
+//           }
+//           else{
+//             powerSet.push(sectionSet);
+//           }
+//       }
+//     }
+//     else{
+//       powerSet.push(sectionSet);
+//     }
+//   }
+//   return powerSet;
+// }
+// 
+// // 3-2) Check time validation within the valid course list
+// function timeValidation(){
+//   //UNFINISHED
+// }
+// 
+// 
+// 
+// 
+// /* This is a format to get the property of sections!
+// *****************************************************
+// for (var x = 0; x < finalSchedule.length; x++){
+// 	for (var y = 0; y < finalSchedule[x].length; y++){
+// 		console.log(finalSchedule[x][y].lecture.course_name + " " + 
+// 		finalSchedule[x][y].lecture.start + " " + 
+// 		finalSchedule[x][y].lecture.end + "\nTutorial " + 
+// 		finalSchedule[x][y].tutorial.start + " " + 
+// 		finalSchedule[x][y].tutorial.end + "\nLab " + 
+// 		finalSchedule[x][y].lab.start + " " + 
+// 		finalSchedule[x][y].lab.end)
+// 	}
+// }
+// *****************************************************/

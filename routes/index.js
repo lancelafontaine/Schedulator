@@ -5,73 +5,92 @@ var student_record = require('../models/student_record');
 var courses_completed = require('../models/courses_completed');
 var course = require('../models/course');
 var courseprereq = require('../models/courseprereq')
-var prereq = require('../models/prerequisite');
 var router = express.Router();
 
 
 router.get('/', function (req, res) {
-    //find record of the student
-    student_record.findOne({ id : req.session.passport.user}).exec(function (err, student){   
-        //find courses completed        
-        courses_completed.find({ student_id : req.session.passport.user }).exec(function (err, user){
-            courseprereq.find({}).exec(function (err, coursep) {
-                res.render('index', { user : req.user, name: student, student_info: user, courseprereq_info:coursep });
-            });             
-        })
+        //find record of the student
+        student_record.findOne({ id : req.session.passport.user}).exec(function (err, student){   
+            //find courses completed        
+            courses_completed.find({ student_id : req.session.passport.user }).exec(function (err, user){
+              //Check if user is an admin
+              if (req.session.passport.user == "admin") {
+                  course.find({}).exec(function(err, courses) {
+                      res.render('admin', {
+                          user: req.user,
+                          course: courses
+                      });
+                  })
+              } else {
+                courseprereq.find({}).sort({order: 1}).exec(function(err, coursep) {
+                    res.render('index', {
+                        user: req.user,
+                        name: student,
+                        student_info: user,
+                        courseprereq_info: coursep
+                    });
+                });
+              }
+            });
+           //res.render('index', {user : req.user, name: student});
     })
+    //res.render('index', { user : req.user });
 });
 
-router.get('/sequence', function (req, res) {
-    courseprereq.find({}).exec(function (err, coursep) {
-      res.json(coursep);  
-    })
-})
-
 router.get('/courses',function (req,res){
+
     course.find({ }, function (err, courses){
+
         res.json(courses);
+
     });
 });
 
-router.get('/prereq', function (req, res){
-    prereq.find({}).exec(function (err, prereqs){
-        res.json(prereqs);
-    });  
-});
-
 router.get('/courses/:courseid',function (req,res){
+
     var courseID = req.params.courseid;
     var fragment1 = courseID.substring(0,4).toUpperCase();
     var fragment2 = courseID.substring(4,7);
     var newString = fragment1 + " " + fragment2;
     course.find({course_name : newString}, function (err, courses){
+
         res.json(courses);
+
     });
 });
 
 router.get('/courses/fall/:courseid',function (req,res){
+
     var courseID = req.params.courseid;
     var fragment1 = courseID.substring(0,4).toUpperCase();
     var fragment2 = courseID.substring(4,7);
     var newString = fragment1 + " " + fragment2;
     course.find({course_name : newString, semester: "fall"}, function (err, courses){
+
         res.json(courses);
+
     });
 });
 
 router.get('/courses/winter/:courseid',function (req,res){
+
     var courseID = req.params.courseid;
     var fragment1 = courseID.substring(0,4).toUpperCase();
     var fragment2 = courseID.substring(4,7);
     var newString = fragment1 + " " + fragment2;
     course.find({course_name : newString, semester: "winter"}, function (err, courses){
+
         res.json(courses);
+
     });
 });
 
 router.get('/courses_completed/:studentid',function (req,res){
+
     courses_completed.find({ student_id: req.params.studentid }, function (err, courses){
+
         res.json(courses);
+
     });
 });
 
@@ -81,6 +100,7 @@ router.post('/courses_completed',function (req, res) {
         course.student_id = req.body.student_id;
         course.course_name = req.body.course_name;
         course.credits = req.body.credits;
+
         course.save(function(err) {
             if(err)
                 res.send(err);
@@ -100,6 +120,7 @@ router.post('/register', function(req, res, next) {
         if (err) {
           return res.render("register", {info: "Sorry. That username already exists. Try again."});
         }
+
         passport.authenticate('local')(req, res, function () {
             req.session.save(function (err) {
                 if (err) {
@@ -138,6 +159,39 @@ router.get('/logout', function(req, res, next) {
 router.get('/student_record', function(req, res) {
     student_records.find({}, function (err, docs) {
         res.json(docs);
+    });
+});
+
+
+router.post('/addCourse', function(req, res) {
+    var newCourse = new course({
+   course_name: req.body.course_name,
+   type: req.body.course_name,
+   Tut:req.body.course_type,
+   days: req.body.course_days,
+   start: req.body.course_start_time,
+   end: req.body.course_end_time,
+   room: req.body.course_room,
+   semester:req.body.course_semester
+});
+    newCourse.save(function (err, course) {
+        if (err) {
+        return err;
+  }
+  else {
+    console.log("Post saved, added :" + course.course_name);
+  }
+    });
+    res.redirect('/');
+});
+
+
+ router.get('/courses',function (req,res){
+
+    course.find({course_name : "COMP 248"}, function (err, courses){
+
+        res.render('courses', {course: courses});
+
     });
 });
 

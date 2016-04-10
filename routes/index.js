@@ -21,6 +21,15 @@ router.get('/', function (req, res) {
     //res.render('index', { user : req.user });
 });
 
+router.get('/courses',function (req,res){
+
+    course.find({ }, function (err, courses){
+
+        res.json(courses);
+
+    });
+});
+
 router.get('/courses/:courseid',function (req,res){
 
     var courseID = req.params.courseid;

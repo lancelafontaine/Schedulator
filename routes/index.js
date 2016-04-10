@@ -5,7 +5,7 @@ var student_record = require('../models/student_record');
 var courses_completed = require('../models/courses_completed');
 var course = require('../models/course');
 var courseprereq = require('../models/courseprereq')
-+var prereq = require('../models/prerequisite');
+var prereq = require('../models/prerequisite');
 var router = express.Router();
 
 

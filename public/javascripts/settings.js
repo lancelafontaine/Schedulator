@@ -59,7 +59,7 @@ $('.sidebar-link').hover(function() {
 var computePageHeight = function() {
     var windowHeight = $(window).height();
     var headerHeight = $('#setting-header').height();
-    $('#settings-wrapper').height(windowHeight - headerHeight);
+    $('#settings-content-wrapper').height(windowHeight - headerHeight);
     $('#sidebar').height(windowHeight - headerHeight);
 };
 var computeContentWidth = function() {

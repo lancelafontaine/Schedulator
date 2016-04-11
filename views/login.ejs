@@ -28,8 +28,8 @@
                 <div class="social_login" >
                     <div class="user_login">
                         <form role = "form" method="post" action="/login" >
-                          <input type="text" name="username" id="username"placeholder="username" maxlength="8" required="true" style="width:100%;"/></br>
-                          <input type="password" name="password" id="password" placeholder="password" maxlength="30" required="true" style="width:100%;"/></br>
+                          <input type="text" name="username" id="username"placeholder="username" pattern="[0-9]{8}" required title="Digits only and must be 8 characters" required="true" style="width:100%;"/></br>
+                          <input type="password" name="password" id="password" placeholder="password" pattern=".{6,30}" required title="Must be between 6 and 30 characters" required="true" style="width:100%;"/></br>
                           <div class="one_half last">
                             <div class="change_width">
                               <input class="btn btn_red" type="submit" style="width:100%;">

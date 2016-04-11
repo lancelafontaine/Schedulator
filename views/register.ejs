@@ -7,10 +7,9 @@
       <h2>Sign In Form</h2>
       <form role = "form" method="post" action="/register" >
 
-        <input type="text" name="username" id="username" maxlength="8"
-               placeholder="username" required="true"/>
+        <input type="text" name="username" id="username" pattern="[0-9]{8}" required title="Digits only and must be 8 characters" placeholder="username" required="true"/>
         
-            <input type="text" name="password" id="password" maxlength="30"
+            <input type="password" name="password" id="password" pattern=".{6,30}" required title="Must be between 6 and 30 characters"
                placeholder="password" required="true"/>
 
             <button  type="submit">Submit</button>

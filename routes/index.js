@@ -15,7 +15,7 @@ router.get('/', function (req, res) {
             //find courses completed        
             courses_completed.find({ student_id : req.session.passport.user }).exec(function (err, user){
               //Check if user is an admin
-              if (req.session.passport.user == "admin") {
+              if (req.session.passport.user == "12345678") {
                   course.find({}).exec(function(err, courses) {
                       res.render('admin', {
                           user: req.user,

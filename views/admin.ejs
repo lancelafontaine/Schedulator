@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <% include ./head %>
 <html>
-<body onload="showContainer('profile')">
+<body onload="showContainer('add-course')">
   
     <header id="setting-header">
       <div id="header-content">
@@ -51,10 +51,12 @@
           <li class="sidebar-separator">
             <span>SETTINGS</span>
           </li>
+		  <!--
           <li class="sidebar-link" onclick="showContainer('profile')"><a href="#">
             <i class="fa fa-user"></i>
             <span>PROFILE</span>
           </a></li>
+		  -->
           <li class="sidebar-link"><a href="#">
             <i class="fa fa-sign-out"></i>
             <a href="/logout">LOG OUT</a>
@@ -63,10 +65,12 @@
       </div>
 
       <div id="settings-content-wrapper">
-
+			
+			<!--
             <div id="profile-container" class="containerq">
               <h1>Administrator Profile</h1>
             </div>
+			-->
 
             <div id="add-course-container" class="containerq">
             <% include ./addCourse %>

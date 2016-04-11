@@ -168,7 +168,7 @@ router.get('/logout', function(req, res, next) {
 });
 
 router.get('/student_record', function(req, res) {
-    student_records.find({}, function (err, docs) {
+    student_record.find({}, function (err, docs) {
         res.json(docs);
     });
 });

@@ -264,3 +264,7 @@ td {
 #student-record-taken-course-list {
   margin-left: 500px;
 }
+
+#profile-password-input {
+  width: 100%;
+}

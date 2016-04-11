@@ -107,6 +107,43 @@ router.post('/courses_completed',function (req, res) {
         });
 });
 
+router.put('/student_record/first_name/:studentid', function (req, res) {
+    student_record.findOne(req.params.studentid, function(err, student) {
+
+      if(err)
+        res.send(err);
+
+      student.first_name = req.body.first_name;
+
+      student.save(function (err) {
+        if(err)
+          res.send(err);
+
+        res.json({ message: 'student record updated!'});
+      });
+
+    });
+});
+
+router.put('/student_record/last_name/:studentid', function (req, res) {
+    student_record.findOne(req.params.studentid, function(err, student) {
+
+      if(err)
+        res.send(err);
+
+      student.last_name = req.body.last_name;
+
+      student.save(function (err) {
+        if(err)
+          res.send(err);
+
+        res.json({ message: 'student record updated!'});
+      });
+
+    });
+});
+
+
 router.get('/prereq', function (req, res){
     prereq.find({}).exec(function (err, prereqs){
          res.json(prereqs);

@@ -166,6 +166,21 @@ jQuery(function($) {
 });
 (jQuery);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // UTILITY METHODS + GLOBALS
 
 function getJSON(yourUrl){
@@ -174,6 +189,9 @@ function getJSON(yourUrl){
     Httpreq.send(null);
     return Httpreq.responseText;
 }
+Array.prototype.diffArrays = function(a) {
+  return this.filter(function(i) {return a.indexOf(i) < 0;});
+};
 
 var prereqInfo = JSON.parse(getJSON("prereq/")); //get the course list with prereq
 var scheduleInfo = JSON.parse(getJSON("courses/")); //get the course list with detail info
@@ -181,13 +199,8 @@ var finalSequence = JSON.parse(getJSON("sequence/")); //get the sequence with bo
 var studentID = $('#student_id').text().trim();
 var allUserInfo = JSON.parse(getJSON("student_record/"));
 var userInfo = allUserInfo.filter(function(i){return i.id === studentID ? true : false})[0];
-var studentRecord = JSON.parse(getJSON("courses_completed/"+userInfo.id+"/")); //get the student record
-
-console.log(userInfo);
-
-
-
-
+var tempStudentRecord = JSON.parse(getJSON("courses_completed/"+userInfo.id+"/")); //get the student record
+var studentRecord = tempStudentRecord.map(function(i){return i.course_id});
 
 //schedule logic
 
@@ -342,16 +355,6 @@ var checkRep = function(course){
   }
   return rep;
 }
-//findPreAdd('COMP 348')
-
-//populate the available courses in student record
-var courseSet = {};
-prereqInfo.map(function(i){
-  courseSet[i.course_name] = i.course_description;
-});
-for (key in courseSet) {
-  $('#student-record-available-course-list').append('<li id="student-record-'+key+'" class="student-record-course"><a class="student-record-available-course">'+key+'</a></li>');
-}
 
 // automatic filter through courses as typing
 $("#student-record-input").on("keyup", function() {
@@ -365,13 +368,95 @@ $("#student-record-input").on("keyup", function() {
     }
 });
 
-// selected a course to add to student record
+//populate the available courses in student record
+var courseSet = {};
+prereqInfo.map(function(i){
+  courseSet[i.course_name] = i.course_description;
+});
+for (key in courseSet) {
+  $('#student-record-available-course-list').append('<li id="student-record-'+key.replace(' ','')+'" class="student-record-course"><a class="student-record-available-course">'+key+'</a></li>');
+}
+
+
+var renderUI = function (array){
+  // render courses in completed list that are already in student record
+  // remove them from available courses list
+  array.map(function(i){
+    var id = '#student-record-'+i.replace(' ','');
+    $(id).hide();
+  });
+
+  //add them to taken courses list
+  var htmlString = '';
+  array.map(function(i){
+    var htmlLine = '<li class="student-record-taken-course">'+i.replace(' ','')+'</li>'
+    htmlString += htmlLine;
+  });
+  $('#student-record-taken-courses').html(htmlString);
+}
+console.log(studentRecord)
+// render courses in completed list that are already in student record
+renderUI(studentRecord);
+
+// on click, selected a course to add to student record
 $('.student-record-available-course').click(function() {
-  //find all prereqs with Bruce's function
-  // remove them from available courses
-  //add them to takencourses object! // takenCourses[$(this).text()] = true;
-  // have some way to draw the taken courses object onto the DOM       $('#student-record-taken-courses').html()
-  // SEND TAKEN COURSE TO backend+db via api!!!!!
+  var courseID = $(this).text().trim();
+
+  findPreAdd(courseID);
+
+  // sometimes it doesn't add the course that was selected, iterate  over array to make sure it's there.
+  var isClickedCourseInArray = false;
+  for (var i = 0; i < studentRecord.length; i++) {
+    if (studentRecord[i] === courseID){
+      isClickedCourseInArray = true;
+    }
+  }
+  if (!isClickedCourseInArray) {
+    studentRecord.push(courseID);
+  }
+  console.log(studentRecord);
+
+  renderUI(studentRecord);
+
+  // Diff new student record against old one
+  var tempOldStudentRecord = JSON.parse(getJSON("courses_completed/"+userInfo.id+"/"));
+  var oldStudentRecord = tempOldStudentRecord.map(function(i){return i.course_id});
+
+  var diff = studentRecord.diffArrays(oldStudentRecord);
+  console.log(diff);
+
+  //Save all new student record courses to db
+  var saveStudentRecordURL = "courses_completed/"
+  diff.map(function(i){
+    try {
+    var course_id = i
+    var course_name = ''
+    var credits = '';
+    prereqInfo.map(function(j){
+      if (j.course_name === i) {
+        course_name = j.course_description;
+        credits = j.credits;
+      }
+    })
+
+    $.ajax({
+      type: 'POST',
+      url: saveStudentRecordURL,
+      data: {
+        'course_id': course_id,
+        'course_name': course_name,
+        'credits': credits,
+        'student_id': userInfo.id
+      },
+      success: function () {
+        console.log('successfully saved to db');
+      },
+      async: false
+    });
+  } catch(e) {
+    console.log('there was an error finding the course...')
+  }
+  });
 });
 
 

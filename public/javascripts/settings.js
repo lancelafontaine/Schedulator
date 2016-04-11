@@ -166,91 +166,42 @@ jQuery(function($) {
 });
 (jQuery);
 
+// UTILITY METHODS + GLOBALS
+
+function getJSON(yourUrl){
+    var Httpreq = new XMLHttpRequest(); // a new request
+    Httpreq.open("GET",yourUrl,false);
+    Httpreq.send(null);
+    return Httpreq.responseText;
+}
+
+var prereqInfo = JSON.parse(getJSON("prereq/")); //get the course list with prereq
+var scheduleInfo = JSON.parse(getJSON("courses/")); //get the course list with detail info
+var finalSequence = JSON.parse(getJSON("sequence/")); //get the sequence with boolean "taken"
+var studentID = $('#student_id');.text();
+var allUserInfo = JSON.parse(getJSON("student_record/"));
+var userInfo = allUserInfo.filter(function(i){return i.id === studentID ? true : false})[0];
+var studentRecord = JSON.parse(getJSON("courses_completed/"+userInfo.id+"/")); //get the student record
+
+console.log(userInfo);
+
+
+
 
 
 //schedule logic
-var fallBoxes = [{
-    "course_name": "SOEN 344",
-    "type": "Tut",
-    "sections": "S SB",
-    "days": "---J---",
-    "start": "14:45",
-    "end": "15:35",
-    "room": "H 544",
-    "semester": "winter"
-}, {
-    "course_name": "SOEN 344",
-    "type": "Lec",
-    "sections": "S",
-    "days": "-T-J---",
-    "start": "13:15",
-    "end": "14:30",
-    "room": "H 407",
-    "semester": "winter"
-}, {
-    "course_name": "SOEN 345",
-    "type": "Tut",
-    "sections": "S SB",
-    "days": "--W----",
-    "start": "17:45",
-    "end": "18:35",
-    "room": "H905 *",
-    "semester": "winter"
-}, {
-    "course_name": "SOEN 345",
-    "type": "Lec",
-    "sections": "S",
-    "days": "M-W----",
-    "start": "14:45",
-    "end": "16:00",
-    "room": "H 620",
-    "semester": "winter"
-}, {
-    "course_name": "SOEN 331",
-    "type": "Tut",
-    "sections": "W WB",
-    "days": "----F--",
-    "start": "14:15",
-    "end": "16:05",
-    "room": "H 611",
-    "semester": "winter"
-}, {
-    "course_name": "SOEN 331",
-    "type": "Lec",
-    "sections": "U",
-    "days": "-T-J---",
-    "start": "16:15",
-    "end": "17:30",
-    "room": "FG C080",
-    "semester": "winter"
-}, {
-    "course_name": "COMP 346",
-    "type": "Lec",
-    "sections": "WW",
-    "days": "-T-----",
-    "start": "17:45",
-    "end": "20:15",
-    "room": "H 407",
-    "semester": "winter"
-}, {
-    "course_name": "COMP 346",
-    "type": "Tut",
-    "sections": "WWWB",
-    "days": "----F--",
-    "start": "13:15",
-    "end": "14:05",
-    "room": "H967 *",
-    "semester": "winter"
-}, {
-    "course_name": "COMP 346",
-    "type": "Lab",
-    "sections": "WI-X",
-    "days": "-T-----",
-    "start": "21:30",
-    "end": "23:20",
-    "room": "H929 *",
-    "semester": "winter"
-}, ];
+
+var fallBoxes = [];
+//{
+//     "course_name": "COMP 346",
+//     "type": "Lab",
+//     "sections": "WI-X",
+//     "days": "-T-----",
+//     "start": "21:30",
+//     "end": "23:20",
+//     "room": "H929 *",
+//     "semester": "winter"
+// },
 
 var reduceCalendarSize = function(courseArray) {
     // Default is higher/lower that highest/lowest-possible course times
@@ -360,43 +311,69 @@ renderSchedule(fallBoxes);
 
 // STUDENT RECORD LOGIC:
 
-var takenCourses = {};
-
-$.ajax({
-  url: 'courses/',
-  success: function (data) {
-
-    //populate the available courses
-    var courseSet = {};
-    data.map(function(i){
-      courseSet[i.course_name] = i.course_description;
-    });
-    for (key in courseSet) {
-      $('#student-record-available-course-list').append('<li id="student-record-'+key+'" class="student-record-course"><a class="student-record-available-course">'+key+'</a></li>');
-    }
-
-    // automatic filter through courses as typing
-    $("#student-record-input").on("keyup", function() {
-        var searchTerm = $(this).val();
-        var rows = $("#student-record-available-course-list").children("li");
-        if (searchTerm.length > 0) {
-            rows.stop().hide();
-            $("#student-record-available-course-list").find("li:contains('" + searchTerm + "')").stop().show();
-        } else {
-            rows.stop().show();
+var findPreAdd = function(course){
+  for (var i = 0; i < prereqInfo.length; i++){
+    if (prereqInfo[i].course_name == course){
+      if (prereqInfo[i].prequisites){
+        var preArray = prereqInfo[i].prequisites.split(', ');
+        for (var j = 0; j < preArray.length; j++){
+          findPreAdd(preArray[j]);
+          if (checkRep(preArray[j])==false){
+            studentRecord.push(preArray[j]);
+          }
         }
-    });
-
-    // selected a course to add to student record
-    $('.student-record-available-course').click(function() {
-      //find all prereqs with Bruce's function
-      // remove them from available courses
-      //add them to takencourses object! // takenCourses[$(this).text()] = true;
-      // have some way to draw the taken courses object onto the DOM       $('#student-record-taken-courses').html()
-      // SEND TAKEN COURSE TO backend+db via api!!!!!
-    });
+      }
+      else{
+        if (checkRep(course)==false){
+          studentRecord.push(course);
+        }
+      }
+    }
   }
+}
+
+var checkRep = function(course){
+  var rep = false;
+  for (var i = 0; i < studentRecord.length; i++){
+    if (studentRecord[i] == course){
+      rep = true;
+      break;
+    }
+  }
+  return rep;
+}
+//findPreAdd('COMP 348')
+
+//populate the available courses in student record
+var courseSet = {};
+prereqInfo.map(function(i){
+  courseSet[i.course_name] = i.course_description;
 });
+for (key in courseSet) {
+  $('#student-record-available-course-list').append('<li id="student-record-'+key+'" class="student-record-course"><a class="student-record-available-course">'+key+'</a></li>');
+}
+
+// automatic filter through courses as typing
+$("#student-record-input").on("keyup", function() {
+    var searchTerm = $(this).val();
+    var rows = $("#student-record-available-course-list").children("li");
+    if (searchTerm.length > 0) {
+        rows.stop().hide();
+        $("#student-record-available-course-list").find("li:contains('" + searchTerm + "')").stop().show();
+    } else {
+        rows.stop().show();
+    }
+});
+
+// selected a course to add to student record
+$('.student-record-available-course').click(function() {
+  //find all prereqs with Bruce's function
+  // remove them from available courses
+  //add them to takencourses object! // takenCourses[$(this).text()] = true;
+  // have some way to draw the taken courses object onto the DOM       $('#student-record-taken-courses').html()
+  // SEND TAKEN COURSE TO backend+db via api!!!!!
+});
+
 
 
 
@@ -413,8 +390,8 @@ $.ajax({
 // *************************************************************************************************************/
 // var finalSchedule = []; //should store the final schedule
 // var pref = {};          //should store the preference
-// var prereq_info = JSON.parse(getJSON("http://localhost:3000/prereq")); //get the course list with prereq
-// var schedule_info = JSON.parse(getJSON("http://localhost:3000/courses")); //get the course list with detail info
+// var prereqInfo = JSON.parse(getJSON("http://localhost:3000/prereq")); //get the course list with prereq
+// var scheduleInfo = JSON.parse(getJSON("http://localhost:3000/courses")); //get the course list with detail info
 // var finalSequence = JSON.parse(getJSON("http://localhost:3000/sequence")); //get the sequence with boolean "taken"
 // var studentRecord = JSON.parse(getJSON("http://localhost:3000/courses_completed/1111")); //get the student record 
 // 
@@ -436,10 +413,10 @@ $.ajax({
 // 
 // //1) find the missing prereqs and add them to student record
 // function findPreAdd(course){
-//   for (var i = 0; i < prereq_info.length; i++){
-//     if (prereq_info[i].course_name == course){
-//       if (prereq_info[i].prequisites){
-//         var preArray = prereq_info[i].prequisites.split(', ');
+//   for (var i = 0; i < prereqInfo.length; i++){
+//     if (prereqInfo[i].course_name == course){
+//       if (prereqInfo[i].prequisites){
+//         var preArray = prereqInfo[i].prequisites.split(', ');
 //         for (var j = 0; j < preArray.length; j++){
 //           findPreAdd(preArray[j]);
 //           if (checkRep(preArray[j])==false){
@@ -515,7 +492,7 @@ $.ajax({
 //   //var web = "http://localhost:3000/courses/" + course; //make this generic after
 //   var semVal = false;
 //   var sem = pref.semester;
-//   var array = schedule_info;
+//   var array = scheduleInfo;
 //   for (var i = 0; i < array.length; i++){
 //     if (array[i].course_name == course && array[i].semester == sem){
 //       semVal = true;
@@ -530,10 +507,10 @@ $.ajax({
 //   var preVal = false;
 //   var arr = [];
 //   //get prerequisites of the course (maximum one level down)
-//   for (var i = 0; i < prereq_info; i++){
-//     if (prereq_info[i].course_name == course){
-//       if (prereq_info[i].prequisites){
-//         arr = prereq_info[i].prequisites.split(', ');
+//   for (var i = 0; i < prereqInfo; i++){
+//     if (prereqInfo[i].course_name == course){
+//       if (prereqInfo[i].prequisites){
+//         arr = prereqInfo[i].prequisites.split(', ');
 //       }
 //     }
 //   }
@@ -564,7 +541,7 @@ $.ajax({
 //   var lecture = [];
 //   var tutorial = [];
 //   var lab = [];
-//   var array = schedule_info;
+//   var array = scheduleInfo;
 //   for (var i = 0; i < array.length; i++){
 //     if (array[i].course_name == course && array[i].type == "Lec"){
 //       lecture.push(array[i]);

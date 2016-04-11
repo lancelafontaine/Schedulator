@@ -216,7 +216,7 @@ router.get('/student_record', function(req, res) {
 
 
 router.post('/addCourse', function(req, res) {
-    var newCourse = new course({
+var newCourse = new course({
    course_name: req.body.course_name,
    type: req.body.course_type,
    Tut:req.body.course_section,
@@ -233,39 +233,29 @@ router.post('/addCourse', function(req, res) {
   else {
     console.log("Post saved, added :" + course.course_name);
   }
-    });
+  });
     res.redirect('/');
 });
 
 router.post('/removeCourse', function(req, res) {
-/*  
-  var newCourse = new course({
-   course_name: req.body.course_name,
-   type: req.body.course_type,
-   Tut: req.body.course_section,
-   days: req.body.course_days,
-   start: req.body.course_start_time,
-   end: req.body.course_end_time,
-   room: req.body.course_room,
-   semester:req.body.course_semester
-});
-*/
-var query = {
-	course_name : req.body.course_name,
+
+
+ var cn = req.body.course_name;
+	/*
 	type : req.body.course_type,
 	Tut : req.body.course_section,
 	days: req.body.course_days,
 	start: req.body.course_start_time,
 	end: req.body.course_end_time,
 	room: req.body.course_room,
-	semester:req.body.course_semester
-}
-  course.remove(query ,function (err, res) {
-  if (err) {
-    return err;
-  }
-    });
-    res.redirect('/');
+	semester: req.body.course_semester
+};
+*/
+  course.find({course_name: req.body.course_name}).remove().exec(); //,function (err, res) {
+	//if (err) {throw err;}
+	//res.end("<p>Course removed");
+  //});
+  res.redirect('/');
 });
 
 

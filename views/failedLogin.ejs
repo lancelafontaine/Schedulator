@@ -3,7 +3,7 @@
 <html lang="en">
 
 <% include ./head %>
-<body>
+<body onload= "redirect()">
 <div id="landing-wrapper">
     <div id="container1">
         <div id="imalogo">
@@ -43,5 +43,11 @@
     </div>
 </div> 
  <script type="text/javascript" src="../javascripts/index.js"></script>
+ <script>
+ function redirect(){
+alert('Invalid password or username');
+window.location.href = "/login";
+ }
+ </script>
 </body>
 </html>

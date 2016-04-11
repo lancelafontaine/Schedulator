@@ -178,7 +178,7 @@ function getJSON(yourUrl){
 var prereqInfo = JSON.parse(getJSON("prereq/")); //get the course list with prereq
 var scheduleInfo = JSON.parse(getJSON("courses/")); //get the course list with detail info
 var finalSequence = JSON.parse(getJSON("sequence/")); //get the sequence with boolean "taken"
-var studentID = $('#student_id');.text();
+var studentID = $('#student_id').text().trim();
 var allUserInfo = JSON.parse(getJSON("student_record/"));
 var userInfo = allUserInfo.filter(function(i){return i.id === studentID ? true : false})[0];
 var studentRecord = JSON.parse(getJSON("courses_completed/"+userInfo.id+"/")); //get the student record

@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var course = new Schema({
    course_name: String,
    type: String,
-   Tut:String,
+   sections:String,
    days:String,
    start:String,
    end:String,

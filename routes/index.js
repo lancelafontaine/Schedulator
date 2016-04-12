@@ -4,6 +4,7 @@ var Login_info = require('../models/login');
 var student_record = require('../models/student_record');
 var courses_completed = require('../models/courses_completed');
 var course = require('../models/course');
+var admincourse = require('../models/admincourse');
 var courseprereq = require('../models/courseprereq')
 var prereq = require('../models/prerequisite');
 var router = express.Router();
@@ -16,10 +17,10 @@ router.get('/', function (req, res) {
             courses_completed.find({ student_id : req.session.passport.user }).exec(function (err, user){
               //Check if user is an admin
               if (req.session.passport.user == "12345678") {
-                  course.find({}).exec(function(err, courses) {
+                  admincourse.find({}).exec(function(err, admincourses) {
                       res.render('admin', {
                           user: req.user,
-                          course: courses
+                          course: admincourses
                       });
                   })
               } else {
@@ -34,6 +35,18 @@ router.get('/', function (req, res) {
               }
             });
     })
+});
+
+router.delete('/removeadmincourse/:courseName/:section', function (req, res){
+  admincourse.remove({
+    course_name: req.params.courseName,
+    sections: req.params.section
+  }, function(err, course) {
+      if(err)
+        res.send(err);
+
+      res.json({ message: "successfully removed"});
+  });
 });
 
 router.get('/courses',function (req,res){

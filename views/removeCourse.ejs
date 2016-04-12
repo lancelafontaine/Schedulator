@@ -12,13 +12,12 @@
 					<th>Semester</th>
 					<th>Remove</th>
 				</tr>
-				
 			<% for (var i = 0; i < course.length; i++) { %>
          <tr>
           <form role="form" method="post" action="/removeCourse">
             <td name="course_name" id="course_name"><%= course[i].course_name %></td>
             <td name="course_type" id="course_type"><%= course[i].type %></td>
-            <td name="course_section" id="course_section"><%= course[i].Tut %></td>
+            <td name="course_section" id="course_section"><%= course[i].sections %></td>
             <td name="course_days" id="course_days"><%= course[i].days %></td>
             <td name="course_start_time id="course_start_time"><%= course[i].start %></td>
             <td name="course_end_time id="course_end_time"><%= course[i].end %></td>

@@ -159,6 +159,21 @@ router.put('/student_record/last_name/:studentid', function (req, res) {
     });
 });
 
+router.put('/updatepref/:studentid',function (req, res) {
+        
+        /*pref.update( {student_id: req.params.studentid}, {pref_json: req.body.pref_json}, function(err) {
+            if(err)
+                res.send(err);
+            res.json({message: 'preferences saved successfully'});
+        });*/
+
+        pref.update( {student_id: req.params.studentid}, {$set:{pref_json: req.body.pref_json}}, {multi: true}, function(err) {
+            if(err)
+                res.send(err);
+            res.json({message: 'preferences saved successfully'});
+        });
+});
+
 router.post('/savepref',function (req, res) {
         
         var p = new pref();

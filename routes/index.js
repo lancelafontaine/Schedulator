@@ -7,6 +7,7 @@ var course = require('../models/course');
 var admincourse = require('../models/admincourse');
 var courseprereq = require('../models/courseprereq')
 var prereq = require('../models/prerequisite');
+var pref = require('../models/pref');
 var router = express.Router();
 
 
@@ -157,6 +158,27 @@ router.put('/student_record/last_name/:studentid', function (req, res) {
     });
 });
 
+router.post('/savepref',function (req, res) {
+        
+        var p = new pref();
+        p.student_id = req.body.student_id;
+        p.pref_json = req.body.pref_json;
+
+        p.save(function(err) {
+            if(err)
+                res.send(err);
+            res.json({message: 'preferences saved successfully'});
+        });
+});
+
+router.get('/pref/:studentid',function (req,res){
+
+    pref.find({ student_id: req.params.studentid }, function (err, prefs){
+
+        res.json(prefs);
+
+    });
+});
 
 router.get('/prereq', function (req, res){
     prereq.find({}).exec(function (err, prereqs){

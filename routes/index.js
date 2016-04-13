@@ -151,7 +151,7 @@ router.get('/prereq', function (req, res){
  });
 
 router.get('/sequence', function (req, res) {
-    courseprereq.find({}).exec(function (err, coursep) {
+    courseprereq.find({}).sort({order: 1}).exec(function (err, coursep) {
       res.json(coursep); 
     })
 })

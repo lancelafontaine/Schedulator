@@ -596,6 +596,7 @@
                     </div>
                 </div>
                 <div id="sequence-container" class="containerq">
+                    <h1 class="col-md-12 prefTitle" >Sequence</h1>
                     <% include ./courseprereq %>
                 </div>
                <!--     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -1231,80 +1232,55 @@
 
                 </div> -->
                 <div id="student-record-container" class="containerq">
-                    
+                    <h1 class="col-md-12 prefTitle">Student Record</h1>
 
-                     <div class = "row">
-	                    <h1 class = "col-md-12 prefTitle">STUDENT RECORD</h1>
-                    </div>
-                    <div class = "row">
-                        <p class = "prefSub col-md-12">View and modify your student record to generate schedule</p>
+                    <div id="student-record-input-div" class="input-group" style="
+    margin-left: 14%;
+    margin-bottom: 2%;
+">
+                      Type in the box to filter through available courses. Click on the course to add it to your Student Record or enter the course ID to delete from the completed course.
+                    <input id="student-record-input" class="form-control" type="text" placeholder="Enter a Course ID to add"/>
                     </div>
 
-                    <div class = "row" style = "margin-top:2%">
-                        <div class = "col-md-1">
-                        </div>
-                        <div class = "col-md-10">
-                            <div id="student-record-input-div" class="input-group" style="width = 100%;margin: 0 auto; text-align: center;">
-                                <table style="margin:auto; width: 100%; margin-bottom: 4%;">
-                                
-                                    <tr>
-                                        <th class="prefHead">Search Course<input id="student-record-input" class="form-control" type="text" placeholder="Enter a Course ID"/></th>
-                                    </tr>
-                                    <tr><td style = "height: auto">
-                                    <ul id="student-record-available-course-list" >
-                                <span style = "font-size:20pt; color: white;">AVAILABLE COURSES</span>
-                            </ul>
-                            <ul id="student-record-taken-course-list">
-                                <span style = "font-size:20pt; color: white;">COMPLETED COURSES</span>
-                            <div id="student-record-taken-courses"></div>
-                            </ul>
-                                    </td></tr>
-                                    
-                                    <tr><th class="prefHead">
-                                    
-                                    <form  role="form" method="post" action="/removecompletedcourse" class="form-control" style="width = 100%;margin: 0 auto; text-align: center;"/>
-                                        <input type="text" id="cName" name="courseName" placeholder="Enter a Course ID to delete" style = "width: 100%; margin:0 auto;"></br>
-                                        <button type="submit" id="remButton" style = "width: 100%; margin:0 auto;" class = "prefHead">Delete Course</button>
-                                    </form><br><br>
-                                    
-                                    </th></tr>
-                                </table>
-                            </div>
-                        </div>
-                        <div class = "col-md-1">
-                        </div>
-                    </div>
+                    <form  role="form" method="post" action="/removecompletedcourse" style="
+    margin-left: 11%;
+">
+                        <input type="text" id="cName" name="courseName" placeholder="Enter a Course ID to delete" style ="margin-left: 32px; width: 79%;"/><br>
+                        <button type="submit" id="remButton">Remove</button>
+    </form><br><br>
+                    <ul id="student-record-available-course-list" style ="margin-left: 18%">
+                      <span>AVAILABLE COURSES</span>
+                    </ul>
+                    <ul id="student-record-taken-course-list">
+                      <span>COMPLETED COURSES</span>
+                      <div id="student-record-taken-courses"></div>
+                    </ul>
 
                 </div>
                 <div id="preferences-container" class="containerq">
                     <% include ./pref %>
                 </div>
                 <div id="profile-container" class="containerq">
-                    <div class = "row">
-	                    <h1 class = "col-md-12 prefTitle">STUDENT PROFILE</h1>
-                    </div>
-                    <div class = "row">
-                        <p class = "prefSub col-md-12">Modify your personal information</p>
-                    </div>
-                    <div id="profile-window" style = "margin: auto; margin-top: 2%;">
+                    <h1 class="col-md-12 prefTitle" style = "margin-top: -8%;">Your Student Profile</h1>
+                    <div id="profile-window" style = "margin-top: 11%; margin-left: 16%;">
                         <div class="form-group">
-                            <button type="button" class="btn btn-default">
+                            <button id="edit-first-name" type="button" class="btn btn-default">
                                 <i class="fa fa-pencil"></i>
                             </button>
                             <label for="usr">First Name:</label>
-                            <input type="text" class="form-control" id="fname" value="Lance" readonly>
+                            <input id="edit-first-name-input" type="text" class="form-control" id="fname" disabled>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-default">
+                            <button id="edit-last-name" type="button" class="btn btn-default">
                                 <i class="fa fa-pencil"></i>
                             </button>
                             <label for="usr">Last Name:</label>
-                            <input type="text" class="form-control" id="fname" value="Lafontaine" readonly>
+                            <input id="edit-last-name-input" type="text" class="form-control" id="fname" disabled>
                         </div>
                         <div class="form-group">
                             <label for="usr">Student ID:</label>
                             <div id="profile-password-input"class="input-group">
-                                <input id="profile-password-input" type="text" class="form-control" disabled placeholder = <%= user.username %>>
+                                <input id="student-id-input" type="text" class="form-control" disabled>
                             </div>
                         </div>
                     </div>

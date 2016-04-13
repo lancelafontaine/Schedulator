@@ -596,38 +596,65 @@
                     </div>
                 </div>
                 <div id="sequence-container" class="containerq">
-                    <h1 class="col-md-12 prefTitle">Sequence</h1>
                     <% include ./courseprereq %>
                 </div>
             
+            
+            
                 <div id="student-record-container" class="containerq">
-                    <h1 class="col-md-12 prefTitle">Student Record</h1>
-
-
-                 
                     
-                    <div id="student-record-input-div" class="input-group" style="
-    margin-left: 14%;
-    margin-bottom: 2%;
-">
-                      Type in the box to filter through available courses. Click on the course to add it to your Student Record.
-                    <input id="student-record-input" class="form-control" type="text" placeholder="Enter a Course ID"/>
+                    <div class = "row">
+	                    <h1 class = "col-md-12 prefTitle">STUDENT RECORD</h1>
                     </div>
-                    <ul id="student-record-available-course-list" style ="margin-left: 18%">
-                      <span>AVAILABLE COURSES</span>
-                    </ul>
-                    <ul id="student-record-taken-course-list">
-                      <span>COMPLETED COURSES</span>
-                      <div id="student-record-taken-courses"></div>
-                    </ul>
+                    <div class = "row">
+                        <p class = "prefSub col-md-12">View and modify your student record to generate schedule</p>
+                    </div>
+
+                    <div class = "row" style = "margin-top:2%">
+                        <div class = "col-md-1">
+                        </div>
+                        <div class = "col-md-10">
+                            <div id="student-record-input-div" class="input-group" style="width = 100%;margin: 0 auto; text-align: center;">
+                                <table style="margin:auto; width: 100%;">
+                                
+                                    <tr>
+                                        <th class="prefHead">Search Course<input id="student-record-input" class="form-control" type="text" placeholder="Enter a Course ID"/></th>
+                       
+                                    </tr>
+                                    <tr><td>
+                                    <ul id="student-record-available-course-list" >
+                                <span style = "font-size:20pt; color: white;">AVAILABLE COURSES</span>
+                            </ul>
+                            <ul id="student-record-taken-course-list">
+                                <span style = "font-size:20pt; color: white;">COMPLETED COURSES</span>
+                            <div id="student-record-taken-courses"></div>
+                            </ul>
+                                    </td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class = "col-md-1">
+                        </div>
+                    </div>
+                    
+
+                    
+
 
                 </div>
+                
+                
                 <div id="preferences-container" class="containerq">
                     <% include ./pref %>
                 </div>
                 <div id="profile-container" class="containerq">
-                    <h1 class="col-md-12 prefTitle" style = "margin-top: -8%;">Your Student Profile</h1>
-                    <div id="profile-window" style = "margin-top: 11%; margin-left: 16%;">
+                    <div class = "row">
+	                    <h1 class = "col-md-12 prefTitle">STUDENT PROFILE</h1>
+                    </div>
+                    <div class = "row">
+                        <p class = "prefSub col-md-12">Modify your personal information</p>
+                    </div>
+                    <div id="profile-window" style = "margin: auto; margin-top: 2%;">
                         <div class="form-group">
                             <button type="button" class="btn btn-default">
                                 <i class="fa fa-pencil"></i>

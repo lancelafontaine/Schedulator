@@ -37,7 +37,7 @@ router.get('/', function (req, res) {
     })
 });
 
-router.delete('/removeadmincourse', function (req, res){
+router.post('/removeadmincourse', function (req, res){
   admincourse.remove({
     course_name: req.body.courseName,
     sections: req.body.section

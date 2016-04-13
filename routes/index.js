@@ -37,10 +37,10 @@ router.get('/', function (req, res) {
     })
 });
 
-router.delete('/removeadmincourse/:courseName/:section', function (req, res){
+router.delete('/removeadmincourse', function (req, res){
   admincourse.remove({
-    course_name: req.params.courseName,
-    sections: req.params.section
+    course_name: req.body.courseName,
+    sections: req.body.section
   }, function(err, course) {
       if(err)
         res.send(err);

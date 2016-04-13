@@ -8,6 +8,7 @@ var admincourse = require('../models/admincourse');
 var courseprereq = require('../models/courseprereq')
 var prereq = require('../models/prerequisite');
 var pref = require('../models/pref');
+var schedule = require('../models/schedule');
 var router = express.Router();
 
 
@@ -179,6 +180,29 @@ router.get('/pref/:studentid',function (req,res){
 
     });
 });
+
+router.post('/saveschedule',function (req, res) {
+        
+        var sch = new schedule();
+        sch.student_id = req.body.student_id;
+        sch.schedule_json = req.body.schedule_json;
+
+        sch.save(function(err) {
+            if(err)
+                res.send(err);
+            res.json({message: 'schedule saved successfully'});
+        });
+});
+
+router.get('/schedule/:studentid',function (req,res){
+
+    schedule.find({ student_id: req.params.studentid }, function (err, schedules){
+
+        res.json(schedules);
+
+    });
+});
+
 
 router.get('/prereq', function (req, res){
     prereq.find({}).exec(function (err, prereqs){

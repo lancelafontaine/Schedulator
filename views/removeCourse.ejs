@@ -1,10 +1,11 @@
 <h1>Remove Course</h1> <br/>
-  
-    <form style="border:2px solid black; padding:5px;" role="form" method="delete" action="/removeadmincourse">
+    <form style="border:2px solid black; padding:5px;" role="form" method="post" action="/removeadmincourse">
       Course name: <input type="text" id="cName" name="courseName"/><br>
       Course section: <input type="text" id="cSection" name="section"/><br>
       <button type="submit" id="remove">Remove</button>
     </form><br><br>
+
+      <div style="border:1px solid black;width:550px;height:350px;overflow:scroll;overflow-y:scroll;overflow-x:hidden;">
         <table border=1>
 
         <tr>
@@ -20,7 +21,7 @@
         </tr>
       <% for (var i = 0; i < course.length; i++) { %>
          <tr>
-          <form role="form" method="post" action="/removeCourse">
+          <form role="form">
             <td name="course_name" id="course_name"><%= course[i].course_name %></td>
             <td name="course_type" id="course_type"><%= course[i].type %></td>
             <td name="course_section" id="course_section"><%= course[i].sections %></td>

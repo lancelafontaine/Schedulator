@@ -201,8 +201,24 @@ var allUserInfo = JSON.parse(getJSON("student_record/"));
 var userInfo = allUserInfo.filter(function(i){return i.id === studentID ? true : false})[0];
 var tempStudentRecord = JSON.parse(getJSON("courses_completed/"+userInfo.id+"/")); //get the student record
 var studentRecord = tempStudentRecord.map(function(i){return i.course_id});
-// var pref = JSON.parse(getJSON('pref/'+userInfo.id+'/'));
-// console.log(pref);
+var tempPref = JSON.parse(getJSON('pref/'+userInfo.id+'/'));
+var defaultPref = [{
+  "semester":"winter",
+  "courseLoad":5,
+  "monday":false,
+  "tuesday":false,
+  "wednesday":false,
+  "thursday":false,
+  "friday":false,
+  "morning":false,
+  "afternoon":false,
+  "night":false,
+  "swg":false,
+  "loyola":false,
+  "online":false
+}];
+pref = tempPref.length === 0 ? defaultPref : tempPref;
+console.log(pref);
 
 // STUDENT RECORD LOGIC:
 
@@ -339,7 +355,7 @@ $('.student-record-available-course').click(function() {
   });
   updateSequence();
   generateSchedule();
-  //renderSchedule();
+  renderSchedule(finalSchedule);
 });
 
 
@@ -386,206 +402,210 @@ updateSequence();
 
 
 // // PREFERENCES LOGIC
-// 
-// var pref = {};
-// 
-// //hide the message block
-// $('#feedbackWindow').hide();
-// //Change color and add css class when clicked
-// $('.prefContent').click(function(){
-//     //summer only
-//     if($(this).attr('id')=='term1'){
-//         if($('#term2').hasClass('stayclicked')){
-//             $('#term2').removeClass('stayclicked');
-//             $('#term2').addClass('prefContent');
-//         }
-//         if($('#term3').hasClass('stayclicked')){
-//             $('#term3').removeClass('stayclicked');
-//             $('#term3').addClass('prefContent');
-//         }
-//     }
-//     //fall only
-//     if($(this).attr('id')=='term2'){
-//         if($('#term1').hasClass('stayclicked')){
-//             $('#term1').removeClass('stayclicked');
-//             $('#term1').addClass('prefContent');
-//         }
-//         if($('#term3').hasClass('stayclicked')){
-//             $('#term3').removeClass('stayclicked');
-//             $('#term3').addClass('prefContent');
-//         }
-//     }
-//     //winter only
-//     if($(this).attr('id')=='term3'){
-//         if($('#term2').hasClass('stayclicked')){
-//             $('#term2').removeClass('stayclicked');
-//             $('#term2').addClass('prefContent');
-//         }
-//         if($('#term1').hasClass('stayclicked')){
-//             $('#term1').removeClass('stayclicked');
-//             $('#term1').addClass('prefContent');
-//         }
-//     }
-//     //3 courses only
-//     if($(this).attr('id')=='load1'){
-//         if($('#load2').hasClass('stayclicked')){
-//             $('#load2').removeClass('stayclicked');
-//             $('#load2').addClass('prefContent');
-//         }
-//         if($('#load3').hasClass('stayclicked')){
-//             $('#load3').removeClass('stayclicked');
-//             $('#load3').addClass('prefContent');
-//         }
-//         if($('#load4').hasClass('stayclicked')){
-//             $('#load4').removeClass('stayclicked');
-//             $('#load4').addClass('prefContent');
-//         }
-//     }
-//     //4 courses only
-//     if($(this).attr('id')=='load2'){
-//         if($('#load1').hasClass('stayclicked')){
-//             $('#load1').removeClass('stayclicked');
-//             $('#load1').addClass('prefContent');
-//         }
-//         if($('#load3').hasClass('stayclicked')){
-//             $('#load3').removeClass('stayclicked');
-//             $('#load3').addClass('prefContent');
-//         }
-//         if($('#load4').hasClass('stayclicked')){
-//             $('#load4').removeClass('stayclicked');
-//             $('#load4').addClass('prefContent');
-//         }
-//     }
-//     //5 courses only
-//     if($(this).attr('id')=='load3'){
-//         if($('#load2').hasClass('stayclicked')){
-//             $('#load2').removeClass('stayclicked');
-//             $('#load2').addClass('prefContent');
-//         }
-//         if($('#load1').hasClass('stayclicked')){
-//             $('#load1').removeClass('stayclicked');
-//             $('#load1').addClass('prefContent');
-//         }
-//         if($('#load4').hasClass('stayclicked')){
-//             $('#load4').removeClass('stayclicked');
-//             $('#load4').addClass('prefContent');
-//         }
-//     }
-//     //6 courses only
-//     if($(this).attr('id')=='load4'){
-//         if($('#load2').hasClass('stayclicked')){
-//             $('#load2').removeClass('stayclicked');
-//             $('#load2').addClass('prefContent');
-//         }
-//         if($('#load3').hasClass('stayclicked')){
-//             $('#load3').removeClass('stayclicked');
-//             $('#load3').addClass('prefContent');
-//         }
-//         if($('#load1').hasClass('stayclicked')){
-//             $('#load1').removeClass('stayclicked');
-//             $('#load1').addClass('prefContent');
-//         }
-//     }
-//     //now good to go
-//     if ($(this).hasClass('prefContent')){
-// 		$(this).removeClass('prefContent');
-// 		$(this).addClass('stayclicked');
-// 	}
-// 	else{
-// 		$(this).removeClass('stayclicked');
-// 		$(this).addClass('prefContent');
-// 	}
-// });
-// //Submit JSON object to backend
-// $("#subRef").click(function(){
-//     //set semester
-//     var term = "";
-//     $('#showTerm td').each(function(){
-//         if($(this).hasClass('stayclicked')){
-//             term = $(this).text();
-//         }
-//     })
-//     //set course load
-//     var cl = "";
-//     $('#courseLoad td').each(function(){
-//         if($(this).hasClass('stayclicked')){
-//             cl = $(this).text().substring(0,1); //get number only
-//         }
-//     })
-//     //set days
-//     var days = "";
-//     $('#prefDays td').each(function(){
-//         if($(this).hasClass('stayclicked')){
-//             days += ($(this).text() + " "); 
-//         }
-//     });
-//     //set time
-//     var time = "";
-//     $('#prefTime td').each(function(){
-//         if($(this).hasClass('stayclicked')){
-//             time += ($(this).text() + " ");
-//         }
-//     });
-//     //set location
-//     var location = "";
-//     $('#prefLocation td').each(function(){
-//         if($(this).hasClass('stayclicked')){
-//             location += ($(this).text() + " ");
-//         }
-//     });
-//     //check if semester is not seleted
-//     if (term == ""){
-//         $('#feedbackWindow p').text("Please select a semester");
-//         $('#feedbackWindow').show(200);
-//         exit();
-//     }
-//         
-//     //JSON final set
-//     pref.semester = term;
-//     pref.courseLoad = cl;
-//     pref.monday = (days.match(/MONDAY/) ? true : false);
-//     pref.tuesday = (days.match(/TUESDAY/) ? true : false);
-//     pref.wednesday = (days.match(/WEDNESDAY/) ? true : false);
-//     pref.thursday = (days.match(/THURSDAY/) ? true : false);
-//     pref.friday = (days.match(/FRIDAY/) ? true : false);
-//     pref.morning = (time.match(/MORNING/) ? true : false);
-//     pref.afternoon = (time.match(/AFTERNOON/) ? true : false);
-//     pref.night = (time.match(/NIGHT/) ? true : false);
-//     pref.swg = (location.match(/SWG/) ? true : false);
-//     pref.loyola = (location.match(/LOYOLA/) ? true : false);
-//     pref.online = (location.match(/ONLINE/) ? true : false);
-// 
-//      /**
-//      do something to submit the JSON file
-//      **/
-//      //Show message
-//      $('#subRef').fadeOut(500);
-//      $('#feedbackWindow').addClass('centeredText');
-//      $('#feedbackWindow').text("You have successfully changed the preference! Refreshing in 5 seconds.");
-//      $('#feedbackWindow').show(1500, "swing");
-//      setInterval('window.location.reload()', 5000);
-// });
+
+//hide the message block
+$('#feedbackWindow').hide();
+//Change color and add css class when clicked
+$('.prefContent').click(function(){
+    //summer only
+    if($(this).attr('id')=='term1'){
+        if($('#term2').hasClass('stayclicked')){
+            $('#term2').removeClass('stayclicked');
+            $('#term2').addClass('prefContent');
+        }
+        if($('#term3').hasClass('stayclicked')){
+            $('#term3').removeClass('stayclicked');
+            $('#term3').addClass('prefContent');
+        }
+    }
+    //fall only
+    if($(this).attr('id')=='term2'){
+        if($('#term1').hasClass('stayclicked')){
+            $('#term1').removeClass('stayclicked');
+            $('#term1').addClass('prefContent');
+        }
+        if($('#term3').hasClass('stayclicked')){
+            $('#term3').removeClass('stayclicked');
+            $('#term3').addClass('prefContent');
+        }
+    }
+    //winter only
+    if($(this).attr('id')=='term3'){
+        if($('#term2').hasClass('stayclicked')){
+            $('#term2').removeClass('stayclicked');
+            $('#term2').addClass('prefContent');
+        }
+        if($('#term1').hasClass('stayclicked')){
+            $('#term1').removeClass('stayclicked');
+            $('#term1').addClass('prefContent');
+        }
+    }
+    //3 courses only
+    if($(this).attr('id')=='load1'){
+        if($('#load2').hasClass('stayclicked')){
+            $('#load2').removeClass('stayclicked');
+            $('#load2').addClass('prefContent');
+        }
+        if($('#load3').hasClass('stayclicked')){
+            $('#load3').removeClass('stayclicked');
+            $('#load3').addClass('prefContent');
+        }
+        if($('#load4').hasClass('stayclicked')){
+            $('#load4').removeClass('stayclicked');
+            $('#load4').addClass('prefContent');
+        }
+    }
+    //4 courses only
+    if($(this).attr('id')=='load2'){
+        if($('#load1').hasClass('stayclicked')){
+            $('#load1').removeClass('stayclicked');
+            $('#load1').addClass('prefContent');
+        }
+        if($('#load3').hasClass('stayclicked')){
+            $('#load3').removeClass('stayclicked');
+            $('#load3').addClass('prefContent');
+        }
+        if($('#load4').hasClass('stayclicked')){
+            $('#load4').removeClass('stayclicked');
+            $('#load4').addClass('prefContent');
+        }
+    }
+    //5 courses only
+    if($(this).attr('id')=='load3'){
+        if($('#load2').hasClass('stayclicked')){
+            $('#load2').removeClass('stayclicked');
+            $('#load2').addClass('prefContent');
+        }
+        if($('#load1').hasClass('stayclicked')){
+            $('#load1').removeClass('stayclicked');
+            $('#load1').addClass('prefContent');
+        }
+        if($('#load4').hasClass('stayclicked')){
+            $('#load4').removeClass('stayclicked');
+            $('#load4').addClass('prefContent');
+        }
+    }
+    //6 courses only
+    if($(this).attr('id')=='load4'){
+        if($('#load2').hasClass('stayclicked')){
+            $('#load2').removeClass('stayclicked');
+            $('#load2').addClass('prefContent');
+        }
+        if($('#load3').hasClass('stayclicked')){
+            $('#load3').removeClass('stayclicked');
+            $('#load3').addClass('prefContent');
+        }
+        if($('#load1').hasClass('stayclicked')){
+            $('#load1').removeClass('stayclicked');
+            $('#load1').addClass('prefContent');
+        }
+    }
+    //now good to go
+    if ($(this).hasClass('prefContent')){
+		$(this).removeClass('prefContent');
+		$(this).addClass('stayclicked');
+	}
+	else{
+		$(this).removeClass('stayclicked');
+		$(this).addClass('prefContent');
+	}
+});
+//Submit JSON object to backend
+$("#subRef").click(function(){
+    //set semester
+    var term = "";
+    $('#showTerm td').each(function(){
+        if($(this).hasClass('stayclicked')){
+            term = $(this).text();
+        }
+    })
+    //set course load
+    var cl = "";
+    $('#courseLoad td').each(function(){
+        if($(this).hasClass('stayclicked')){
+            cl = $(this).text().substring(0,1); //get number only
+        }
+    })
+    //set days
+    var days = "";
+    $('#prefDays td').each(function(){
+        if($(this).hasClass('stayclicked')){
+            days += ($(this).text() + " ");
+        }
+    });
+    //set time
+    var time = "";
+    $('#prefTime td').each(function(){
+        if($(this).hasClass('stayclicked')){
+            time += ($(this).text() + " ");
+        }
+    });
+    //set location
+    var location = "";
+    $('#prefLocation td').each(function(){
+        if($(this).hasClass('stayclicked')){
+            location += ($(this).text() + " ");
+        }
+    });
+    //check if semester is not seleted
+    if (term == ""){
+        $('#feedbackWindow p').text("Please select a semester");
+        $('#feedbackWindow').show(200);
+        exit();
+    }
+        
+    //JSON final set
+    pref.semester = term;
+    pref.courseLoad = cl;
+    pref.monday = (days.match(/MONDAY/) ? true : false);
+    pref.tuesday = (days.match(/TUESDAY/) ? true : false);
+    pref.wednesday = (days.match(/WEDNESDAY/) ? true : false);
+    pref.thursday = (days.match(/THURSDAY/) ? true : false);
+    pref.friday = (days.match(/FRIDAY/) ? true : false);
+    pref.morning = (time.match(/MORNING/) ? true : false);
+    pref.afternoon = (time.match(/AFTERNOON/) ? true : false);
+    pref.night = (time.match(/NIGHT/) ? true : false);
+    pref.swg = (location.match(/SWG/) ? true : false);
+    pref.loyola = (location.match(/LOYOLA/) ? true : false);
+    pref.online = (location.match(/ONLINE/) ? true : false);
 
 
-var pref = {
-  "semester":"fall",
+    var prefString = '['+[JSON.stringify({
+  "semester":"winter",
   "courseLoad":5,
-  "monday":true,
+  "monday":false,
   "tuesday":false,
   "wednesday":false,
-  "thursday":true,
-  "friday":true,
+  "thursday":false,
+  "friday":false,
   "morning":false,
-  "afternoon":true,
+  "afternoon":false,
   "night":false,
-  "swg":true,
+  "swg":false,
   "loyola":false,
   "online":false
-}
+})].toString() + ']';
 
+    $.ajax({
+      type: 'POST',
+      url: 'savepref/',
+      data: {
+        'student_id': userInfo.id,
+        'pref_json': encodeURI(prefString)
+      },
+      success: function () {
+        console.log('successfully saved pref to db');
+      },
+      async: false
+    });
 
-
-
+     //Show message
+     $('#subRef').fadeOut(500);
+     $('#feedbackWindow').addClass('centeredText');
+     $('#feedbackWindow').text("You have successfully changed the preference! Refreshing in 5 seconds.");
+     $('#feedbackWindow').show(1500, "swing");
+     setInterval('window.location.reload()', 5000);
+});
 
 
 
@@ -951,12 +971,18 @@ var renderSchedule = function(courseArray) {
             $('#' + j + '-box').html(c.course_name + '<br/>' + c.days + '<br/>' + c.start + ' - ' + c.end + '<br/>' + c.type + ' - ' + c.sections + '<br/>' + c.room);
         });
         // Add courses to information box
-        $('#course-info-list').append('<div class="course"><button class="btn btn-danger btn-sm course-remove"><i class="fa fa-times"></i></button><h3>' + c.course_name + '</h3>' + c.days + ' from ' + c.start + ' to ' + c.end + '<br/>' + c.type + ' - ' + c.sections + ' - ' + c.room + '</div>');
+        $('#course-info-list').append('<div class="course"><h3>' + c.course_name + '</h3>' + c.days + ' from ' + c.start + ' to ' + c.end + '<br/>' + c.type + ' - ' + c.sections + ' - ' + c.room + '</div>');
     }
 };
 
 renderSchedule(finalSchedule)
 console.log(finalSchedule)
+
+$('.modal-coming-soon').click(function(i){
+  alert('Feature coming soon!')
+});
+
+
 
 
 // on page load, need to fetch student record, preferences, schedule

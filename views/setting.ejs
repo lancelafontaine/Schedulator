@@ -76,13 +76,13 @@
             <div id="settings-content-wrapper" style="width: 85%">
                 <div id="schedule-container" class="containerq">
                     <div id="schedule-container" class="container">
-                        <h1 class="col-md-12 prefTitle">Schedule</h1>
-                        <div class="row" style = "margin-left: 5%; margin-top: 10%">
+                        <h1>Schedule</h1>
+                        <div class="row">
                             <div id="course-info-box" class="col-md-6">
                                 <div id="course-info-list"></div>
                                 <input id="add-course-input" type="text" class="form-control" placeholder="Search for a Course">
-                                <button class="btn btn-info"><i class="fa fa-plus">&nbsp;Add A Course</i></button>
-                                <button class="btn btn-success"><i class="fa fa-check"></i>&nbsp;OK!</button>
+                                <button class="btn btn-info modal-coming-soon"><i class="fa fa-plus">&nbsp;Add A Course</i></button>
+                                <button class="btn btn-danger modal-coming-soon"><i class="fa fa-times"></i>&nbsp;Remove A Course</button>
                             </div>
                             <div id="calendar-container" class="col-md-6">
                                 <table>
@@ -596,24 +596,648 @@
                     </div>
                 </div>
                 <div id="sequence-container" class="containerq">
-                    <h1 class="col-md-12 prefTitle">Sequence</h1>
+                    <h1 style="margin-left: 5%;margin-bottom: 2.5%;">Sequence</h1>
                     <% include ./courseprereq %>
                 </div>
-            
+               <!--     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Year 1
+        </a>
+      </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <th style="text-align: center;" colspan="3">year 1 - Fall</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%"><b>Course Number</b></th>
+                                                <th width="60%"><b>Course Name</b></th>
+                                                <th style="text-align: left;"><b>Credit</b></th>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>Comp 232</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Mathematics for Computer Science</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>COMP 248</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Object-Oriented Programming I</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>ENGR 201</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Professional Practice and Responsibility</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>1.5</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>ENGR 213</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Applied Ordinary Differential Equations</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>General Educative Elective
+                                                        <br>
+                                                    </p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <th style="text-align: center;" colspan="3"> Year 1 - Winter </th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p><b>Course Number</b></p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Course Name</b></p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Credit</b></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>COMP 249</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Object-Oriented Programming II</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>ENGR 233</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Applied Advanced Calculus</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 228</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>System Harware</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>4</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 287</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Introduction to Web Applications</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>Basic Science</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Year 2
+        </a>
+      </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <th style="text-align: center;" colspan="3">year 2 - Fall</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%"><b>Course Number</b></th>
+                                                <th width="60%"><b>Course Name</b></th>
+                                                <th style="text-align: left;"><b>Credit</b></th>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>COMP 348</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Principles of Programming Languages</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>COMP 352</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Data Structures and aLgortihms</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>ENCS 282</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Technical Writing and Communication</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>ENGR 202</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Sustainable Development and Environmental Stewardshi[</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>1.5</p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>Basic Science</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <th style="text-align: center;" colspan="3"> Year 2 - Winter </th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p><b>Course Number</b></p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Course Name</b></p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Credit</b></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>COMP 346</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Operating Systems</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>4</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>ELEC 275</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Principles of Electrical Engineering</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3.5</p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>ENGR 371</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Probability and Statistics in Engineering</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 331</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Introduction to Formal Methods for Software Engineering</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 341 </p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Software Process</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Year 3
+        </a>
+      </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <th style="text-align: center;" colspan="3">year 3 - Fall</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%"><b>Course Number</b></th>
+                                                <th width="60%"><b>Course Name</b></th>
+                                                <th style="text-align: left;"><b>Credit</b></th>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>COMP 335</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Introduction to Theoretical Computer Science</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 342</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Software Requirements and Specifications</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 343</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Software Architecture and Design I</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 384</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p></p>Management Measurement and Quality Control</td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p> ENGR 391</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Numerical Methods in Enginerring</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <th style="text-align: center;" colspan="3"> Year 3 - Winter </th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p><b>Course Number</b></p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Course Name</b></p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Credit</b></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 344</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Software Architecture and Design II</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 345</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Software Testing, Verification and Quality Assurance</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 357</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>User Interface Design</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 390</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Software Engineering Team Design Project</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3.5</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>Elective</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Year 4
+        </a>
+      </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                <div class="panel-body">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <th style="text-align: center;" colspan="3">year 4 - Fall</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%"><b>Course Number</b></th>
+                                                <th width="60%"><b>Course Name</b></th>
+                                                <th style="text-align: left;"><b>Credit</b></th>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 490</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Capstone Software Engineerin Design Project</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>4</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>ENGR 301</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Engineering Management Principles and Economics</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 321</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Information Systems Security</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>Technical Elective</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>Technical Elective</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <th style="text-align: center;" colspan="3"> Year 4 - Winter </th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p><b>Course Number</b></p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Course Name</b></p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Credit</b></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 385</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Control System</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 392</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Impact of Technology on Society</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3</p>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 490</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Capstone Software Engineering Design Project</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>(4)</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>SOEN 390</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>Software Engineering Team Design Project</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>3.5</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="21%" valign="top">
+                                                    <p>Elective</p>
+                                                </td>
+                                                <td width="66%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                                <td width="10%" valign="top">
+                                                    <p>&nbsp;</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Elective</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div> -->
                 <div id="student-record-container" class="containerq">
-                    <h1 class="col-md-12 prefTitle">Student Record</h1>
-
-
-                 
-                    
-                    <div id="student-record-input-div" class="input-group" style="
-    margin-left: 14%;
-    margin-bottom: 2%;
-">
+                    <h1>Student Record</h1>
+                    <div id="student-record-input-div" class="input-group">
                       Type in the box to filter through available courses. Click on the course to add it to your Student Record.
                     <input id="student-record-input" class="form-control" type="text" placeholder="Enter a Course ID"/>
                     </div>
-                    <ul id="student-record-available-course-list" style ="margin-left: 18%">
+                    <ul id="student-record-available-course-list">
                       <span>AVAILABLE COURSES</span>
                     </ul>
                     <ul id="student-record-taken-course-list">
@@ -626,8 +1250,8 @@
                     <% include ./pref %>
                 </div>
                 <div id="profile-container" class="containerq">
-                    <h1 class="col-md-12 prefTitle" style = "margin-top: -8%;">Your Student Profile</h1>
-                    <div id="profile-window" style = "margin-top: 11%; margin-left: 16%;">
+                    <div id="profile-header">Your Student Profile</div>
+                    <div id="profile-window">
                         <div class="form-group">
                             <button type="button" class="btn btn-default">
                                 <i class="fa fa-pencil"></i>
@@ -645,7 +1269,7 @@
                         <div class="form-group">
                             <label for="usr">Student ID:</label>
                             <div id="profile-password-input"class="input-group">
-                                <input id="profile-password-input" type="text" class="form-control" disabled placeholder = <%= user.username %>>
+                                <input id="profile-password-input" type="text" class="form-control" disabled>
                             </div>
                         </div>
                     </div>

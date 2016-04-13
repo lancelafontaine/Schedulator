@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
    <body><% if ( !user) {%>
-      <a href="/register">Register</a>
       <% include ./login %>
    <% } if(user) {%>
       <% include ./setting %>

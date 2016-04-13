@@ -379,7 +379,6 @@ for (key in courseSet) {
 
 
 var renderUI = function (array){
-  // render courses in completed list that are already in student record
   // remove them from available courses list
   array.map(function(i){
     var id = '#student-record-'+i.replace(' ','');
@@ -394,7 +393,6 @@ var renderUI = function (array){
   });
   $('#student-record-taken-courses').html(htmlString);
 }
-console.log(studentRecord)
 // render courses in completed list that are already in student record
 renderUI(studentRecord);
 
@@ -457,91 +455,56 @@ $('.student-record-available-course').click(function() {
     console.log('there was an error finding the course...')
   }
   });
+  updateSequence();
+  //updateScheduleCourse();
 });
 
 
 
 
 
-// //The function to fetch JSON from db
-// function getJSON(yourUrl){
-//     var Httpreq = new XMLHttpRequest(); // a new request
-//     Httpreq.open("GET",yourUrl,false);
-//     Httpreq.send(null);
-//     return Httpreq.responseText;
-// }
-// /*************************************************************************************************************
-// **************************************************Variables***************************************************
-// *************************************************************************************************************/
-// var finalSchedule = []; //should store the final schedule
-// var pref = {};          //should store the preference
-// var prereqInfo = JSON.parse(getJSON("http://localhost:3000/prereq")); //get the course list with prereq
-// var scheduleInfo = JSON.parse(getJSON("http://localhost:3000/courses")); //get the course list with detail info
-// var finalSequence = JSON.parse(getJSON("http://localhost:3000/sequence")); //get the sequence with boolean "taken"
-// var studentRecord = JSON.parse(getJSON("http://localhost:3000/courses_completed/1111")); //get the student record 
-// 
-// /*************************************************************************************************************
-// ****************************************************Methods***************************************************
-// *************************************************************************************************************/
-// //Main algorithm to 
-// //1) get the student record from database, modify it by adding the missing prereqs, and then save back to database 
-// //2) change the boolean "taken" based on the student record
-// //3) generate the schedule based on all information
-// function main(){
-//   for (var i = 0; i < studentRecord.length; i++){
-//     findPreAdd(studentRecord[i].course_name);                   // 1) modify student record
-//   }
-//   //do something here to save the new student record            // 1) save to database
-//   modifySequence();                                             // 2) change the sequence's booleans
-//   generateSchedule();                                           // 3) generate the schedule
-// }
-// 
-// //1) find the missing prereqs and add them to student record
-// function findPreAdd(course){
-//   for (var i = 0; i < prereqInfo.length; i++){
-//     if (prereqInfo[i].course_name == course){
-//       if (prereqInfo[i].prequisites){
-//         var preArray = prereqInfo[i].prequisites.split(', ');
-//         for (var j = 0; j < preArray.length; j++){
-//           findPreAdd(preArray[j]);
-//           if (checkRep(preArray[j])==false){
-//             studentRecord.push(preArray[j]);
-//           }
-//         }
-//       }
-//       else{
-//         if (checkRep(course)==false){
-//           studentRecord.push(course);
-//         }
-//       }
-//     }
-//   }
-// }
-// 
-// // 1-a) Check if there is any replication
-// function checkRep(course){
-//   var rep = false;
-//   for (var i = 0; i < studentRecord.length; i++){
-//     if (studentRecord[i] == course){
-//       rep = true;
-//       break;
-//     }
-//   }
-//   return rep;
-// }
-// 
-// // 2) Change the boolean of the sequence based on the new student record
-// function modifySequence(){
-//   for (var i = 0; i < studentRecord.length; i++){
-//     for (var j = 0; j < finalSequence.length; j++){
-//       if (studentRecord[i] == finalSequence[j].course_name){
-//         finalSequence[j].taken = true;
-//       }
-//     }
-//   }
-// }
-// 
-// 
+
+
+// SEQUENCE LOGIC
+
+
+
+var updateSequence = function(){
+  // Adds ID's to the font-awesome tags so they can be changed later
+    $('.sequence-row').each(function(i){
+      var sequenceCourseName = $(this).find('.sequence-course-name').text().replace(/\s/g,'');
+      $(this).find('.sequence-changeable').attr('id', 'sequence-'+sequenceCourseName);
+    });
+
+  // Make sure that all of the tags are red first
+  $('.sequence-changeable').attr('style', 'color: red;')
+
+  // Change the boolean of the final sequence based on the new student record
+  for (var i = 0; i < studentRecord.length; i++){
+    for (var j = 0; j < finalSequence.length; j++){
+      if (studentRecord[i] == finalSequence[j].course_name){
+        finalSequence[j].taken = true;
+      }
+    }
+  }
+
+  // All taken courses should be make green instead and should have a check instead.
+  finalSequence.map(function(i){
+    if(i.taken === true) {
+      var sequenceId = '#sequence-'+i.course_name.replace(/\s/g,'');
+      $(sequenceId).attr('style','color:green;').removeClass('fa-times-circle').addClass('fa-check-circle')
+    }
+  });
+
+}
+
+updateSequence();
+
+
+
+
+
+
 // // 3) Generate the schedule
 // function generateSchedule(){
 //   // 3-1) Generate an array of valid courses for this semester
@@ -559,7 +522,7 @@ $('.student-record-available-course').click(function() {
 //   // This requires timeValidation();
 //   finalSchedule = available;
 // }
-// 
+
 // // 3-1-a) Check prereqs and semester availability
 // function courseValidation(course){
 //   var valid = true;

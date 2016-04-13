@@ -4,8 +4,11 @@ var Login_info = require('../models/login');
 var student_record = require('../models/student_record');
 var courses_completed = require('../models/courses_completed');
 var course = require('../models/course');
+var admincourse = require('../models/admincourse');
 var courseprereq = require('../models/courseprereq')
 var prereq = require('../models/prerequisite');
+var pref = require('../models/pref');
+var schedule = require('../models/schedule');
 var router = express.Router();
 
 
@@ -16,10 +19,10 @@ router.get('/', function (req, res) {
             courses_completed.find({ student_id : req.session.passport.user }).exec(function (err, user){
               //Check if user is an admin
               if (req.session.passport.user == "12345678") {
-                  course.find({}).exec(function(err, courses) {
+                  admincourse.find({}).exec(function(err, admincourses) {
                       res.render('admin', {
                           user: req.user,
-                          course: courses
+                          course: admincourses
                       });
                   })
               } else {
@@ -34,6 +37,19 @@ router.get('/', function (req, res) {
               }
             });
     })
+});
+
+router.delete('/removeadmincourse', function (req, res){
+  admincourse.remove({
+    course_name: req.body.courseName,
+    sections: req.body.section
+  }, function(err, course) {
+      if(err)
+        res.send(err);
+
+      res.json({ message: "successfully removed"});
+      res.redirect('/removeCourse');
+  });
 });
 
 router.get('/courses',function (req,res){
@@ -143,6 +159,50 @@ router.put('/student_record/last_name/:studentid', function (req, res) {
     });
 });
 
+router.post('/savepref',function (req, res) {
+        
+        var p = new pref();
+        p.student_id = req.body.student_id;
+        p.pref_json = req.body.pref_json;
+
+        p.save(function(err) {
+            if(err)
+                res.send(err);
+            res.json({message: 'preferences saved successfully'});
+        });
+});
+
+router.get('/pref/:studentid',function (req,res){
+
+    pref.find({ student_id: req.params.studentid }, function (err, prefs){
+
+        res.json(prefs);
+
+    });
+});
+
+router.post('/saveschedule',function (req, res) {
+        
+        var sch = new schedule();
+        sch.student_id = req.body.student_id;
+        sch.schedule_json = req.body.schedule_json;
+
+        sch.save(function(err) {
+            if(err)
+                res.send(err);
+            res.json({message: 'schedule saved successfully'});
+        });
+});
+
+router.get('/schedule/:studentid',function (req,res){
+
+    schedule.find({ student_id: req.params.studentid }, function (err, schedules){
+
+        res.json(schedules);
+
+    });
+});
+
 
 router.get('/prereq', function (req, res){
     prereq.find({}).exec(function (err, prereqs){
@@ -182,7 +242,7 @@ router.post('/register', function(req, res, next) {
 
 
 router.get('/login', function(req, res) {
-    res.render('login', { user : req.user, message : req.flash('error')});
+    res.render('index', { user : req.user, message : req.flash('error')});
 });
 
 router.get('/failedLogin', function(req,res) {
@@ -208,7 +268,7 @@ router.get('/logout', function(req, res, next) {
     });
 });
 
-router.get('/student_record', function(req, res) {
+router.get('/student_record', function (req, res) {
     student_record.find({}, function (err, docs) {
         res.json(docs);
     });

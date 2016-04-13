@@ -46,6 +46,7 @@ router.delete('/removeadmincourse', function (req, res){
         res.send(err);
 
       res.json({ message: "successfully removed"});
+	  res.redirect('/removeCourse');
   });
 });
 

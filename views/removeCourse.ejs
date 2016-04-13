@@ -1,4 +1,10 @@
   <h1>Remove Course</h1> <br/>
+  
+		<form style="border:2px solid black; padding:5px;" role="form" method="delete" action="/removeadmincourse">
+			Course name: <input type="text" id="cName" name="courseName"/><br>
+			Course section: <input type="text" id="cSection" name="section"/><br>
+			<button type="submit" id="remove">Remove</button>
+		</form><br><br>
 			  <table border=1>
 
 				<tr>
@@ -24,7 +30,7 @@
             <td name="course_room" id="course_room"><%= course[i].room %></td>
             <td name="course_semester" id="course_semester"><%= course[i].semester %></td>
             <td><button type="submit" id="remove" onclick="DeleteRowFunction(this);"> Remove Course </button> </td>
-           <form>
+           </form>
           </tr>    
  			<% } %>
 			</table>
@@ -36,6 +42,5 @@
     		 var p=o.parentNode.parentNode;
         	 p.parentNode.removeChild(p);
    			 }
-
-
+	
    			</script>

@@ -201,8 +201,9 @@ var allUserInfo = JSON.parse(getJSON("student_record/"));
 var userInfo = allUserInfo.filter(function(i){return i.id === studentID ? true : false})[0];
 var tempStudentRecord = JSON.parse(getJSON("courses_completed/"+userInfo.id+"/")); //get the student record
 var studentRecord = tempStudentRecord.map(function(i){return i.course_id});
-var tempPref = JSON.parse(getJSON('pref/'+userInfo.id+'/'));
-var defaultPref = [{
+var tempPref = JSON.parse(JSON.parse(getJSON('pref/'+userInfo.id+'/'))[0].pref_json)[0];
+console.log(tempPref)
+var defaultPref = {
   "semester":"winter",
   "courseLoad":5,
   "monday":false,
@@ -216,7 +217,7 @@ var defaultPref = [{
   "swg":false,
   "loyola":false,
   "online":false
-}];
+};
 pref = tempPref.length === 0 ? defaultPref : tempPref;
 console.log(pref);
 
@@ -578,8 +579,8 @@ $("#subRef").click(function(){
   "wednesday":false,
   "thursday":false,
   "friday":false,
-  "morning":false,
-  "afternoon":false,
+  "morning":true,
+  "afternoon":true,
   "night":false,
   "swg":false,
   "loyola":false,
@@ -589,9 +590,10 @@ $("#subRef").click(function(){
     $.ajax({
       type: 'POST',
       url: 'savepref/',
+      contentType:"application/x-www-form-urlencoded; charset=utf-8",
       data: {
         'student_id': userInfo.id,
-        'pref_json': encodeURI(prefString)
+        'pref_json': prefString
       },
       success: function () {
         console.log('successfully saved pref to db');
@@ -649,7 +651,7 @@ function generateSchedule(){
       }
     }
   }
-  // 3-2-a) To make things simple, I put the first combination of the first course of the list to schedule 
+  // 3-2-a) To make things simple, I put the first combination of the first course of the list to schedule
   var scheduleSets = [];
   for (var x = 0; x < available[0].length; x++){
     if (finalSchedule.length==0 && available.length!=0){

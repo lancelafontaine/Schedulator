@@ -1,4 +1,4 @@
-<table class='table table-bordered' style="
+<table class='table table-bordered' id="sequence-table"style="
     
     width: 90%;
     margin-left: 5%;
@@ -11,11 +11,11 @@
                         </tr>
 
                         <% for (var i = 0; i < courseprereq_info.length; i++) { %> 
-                        <tr>
-                            <td> <%= courseprereq_info[i].course_name %> </td>
+                        <tr class="sequence-row">
+                            <td class="sequence-course-name"> <%= courseprereq_info[i].course_name %> </td>
                             <td> <%= courseprereq_info[i].course_description %> </td>
                             <td> <%= courseprereq_info[i].credits %> </td>
-                            <td> <i class="fa fa-times-circle" style="color:red;"></i></i> </td>
+                            <td> <i class="fa fa-times-circle sequence-changeable" style="color:red;"></i></i> </td>
 
                         </tr>
                         <% } %>

@@ -1,24 +1,24 @@
-  <h1>Remove Course</h1> <br/>
+<h1>Remove Course</h1> <br/>
   
-		<form style="border:2px solid black; padding:10px; border-radius: 25px;" role="form" method="post" action="/removeadmincourse">
-			<p>Course name: <input type="text" id="cName" name="courseName"/></p><br>
-			<p>Course section: <input type="text" id="cSection" name="section"/></p><br>
-			<button type="submit" id="remove">Remove</button>
-		</form><br><br>
-			  <table border=1>
+    <form style="border:2px solid black; padding:5px;" role="form" method="delete" action="/removeadmincourse">
+      Course name: <input type="text" id="cName" name="courseName"/><br>
+      Course section: <input type="text" id="cSection" name="section"/><br>
+      <button type="submit" id="remove">Remove</button>
+    </form><br><br>
+        <table border=1>
 
-				<tr>
-					<th>Name</th>
-					<th>Type</th>
-					<th>Section</th>
-					<th>Days</th>
-					<th>Start time</th>
-					<th>End time</th>
-					<th>Room</th>
-					<th>Semester</th>
-					<th>Remove</th>
-				</tr>
-			<% for (var i = 0; i < course.length; i++) { %>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Section</th>
+          <th>Days</th>
+          <th>Start time</th>
+          <th>End time</th>
+          <th>Room</th>
+          <th>Semester</th>
+          <th>Remove</th>
+        </tr>
+      <% for (var i = 0; i < course.length; i++) { %>
          <tr>
           <form role="form" method="post" action="/removeCourse">
             <td name="course_name" id="course_name"><%= course[i].course_name %></td>
@@ -32,15 +32,15 @@
             <td><button type="submit" id="remove" onclick="DeleteRowFunction(this);"> Remove Course </button> </td>
            </form>
           </tr>    
- 			<% } %>
-			</table>
+      <% } %>
+      </table>
             </div>
 
             <script>
 
-    		function DeleteRowFunction(o) {
-    		 var p=o.parentNode.parentNode;
-        	 p.parentNode.removeChild(p);
-   			 }
-	
-   			</script>
+        function DeleteRowFunction(o) {
+         var p=o.parentNode.parentNode;
+           p.parentNode.removeChild(p);
+         }
+  
+        </script>

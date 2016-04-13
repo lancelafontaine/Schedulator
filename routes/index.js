@@ -37,7 +37,7 @@ router.get('/', function (req, res) {
     })
 });
 
-router.post('/removeadmincourse', function (req, res){
+router.delete('/removeadmincourse', function (req, res){
   admincourse.remove({
     course_name: req.body.courseName,
     sections: req.body.section
@@ -46,7 +46,7 @@ router.post('/removeadmincourse', function (req, res){
         res.send(err);
 
       res.json({ message: "successfully removed"});
-	  res.redirect('/removeCourse');
+      res.redirect('/removeCourse');
   });
 });
 
@@ -165,7 +165,7 @@ router.get('/prereq', function (req, res){
  });
 
 router.get('/sequence', function (req, res) {
-    courseprereq.find({}).exec(function (err, coursep) {
+    courseprereq.find({}).sort({order: 1}).exec(function (err, coursep) {
       res.json(coursep); 
     })
 })
@@ -196,7 +196,7 @@ router.post('/register', function(req, res, next) {
 
 
 router.get('/login', function(req, res) {
-    res.render('login', { user : req.user, message : req.flash('error')});
+    res.render('index', { user : req.user, message : req.flash('error')});
 });
 
 router.get('/failedLogin', function(req,res) {
@@ -222,7 +222,7 @@ router.get('/logout', function(req, res, next) {
     });
 });
 
-router.get('/student_record', function(req, res) {
+router.get('/student_record', function (req, res) {
     student_record.find({}, function (err, docs) {
         res.json(docs);
     });

@@ -268,11 +268,3 @@ td {
 #profile-password-input {
   width: 100%;
 }
-
-.fa-times-circle, .fa-check-circle {
-  font-size: 15px;
-}
-
-#sequence-table th, #sequence-table td{
-  text-align: center;
-}

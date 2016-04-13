@@ -52,6 +52,21 @@ router.post('/removeadmincourse', function (req, res){
   });
 });
 
+router.post('/removecompletedcourse', function (req, res){
+  courses_completed.remove({
+    student_id: req.session.passport.user,
+    course_id: req.body.courseName
+
+  },function(err, course) {
+      if(err)
+        res.send(err);
+
+      //res.json({ message: "successfully removed"});
+      res.redirect('/');
+  });
+
+});
+
 router.get('/courses',function (req,res){
 
     course.find({ }, function (err, courses){

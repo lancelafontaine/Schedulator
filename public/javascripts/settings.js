@@ -201,8 +201,8 @@ var allUserInfo = JSON.parse(getJSON("student_record/"));
 var userInfo = allUserInfo.filter(function(i){return i.id === studentID ? true : false})[0];
 var tempStudentRecord = JSON.parse(getJSON("courses_completed/"+userInfo.id+"/")); //get the student record
 var studentRecord = tempStudentRecord.map(function(i){return i.course_id});
-var tempPref = JSON.parse(JSON.parse(getJSON('pref/'+userInfo.id+'/'))[0].pref_json)[0];
-console.log(tempPref)
+// var tempPref = JSON.parse(JSON.parse(getJSON('pref/'+userInfo.id+'/'))[0].pref_json)[0];
+// console.log(tempPref)
 var defaultPref = {
   "semester":"winter",
   "courseLoad":5,
@@ -218,7 +218,8 @@ var defaultPref = {
   "loyola":false,
   "online":false
 };
-pref = tempPref.length === 0 ? defaultPref : tempPref;
+pref = defaultPref;
+//pref = tempPref.length === 0 ? defaultPref : tempPref;
 console.log(pref);
 
 // STUDENT RECORD LOGIC:

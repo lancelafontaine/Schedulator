@@ -1,7 +1,7 @@
 .stayclicked {
-	background-color: steelblue;
+	background-color: steelblue !important;
 	color: white;
-    border: 1px solid steelblue;
+  border: 1px solid steelblue !important;
 }
 
 .prefTitle{

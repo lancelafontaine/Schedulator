@@ -51,20 +51,7 @@ router.post('/removeadmincourse', function (req, res){
       res.redirect('/');
   });
 });
-router.post('/removecompletedcourse', function (req, res){
-  courses_completed.remove({
-    student_id: req.session.passport.user,
-    course_id: req.body.courseName
 
-  },function(err, course) {
-      if(err)
-        res.send(err);
-
-      //res.json({ message: "successfully removed"});
-      res.redirect('/');
-  });
-
-});
 router.get('/courses',function (req,res){
 
     course.find({ }, function (err, courses){
@@ -137,8 +124,8 @@ router.post('/courses_completed',function (req, res) {
 });
 
 router.put('/student_record/first_name/:studentid', function (req, res) {
-    student_record.findOne(req.params.studentid, function(err, student) {
-
+    student_record.findOne({id: req.params.studentid}, function(err, student) {
+      console.log(student);
       if(err)
         res.send(err);
 
@@ -155,7 +142,7 @@ router.put('/student_record/first_name/:studentid', function (req, res) {
 });
 
 router.put('/student_record/last_name/:studentid', function (req, res) {
-    student_record.findOne(req.params.studentid, function(err, student) {
+    student_record.findOne( {id: req.params.studentid}, function(err, student) {
 
       if(err)
         res.send(err);
@@ -180,7 +167,7 @@ router.put('/updatepref/:studentid',function (req, res) {
             res.json({message: 'preferences saved successfully'});
         });*/
 
-        pref.update( {student_id: req.params.studentid}, {$set:{pref_json: req.body.pref_json}}, {multi: true}, function(err) {
+        pref.update( {student_id: req.params.studentid}, {$set:{pref_json: req.body.pref_json}}, {multi: true},function(err) {
             if(err)
                 res.send(err);
             res.json({message: 'preferences saved successfully'});

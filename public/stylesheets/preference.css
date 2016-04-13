@@ -18,12 +18,13 @@
 }
 
 .prefHead{
-	width: 40%;
+	width: 20%;
 	font-size: 20pt;
 	text-align: center;
     font-weight: 100;
 	background-color: rgba(38,50,56,0.9);
     color: white;
+  font-size: 16px;
 }
 
 .prefContent{

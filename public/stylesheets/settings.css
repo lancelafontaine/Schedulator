@@ -234,26 +234,30 @@ td {
 }
 #student-record-available-course-list, #student-record-taken-course-list {
   width: 350px;
-  border: 2px solid #37474F;
   padding: 20px;
-  border-radius: 10px;
+  background-color: rgba(38,50,56,0.9);
   text-align: center;
   font-size: 18px;
   list-style: none;
   max-height: 700px;
   overflow-y: auto;
-  margin-left: 100px;
 }
 
 #student-record-available-course-list {
   float: left;
 }
 
+#student-record-available-course-list span, #student-record-taken-course-list span {
+  color: white;
+}
+
 .student-record-course, .student-record-taken-course {
   border: 1px solid rgba(0,0,0,0.2);
   padding: 2px;
-  margin:2px;
-  border-radius: 10px;
+  color: indianred;
+  font-weight: bold;
+  font-size: 17px;
+  margin: 3px;
   background-color: white;
 }
 

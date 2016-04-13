@@ -288,7 +288,7 @@ var renderUI = function (array){
   //add them to taken courses list
   var htmlString = '';
   array.map(function(i){
-    var htmlLine = '<li class="student-record-taken-course">'+i.replace(' ','')+'</li>'
+    var htmlLine = '<li class="student-record-taken-course">'+i.trim()+'</li>'
     htmlString += htmlLine;
   });
   $('#student-record-taken-courses').html(htmlString);

@@ -233,16 +233,14 @@ td {
   margin: 3px 0;
 }
 #student-record-available-course-list, #student-record-taken-course-list {
-  width: 350px;
-  border: 2px solid #37474F;
+  width: 50%;
+  background-color: rgba(38,50,56,0.9);
   padding: 20px;
-  border-radius: 10px;
   text-align: center;
   font-size: 18px;
   list-style: none;
-  max-height: 700px;
+  height: 630px;
   overflow-y: auto;
-  margin-left: 100px;
 }
 
 #student-record-available-course-list {
@@ -252,21 +250,25 @@ td {
 .student-record-course, .student-record-taken-course {
   border: 1px solid rgba(0,0,0,0.2);
   padding: 2px;
-  margin:2px;
-  border-radius: 10px;
-  background-color: white;
+  background-color: white; 
+  margin: 3px;
+  font-size: 17px;
+  font-weight: bold;
+  color: indianred;
 }
 
 #student-record-input-div {
   width: 70%;
 }
 
-#student-record-taken-course-list {
-  margin-left: 500px;
-}
 
 #profile-password-input {
   width: 100%;
+}
+
+.sequenceCourse{
+    text-align: center;
+    font-size: 16px;
 }
 
 .fa-times-circle, .fa-check-circle {

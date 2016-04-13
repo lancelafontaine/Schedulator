@@ -1,21 +1,29 @@
-<table class='table table-bordered' id="sequence-table"style="
+
+<div class = "row">
+	<h1 class = "col-md-12 prefTitle">PREFERENCE SETTINGS</h1>
+</div>
+<div class = "row">
+<p class = "prefSub col-md-12">Modify your preference to get a better fit schedule</p>
+</div>
+
+<table class='table table-bordered' style="
     
     width: 90%;
-    margin-left: 5%;
+    margin: auto;
 ">
                         <tr>
-                            <th>Course Number</th>
-                            <th>Course Description</th>
-                            <th>Credits</th>
-                            <th>Taken</th>
+                            <th class = "prefHead">Course Number</th>
+                            <th class = "prefHead">Course Description</th>
+                            <th class = "prefHead">Credits</th>
+                            <th class = "prefHead">Taken</th>
                         </tr>
 
                         <% for (var i = 0; i < courseprereq_info.length; i++) { %> 
-                        <tr class="sequence-row">
-                            <td class="sequence-course-name"> <%= courseprereq_info[i].course_name %> </td>
-                            <td> <%= courseprereq_info[i].course_description %> </td>
-                            <td> <%= courseprereq_info[i].credits %> </td>
-                            <td> <i class="fa fa-times-circle sequence-changeable" style="color:red;"></i></i> </td>
+                        <tr>
+                            <td class = "sequenceCourse"> <%= courseprereq_info[i].course_name %> </td>
+                            <td class = "sequenceCourse"> <%= courseprereq_info[i].course_description %> </td>
+                            <td class = "sequenceCourse"> <%= courseprereq_info[i].credits %> </td>
+                            <td class = "sequenceCourse"> <i class="fa fa-times-circle" style="color:red;"></i></i> </td>
 
                         </tr>
                         <% } %>

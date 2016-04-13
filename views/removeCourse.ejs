@@ -1,12 +1,12 @@
 <h1>Remove Course</h1> <br/>
-    <form style="border:2px solid black; padding:5px;" role="form" method="post" action="/removeadmincourse">
+    <form class="remCourse" role="form" method="post" action="/removeadmincourse">
       Course name: <input type="text" id="cName" name="courseName"/><br>
       Course section: <input type="text" id="cSection" name="section"/><br>
-      <button type="submit" id="remove">Remove</button>
+      <button type="submit" id="remButton">Remove</button>
     </form><br><br>
 
       <div style="border:1px solid black;width:550px;height:350px;overflow:scroll;overflow-y:scroll;overflow-x:hidden;">
-        <table border=1>
+        <table border=1 >
 
         <tr>
           <th>Name</th>
@@ -17,20 +17,20 @@
           <th>End time</th>
           <th>Room</th>
           <th>Semester</th>
-          <th>Remove</th>
+    <!--      <th>Remove</th>  -->
         </tr>
       <% for (var i = 0; i < course.length; i++) { %>
          <tr>
           <form role="form">
-            <td name="course_name" id="course_name"><%= course[i].course_name %></td>
-            <td name="course_type" id="course_type"><%= course[i].type %></td>
-            <td name="course_section" id="course_section"><%= course[i].sections %></td>
-            <td name="course_days" id="course_days"><%= course[i].days %></td>
-            <td name="course_start_time id="course_start_time"><%= course[i].start %></td>
-            <td name="course_end_time id="course_end_time"><%= course[i].end %></td>
-            <td name="course_room" id="course_room"><%= course[i].room %></td>
-            <td name="course_semester" id="course_semester"><%= course[i].semester %></td>
-            <td><button type="submit" id="remove" onclick="DeleteRowFunction(this);"> Remove Course </button> </td>
+            <td class="tabEnt" name="course_name" id="course_name"><%= course[i].course_name %></td>
+            <td class="tabEnt" name="course_type" id="course_type"><%= course[i].type %></td>
+            <td class="tabEnt" name="course_section" id="course_section"><%= course[i].sections %></td>
+            <td class="tabEnt" name="course_days" id="course_days"><%= course[i].days %></td>
+            <td class="tabEnt" name="course_start_time id="course_start_time"><%= course[i].start %></td>
+            <td class="tabEnt" name="course_end_time id="course_end_time"><%= course[i].end %></td>
+            <td class="tabEnt" name="course_room" id="course_room"><%= course[i].room %></td>
+            <td class="tabEnt" name="course_semester" id="course_semester"><%= course[i].semester %></td>
+        <!--    <td><button type="submit" id="remove" onclick="DeleteRowFunction(this);"> Remove Course </button> </td> -->
            </form>
           </tr>    
       <% } %>

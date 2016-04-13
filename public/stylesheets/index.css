@@ -113,3 +113,29 @@ a.btn_red {color: #FFF;}
   letter-spacing: 2px;
 }
 
+.remCourse{
+	border:2px solid black; 
+	padding:8px;
+}
+
+#cName{
+	margin-left:30px; 
+	width:65%;
+}
+
+#cSection{
+	margin-left:18px; 
+	margin-top: 5px;
+	width:65%;
+}
+
+#remButton{
+	margin-left: 410px;
+	margin-top: 5px;
+}
+
+.tabEnt{
+	font-size: 18px;
+	padding: 2px;
+}
+

@@ -6,10 +6,6 @@ This is the repository that contains the code, documentation, issues and much mo
 
 Please visit the [Gitter public chat room](https://gitter.im/SOEN-341/soen-341-project) of this repository for more long-form discussion about the project.
 
-## Documentation
-
-[1. Getting Started](docs/getting-started/README.md)
-
 ## Team Members
 Lance Lafontaine - [lancelafontaine](https://github.com/lancelafontaine)<br />
 Jason Tsalikis - [jason10129](https://github.com/jason10129)<br />

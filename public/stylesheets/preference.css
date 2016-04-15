@@ -1,62 +1,55 @@
 .stayclicked {
-	background-color: steelblue !important;
-	color: white;
-  border: 1px solid steelblue !important;
-}
-
-.prefTitle{
-	text-align: center;
-	font-size: 50px;
-	color: indianred;
-	font-weight: bolder;
-}
-
-.prefSub{
-	text-align: center;
-	color: grey;
-	font-weight: bold;
-}
-
-.prefHead{
-	width: 20%;
-	font-size: 20pt;
-	text-align: center;
-    font-weight: 100;
-	background-color: rgba(38,50,56,0.9);
+    background-color: steelblue !important;
     color: white;
-  font-size: 16px;
+    border: 1px solid steelblue !important;
 }
-
-.prefContent{
-	background-color: rgba(176,168,162,0.2);
-	border-collapse: separate;
-    border: 1px solid rgba(176,168,162,0.2);
+.prefTitle {
+    text-align: center;
+    font-size: 50px;
+    color: indianred;
+    font-weight: bolder;
+}
+.prefSub {
+    text-align: center;
+    color: grey;
+    font-weight: bold;
+}
+.prefHead {
+    width: 20%;
+    font-size: 20pt;
+    text-align: center;
+    font-weight: 100;
+    background-color: rgba(38, 50, 56, 0.9);
+    color: white;
+    font-size: 16px;
+}
+.prefContent {
+    background-color: rgba(176, 168, 162, 0.2);
+    border-collapse: separate;
+    border: 1px solid rgba(176, 168, 162, 0.2);
     margin: auto;
 }
-
-.column-div{
+.column-div {
     margin: auto;
-	width: 100%;
-	margin-top: 40px;
+    width: 100%;
+    margin-top: 40px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: -10px;
     padding-right: 0px;
     border: 1px solid black;
 }
-
-.table-formal{
+.table-formal {
     min-width: 60px;
-	width: 80%;
-	height: 50px;
-	font-size: 15pt;
-	text-align: center;
-	margin: auto;
-	color: black;
+    width: 80%;
+    height: 50px;
+    font-size: 15pt;
+    text-align: center;
+    margin: auto;
+    color: black;
 }
-
 .refSubmit {
-	-webkit-border-radius: 4;
+    -webkit-border-radius: 4;
     -moz-border-radius: 4;
     border-radius: 4px;
     font-family: Arial;
@@ -66,29 +59,26 @@
     padding: 7px 40px 8px 40px;
     text-decoration: none;
 }
-
 .refSubmit:hover {
-	background: brown;
+    background: brown;
     text-decoration: none;
 }
-
-#page-loader{
+#page-loader {
     position: fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     bottom: 0;
     right: 0;
     background: #fff;
     z-index: 99999;
 }
-
-#page-loader .page-loader-gif{
+#page-loader .page-loader-gif {
     display: block;
-    width:64px;
-    height:64px;
+    width: 64px;
+    height: 64px;
     position: absolute;
-    top:50%;
-    left:50%;
-    margin:-32px 0 0 -32px;
-    background: url('../images/preloader.gif') no-repeat;  
+    top: 50%;
+    left: 50%;
+    margin: -32px 0 0 -32px;
+    background: url('../images/preloader.gif') no-repeat;
 }

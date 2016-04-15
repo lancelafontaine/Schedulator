@@ -1,53 +1,56 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <% include ./head %>
-<body onload= "redirect()">
-<div id="landing-wrapper">
-    <div id="container1">
-        <div id="imalogo">
-          <img src="images/logo2.gif" alt="logo_schedulator">
-        </div>
-        <div id="header1">
-          <p> BUTTERFLY </p>
-        </div>
-        <div id="header2">
-          <p> SOFTWARE ENGINEERING STUDENTS SCHEDULER. MONTREAL, CA </p>
-        </div><hr>
-    </div>
 
-    <div class="container">
-      <a id="modal_trigger" href="#modal" class="btn">Sign In</a>
-        <div id="modal" class="popupContainer" style="display:none;">
-            <header class="popupHeader">
-                <span class="header_title">Login</span>
-                <span class="modal_close"><i class="fa fa-times"></i></span>
-            </header>
-            <section class="popupBody">
-                <div class="social_login" >
-                    <div class="user_login">
-                        <form role = "form" method="post" action="/login" >
-                          <input type="text" name="username" id="username"placeholder="username" maxlength="8" required="true" style="width:100%;"/></br>
-                          <input type="password" name="password" id="password" placeholder="password" maxlength="30" required="true" style="width:100%;"/></br>
-                          <div class="one_half last">
-                            <div class="change_width">
-                              <input class="btn btn_red" type="submit" style="width:100%;">
-                            </div>
-                          </div>
-                        </form>
-                    </div>
+    <body onload="redirect()">
+        <div id="landing-wrapper">
+            <div id="container1">
+                <div id="imalogo">
+                    <img src="images/logo2.gif" alt="logo_schedulator">
                 </div>
-            </section>
+                <div id="header1">
+                    <p> BUTTERFLY </p>
+                </div>
+                <div id="header2">
+                    <p> SOFTWARE ENGINEERING STUDENTS SCHEDULER. MONTREAL, CA </p>
+                </div>
+                <hr>
+            </div>
+            <div class="container">
+                <a id="modal_trigger" href="#modal" class="btn">Sign In</a>
+                <div id="modal" class="popupContainer" style="display:none;">
+                    <header class="popupHeader">
+                        <span class="header_title">Login</span>
+                        <span class="modal_close"><i class="fa fa-times"></i></span>
+                    </header>
+                    <section class="popupBody">
+                        <div class="social_login">
+                            <div class="user_login">
+                                <form role="form" method="post" action="/login">
+                                    <input type="text" name="username" id="username" placeholder="username" maxlength="8" required="true" style="width:100%;" />
+                                    </br>
+                                    <input type="password" name="password" id="password" placeholder="password" maxlength="30" required="true" style="width:100%;" />
+                                    </br>
+                                    <div class="one_half last">
+                                        <div class="change_width">
+                                            <input class="btn btn_red" type="submit" style="width:100%;">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
-    </div>
-</div> 
- <script type="text/javascript" src="../javascripts/index.js"></script>
- <script>
- function redirect(){
-alert('Invalid password or username');
-window.location.href = "/login";
- }
- </script>
-</body>
+        <script type="text/javascript" src="../controllers/index.js"></script>
+        <script>
+            function redirect() {
+                alert('Invalid password or username');
+                window.location.href = "/login";
+            }
+        </script>
+    </body>
+
 </html>

@@ -1,10 +1,9 @@
 {
   "name": "Schedulator",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "test": "make test"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "^1.10.2",

@@ -9,6 +9,4 @@ var prerequisite = new Schema({
     corequisites: String
 });
 
-//login_infos is the collections name
-//we need to convert out our student_record Schema to a model
-module.exports = mongoose.model('prerequisite', prerequisite);  
+module.exports = mongoose.model('prerequisite', prerequisite);

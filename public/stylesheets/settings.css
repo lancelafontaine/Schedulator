@@ -1,282 +1,246 @@
-#landing-wrapper{
-overflow-y:hidden;
-overflow-x:hidden;
-background-image:url(../images/landpic6.jpg);
-background-attachment:fixed;
-background-position:center center;
-background-repeat:no-repeat;-webkit-background-size:cover;
--moz-background-size:cover;
--o-background-size:cover;
-background-size:cover;height:100%
+#landing-wrapper {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-image: url(../images/landpic6.jpg);
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%
 }
 #setting-header {
-  position: relative;
-  background-image:url("../images/landpic6.jpg");
-  background-position: bottom;
-  background-repeat:no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 60px;
-  font-size: 28px;
-  color: white;
+    position: relative;
+    background-image: url("../images/landpic6.jpg");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 60px;
+    font-size: 28px;
+    color: white;
 }
-
 #sidebar-collapse-div {
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 60px;
-  width: 60px;
-  border-right: 1px solid white;
-  z-index: 100;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 60px;
+    border-right: 1px solid white;
+    z-index: 100;
 }
-
 #sidebar-collapse {
-  position: absolute;
-  top: 17px;
-  left: 20px;
+    position: absolute;
+    top: 17px;
+    left: 20px;
 }
-
 .sidebar-collapse-bigger {
-  font-size: 35px !important;
-  top: 13px !important;
+    font-size: 35px !important;
+    top: 13px !important;
 }
-
 #header-text {
-  position: absolute;
-  top: 10px;
-  left: 95px;
+    position: absolute;
+    top: 10px;
+    left: 95px;
 }
-
 #sidebar {
-  width: 300px;
-  color: white;
-  overflow-y: auto;
-  background: #263238;
+    width: 300px;
+    color: white;
+    overflow-y: auto;
+    background: #263238;
 }
-
 #sidebar-userinfo {
-  background-color: #37474F;
-  width: inherit;
-  height: 100px;
+    background-color: #37474F;
+    width: inherit;
+    height: 100px;
 }
-
 #sidebar-bfly-logo {
-  position: relative;
-  top: 5px;
-  margin-top: 8px;
-  margin-left: 8px;
-  width: 75px;
-  height: 75px;
+    position: relative;
+    top: 5px;
+    margin-top: 8px;
+    margin-left: 8px;
+    width: 75px;
+    height: 75px;
 }
-
 #sidebar-username {
-  position: relative;
-  display: inline;
-  bottom: 82px;
-  padding-left: 80px;
-  width: 100%;
-  height: inherit;
-  display: table;
+    position: relative;
+    display: inline;
+    bottom: 82px;
+    padding-left: 80px;
+    width: 100%;
+    height: inherit;
+    display: table;
 }
-
 #sidebar-username div {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  padding-right: 20px;
-  font-size: 22px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding-right: 20px;
+    font-size: 22px;
 }
-
 #sidebar-links {
-  position: relative;
-  list-style-type: none;
-  list-style-position:inside;
-  margin:0 1px 0 0;
-  padding: 0;
-  font-size: 15px;
-  width: inherit;
+    position: relative;
+    list-style-type: none;
+    list-style-position: inside;
+    margin: 0 1px 0 0;
+    padding: 0;
+    font-size: 15px;
+    width: inherit;
 }
-
 #sidebar-links li {
-  padding: 20px 0;
-  border-top:1px solid #37474F;
+    padding: 20px 0;
+    border-top: 1px solid #37474F;
 }
-
 #sidebar-links li i {
-  padding-left: 10px;
+    padding-left: 10px;
 }
-
 .sidebar-separator span {
-  color: #546B79;
-  padding-left: 5px;
+    color: #546B79;
+    padding-left: 5px;
 }
-
-.sidebar-link a{
-  color: #A2B3B7;
+.sidebar-link a {
+    color: #A2B3B7;
 }
 .sidebar-link:hover {
-  background-color: #37474F;
+    background-color: #37474F;
 }
 .sidebar-link a:hover, .sidebar-link a:focus {
-  color: #A2B3B7;
-  text-decoration: none;
+    color: #A2B3B7;
+    text-decoration: none;
 }
-
 #sidebar-links i {
-  padding-right: 15px;
-  padding-left: 10px;
-  font-size: 20px;
+    padding-right: 15px;
+    padding-left: 10px;
+    font-size: 20px;
 }
-
 #settings-content-wrapper {
-  position: absolute;
-  top: 60px;
-  left: 300px;
-  overflow-y: auto;
-  min-height: 700px;
+    position: absolute;
+    top: 60px;
+    left: 300px;
+    overflow-y: auto;
+    min-height: 700px;
 }
-
-#schedule-container table{
-  background-color: white;
+#schedule-container table {
+    background-color: white;
 }
-
 td {
-  border: 1px solid black;
-  width: 60px;
-  height: 15px;
-  font-size: 10px;
+    border: 1px solid black;
+    width: 60px;
+    height: 15px;
+    font-size: 10px;
 }
 #calendar-container {
-  height: 700px;
+    height: 700px;
 }
-
 #calendar-container table {
-  margin: auto;
+    margin: auto;
 }
-
 #calendar-header {
-  text-align: center;
-  height: 15px;
+    text-align: center;
+    height: 15px;
 }
-
 #calendar-header td {
-  font-size: 10px !important;
-  font-weight: bold;
+    font-size: 10px !important;
+    font-weight: bold;
 }
-
 .course-box {
-  position: absolute;
-  width: 60px;
-  background-color: #37474F;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  font-size: 8.5px;
-  border: 1px solid grey;
+    position: absolute;
+    width: 60px;
+    background-color: #37474F;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 8.5px;
+    border: 1px solid grey;
 }
-
 #profile-window {
-  border: 2px solid #37474F;
-  padding: 25px;
-  width: 750px;
-  margin-top: 20px;
-  margin-left: 80px;
-  border-radius: 10px;
-  margin-bottom: 1000px;
+    border: 2px solid #37474F;
+    padding: 25px;
+    width: 750px;
+    margin-top: 20px;
+    margin-left: 80px;
+    border-radius: 10px;
+    margin-bottom: 1000px;
 }
-
 #profile-window input {
-  margin-top: 7px;
+    margin-top: 7px;
 }
-
 #profile-window label {
-  margin-left: 5px;
-  font-size: 20px;
+    margin-left: 5px;
+    font-size: 20px;
 }
-
 #profile-header {
-  margin-left: 320px;
-  font-size: 35px;
+    margin-left: 320px;
+    font-size: 35px;
 }
-
 #course-info-box {
-  width: 350px;
-  border: 2px solid #37474F;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 12px;
-  margin-bottom: 500px;
+    width: 350px;
+    border: 2px solid #37474F;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 500px;
 }
 #course-info-box h3 {
-  font-size: 18px;
-  padding: 2px;
-  margin:2px;
+    font-size: 18px;
+    padding: 2px;
+    margin: 2px;
 }
-
 .course {
-  border: 1px solid rgba(0,0,0,0.2);
-  padding: 2px;
-  margin:2px;
-  border-radius: 10px;
-  background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2px;
+    margin: 2px;
+    border-radius: 10px;
+    background-color: white;
 }
-
 .course-remove {
-  float: right;
+    float: right;
 }
-
 #add-course-input {
-  margin: 3px 0;
+    margin: 3px 0;
 }
 #student-record-available-course-list, #student-record-taken-course-list {
-  width: 350px;
-  padding: 20px;
-  background-color: rgba(38,50,56,0.9);
-  text-align: center;
-  font-size: 18px;
-  list-style: none;
-  max-height: 700px;
-  overflow-y: auto;
+    width: 350px;
+    padding: 20px;
+    background-color: rgba(38, 50, 56, 0.9);
+    text-align: center;
+    font-size: 18px;
+    list-style: none;
+    max-height: 700px;
+    overflow-y: auto;
 }
-
 #student-record-available-course-list {
-  float: left;
+    float: left;
 }
-
 #student-record-available-course-list span, #student-record-taken-course-list span {
-  color: white;
+    color: white;
 }
-
 .student-record-course, .student-record-taken-course {
-  border: 1px solid rgba(0,0,0,0.2);
-  padding: 2px;
-  color: indianred;
-  font-weight: bold;
-  font-size: 17px;
-  margin: 3px;
-  background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2px;
+    color: indianred;
+    font-weight: bold;
+    font-size: 17px;
+    margin: 3px;
+    background-color: white;
 }
-
 #student-record-input-div {
-  width: 70%;
+    width: 70%;
 }
-
 #student-record-taken-course-list {
-  margin-left: 500px;
+    margin-left: 500px;
 }
-
 #profile-password-input {
-  width: 100%;
+    width: 100%;
 }
-
 .fa-times-circle, .fa-check-circle {
-  font-size: 15px;
+    font-size: 15px;
 }
-
-#sequence-table th, #sequence-table td{
-  text-align: center;
+#sequence-table th, #sequence-table td {
+    text-align: center;
 }

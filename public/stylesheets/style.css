@@ -1,17 +1,14 @@
 html, body {
-  height: 100% !important;
-  overflow-x: hidden;
-  overflow-y: hidden;
+    height: 100% !important;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
-
 body {
-  font-size: 18px !important;
+    font-size: 18px !important;
 }
-
 .navbar {
-  margin-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
-
 ::-webkit-scrollbar {
     display: none;
 }

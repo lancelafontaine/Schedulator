@@ -1,0 +1,26 @@
+<h1 class="col-md-12 prefTitle">Student Record</h1>
+
+<div id="student-record-input-div" class="input-group" style="
+margin-left: 14%;
+margin-bottom: 2%;
+">
+    Type in the box to filter through available courses. Click on the course to add it to your Student Record or enter the course ID to delete from the completed course.
+    <input id="student-record-input" class="form-control" type="text" placeholder="Enter a Course ID to add" />
+</div>
+
+<form role="form" method="post" action="/removecompletedcourse" style="
+margin-left: 11%;
+">
+    <input type="text" id="cName" name="courseName" placeholder="Enter a Course ID to delete" style="margin-left: 32px; width: 79%;" />
+    <br>
+    <button type="submit" id="remButton">Remove</button>
+</form>
+<br>
+<br>
+<ul id="student-record-available-course-list" style="margin-left: 18%">
+    <span>AVAILABLE COURSES</span>
+</ul>
+<ul id="student-record-taken-course-list">
+    <span>COMPLETED COURSES</span>
+    <div id="student-record-taken-courses"></div>
+</ul>
